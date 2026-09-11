@@ -1,1 +1,541 @@
+<!DOCTYPE html>
+<html lang="en">
 
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <meta
+        name="description"
+        content="Notes by Ardanarx — thoughts, experiences, projects, technology, and things I'm learning."
+    >
+
+    <title>Notes — Ardanarx</title>
+
+    <link
+        rel="icon"
+        type="image/png"
+        href="../assets/favicon.png"
+    >
+
+    <link rel="stylesheet" href="../style.css">
+
+    <style>
+
+        /* =====================================================
+           NOTES PAGE
+        ====================================================== */
+
+        .notes-page {
+            padding: 150px 24px 100px;
+        }
+
+        .notes-container {
+            max-width: 690px;
+            margin: 0 auto;
+        }
+
+
+        /* =====================================================
+           HEADER
+        ====================================================== */
+
+        .notes-header {
+            margin-bottom: 80px;
+        }
+
+        .notes-header h1 {
+            margin: 0 0 24px;
+
+            font-family: var(--serif);
+            font-size: clamp(48px, 8vw, 68px);
+            line-height: 1.05;
+            font-weight: 400;
+
+            color: var(--text);
+        }
+
+        .notes-header p {
+            max-width: 620px;
+            margin: 0;
+
+            font-family: var(--sans);
+            font-size: 18px;
+            line-height: 1.8;
+
+            color: var(--text-soft);
+        }
+
+
+        /* =====================================================
+           NOTE LIST
+        ====================================================== */
+
+        .notes-list {
+            border-top: 1px solid var(--border);
+        }
+
+        .note-card {
+            display: block;
+
+            padding: 34px 0;
+
+            border-bottom: 1px solid var(--border);
+
+            text-decoration: none;
+
+            transition:
+                padding-left 0.3s ease,
+                opacity 0.3s ease;
+        }
+
+        .note-card:hover {
+            padding-left: 10px;
+        }
+
+
+        /* =====================================================
+           CATEGORY
+        ====================================================== */
+
+        .note-card-category {
+            margin-bottom: 12px;
+
+            font-family: var(--sans);
+            font-size: 12px;
+            font-weight: 600;
+
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+
+            color: var(--text-soft);
+        }
+
+
+        /* =====================================================
+           TITLE
+        ====================================================== */
+
+        .note-card h2 {
+            margin: 0 0 12px;
+
+            font-family: var(--serif);
+            font-size: 30px;
+            line-height: 1.25;
+            font-weight: 400;
+
+            color: var(--text);
+        }
+
+
+        /* =====================================================
+           DESCRIPTION
+        ====================================================== */
+
+        .note-card p {
+            max-width: 620px;
+            margin: 0;
+
+            font-family: var(--sans);
+            font-size: 15px;
+            line-height: 1.8;
+
+            color: var(--text-soft);
+        }
+
+
+        /* =====================================================
+           READ MORE
+        ====================================================== */
+
+        .note-read {
+            display: inline-block;
+
+            margin-top: 20px;
+
+            font-family: var(--sans);
+            font-size: 13px;
+            font-weight: 600;
+
+            color: var(--text);
+        }
+
+
+        /* =====================================================
+           BACK LINK
+        ====================================================== */
+
+        .notes-back {
+            display: inline-block;
+
+            margin-bottom: 50px;
+
+            font-family: var(--sans);
+            font-size: 14px;
+
+            color: var(--text-soft);
+            text-decoration: none;
+
+            transition: var(--ease);
+        }
+
+        .notes-back:hover {
+            color: var(--text);
+        }
+
+
+        /* =====================================================
+           RESPONSIVE
+        ====================================================== */
+
+        @media (max-width: 700px) {
+
+            .notes-page {
+                padding-top: 125px;
+            }
+
+            .notes-header {
+                margin-bottom: 60px;
+            }
+
+            .notes-header h1 {
+                font-size: 52px;
+            }
+
+            .notes-header p {
+                font-size: 17px;
+            }
+
+            .note-card {
+                padding: 30px 0;
+            }
+
+            .note-card h2 {
+                font-size: 27px;
+            }
+
+        }
+
+
+        @media (max-width: 420px) {
+
+            .notes-header h1 {
+                font-size: 46px;
+            }
+
+            .note-card h2 {
+                font-size: 25px;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+    <!-- =====================================================
+         HEADER
+    ====================================================== -->
+
+    <header class="site-header">
+
+        <nav class="navbar">
+
+            <a
+                href="../index.html"
+                class="brand"
+                aria-label="Ardanarx Home"
+            >
+                Ardanarx
+            </a>
+
+
+            <div class="nav-right">
+
+                <div class="nav-links">
+
+                    <a href="../index.html#about">
+                        About
+                    </a>
+
+                    <a href="../index.html#projects">
+                        Projects
+                    </a>
+
+                    <a href="index.html">
+                        Notes
+                    </a>
+
+                    <a href="../index.html#contact">
+                        Contact
+                    </a>
+
+                </div>
+
+
+                <button
+                    class="menu-toggle"
+                    type="button"
+                    aria-label="Open menu"
+                    aria-expanded="false"
+                    aria-controls="mobile-menu"
+                >
+
+                    <span></span>
+                    <span></span>
+                    <span></span>
+
+                </button>
+
+            </div>
+
+        </nav>
+
+
+        <div
+            class="mobile-menu"
+            id="mobile-menu"
+        >
+
+            <a href="../index.html#about">
+                About
+            </a>
+
+            <a href="../index.html#projects">
+                Projects
+            </a>
+
+            <a href="index.html">
+                Notes
+            </a>
+
+            <a href="../index.html#contact">
+                Contact
+            </a>
+
+        </div>
+
+    </header>
+
+
+
+    <!-- =====================================================
+         MAIN
+    ====================================================== -->
+
+    <main>
+
+        <section class="notes-page">
+
+            <div class="notes-container">
+
+
+                <a
+                    href="../index.html"
+                    class="notes-back"
+                >
+                    ← Back to Home
+                </a>
+
+
+                <!-- =================================================
+                     INTRO
+                ================================================== -->
+
+                <header class="notes-header">
+
+                    <h1>
+                        Notes
+                    </h1>
+
+                    <p>
+                        Thoughts, experiences, lessons, and things
+                        I’m learning along the way. A collection of
+                        ideas and stories from the projects I build
+                        and the things I explore.
+                    </p>
+
+                </header>
+
+
+
+                <!-- =================================================
+                     NOTE LIST
+                ================================================== -->
+
+                <div class="notes-list">
+
+
+                    <!-- NOTE 01 -->
+
+                    <a
+                        href="attendance-system/index.html"
+                        class="note-card"
+                    >
+
+                        <div class="note-card-category">
+                            Digital Systems
+                        </div>
+
+                        <h2>
+                            How I Built My First Digital Attendance System
+                        </h2>
+
+                        <p>
+                            A look at how I turned a simple idea into
+                            a working attendance system, the challenges
+                            I faced along the way, and what I learned
+                            from building it from scratch.
+                        </p>
+
+                        <span class="note-read">
+                            Read Note →
+                        </span>
+
+                    </a>
+
+
+
+                    <!-- NOTE 02 -->
+
+                    <a
+                        href="small-business/index.html"
+                        class="note-card"
+                    >
+
+                        <div class="note-card-category">
+                            Business
+                        </div>
+
+                        <h2>
+                            What I Learned From Building a Small Business
+                        </h2>
+
+                        <p>
+                            Some lessons I’ve learned from turning an
+                            idea into a real business, dealing with
+                            everyday challenges, and discovering that
+                            building a business is also a process of
+                            continuous learning.
+                        </p>
+
+                        <span class="note-read">
+                            Read Note →
+                        </span>
+
+                    </a>
+
+
+
+                    <!-- NOTE 03 -->
+
+                    <a
+                        href="computer-troubleshooting/index.html"
+                        class="note-card"
+                    >
+
+                        <div class="note-card-category">
+                            Technology
+                        </div>
+
+                        <h2>
+                            Things I’ve Learned About Troubleshooting Computers
+                        </h2>
+
+                        <p>
+                            Lessons and experiences I’ve picked up from
+                            diagnosing hardware and software problems,
+                            finding practical solutions, and understanding
+                            what is really going wrong.
+                        </p>
+
+                        <span class="note-read">
+                            Read Note →
+                        </span>
+
+                    </a>
+
+
+
+                    <!-- NOTE 04 -->
+
+                    <a
+                        href="personal-website/index.html"
+                        class="note-card"
+                    >
+
+                        <div class="note-card-category">
+                            Web Development
+                        </div>
+
+                        <h2>
+                            Why I Started Building My Personal Website
+                        </h2>
+
+                        <p>
+                            The story behind creating my own little space
+                            on the internet — a place to document what
+                            I’m building, what I’m learning, and the
+                            experiences I want to remember.
+                        </p>
+
+                        <span class="note-read">
+                            Read Note →
+                        </span>
+
+                    </a>
+
+
+
+                    <!-- NOTE 05 -->
+
+                    <a
+                        href="things-im-learning/index.html"
+                        class="note-card"
+                    >
+
+                        <div class="note-card-category">
+                            Learning
+                        </div>
+
+                        <h2>
+                            Things I’m Currently Learning
+                        </h2>
+
+                        <p>
+                            A collection of things I’m currently exploring,
+                            from technology and digital systems to business,
+                            new tools, and ideas that continue to spark
+                            my curiosity.
+                        </p>
+
+                        <span class="note-read">
+                            Read Note →
+                        </span>
+
+                    </a>
+
+
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <script src="../script.js"></script>
+
+</body>
+
+</html>
