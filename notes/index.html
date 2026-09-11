@@ -79,6 +79,15 @@
 
 
     <!-- =====================================================
+         SUPABASE
+    ====================================================== -->
+
+    <script
+        src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"
+    ></script>
+
+
+    <!-- =====================================================
          NOTES PAGE STYLES
     ====================================================== -->
 
@@ -216,6 +225,23 @@
 
 
         /* =====================================================
+           DATE
+        ====================================================== */
+
+        .note-card-date {
+            display: block;
+
+            margin-top: 18px;
+
+            font-family: var(--sans);
+            font-size: 12px;
+            line-height: 1.5;
+
+            color: var(--text-soft);
+        }
+
+
+        /* =====================================================
            READ NOTE
         ====================================================== */
 
@@ -229,6 +255,50 @@
             font-weight: 600;
 
             color: var(--text);
+        }
+
+
+        /* =====================================================
+           LOADING
+        ====================================================== */
+
+        .notes-loading {
+            padding: 40px 0;
+
+            font-family: var(--sans);
+            font-size: 14px;
+
+            color: var(--text-soft);
+        }
+
+
+        /* =====================================================
+           EMPTY STATE
+        ====================================================== */
+
+        .notes-empty {
+            padding: 40px 0;
+
+            font-family: var(--sans);
+            font-size: 14px;
+            line-height: 1.8;
+
+            color: var(--text-soft);
+        }
+
+
+        /* =====================================================
+           ERROR
+        ====================================================== */
+
+        .notes-error {
+            padding: 40px 0;
+
+            font-family: var(--sans);
+            font-size: 14px;
+            line-height: 1.8;
+
+            color: var(--text-soft);
         }
 
 
@@ -417,7 +487,6 @@
 
     <main>
 
-
         <section class="notes-page">
 
             <div class="notes-container">
@@ -445,171 +514,17 @@
 
 
                 <!-- =================================================
-                     NOTES LIST
+                     DYNAMIC NOTES LIST
                 ================================================== -->
 
-                <div class="notes-list">
+                <div
+                    class="notes-list"
+                    id="notesList"
+                >
 
-
-                    <!-- =================================================
-                         NOTE 01
-                    ================================================== -->
-
-                    <a
-                        href="attendance-system/index.html"
-                        class="note-card"
-                    >
-
-                        <div class="note-card-category">
-                            Digital Systems
-                        </div>
-
-                        <h2>
-                            How I Built My First Digital Attendance System
-                        </h2>
-
-                        <p>
-                            A look at how I turned a simple idea into
-                            a working attendance system, the challenges
-                            I faced along the way, and what I learned
-                            from building it from scratch.
-                        </p>
-
-                        <span class="note-read">
-                            Read Note →
-                        </span>
-
-                    </a>
-
-
-
-                    <!-- =================================================
-                         NOTE 02
-                    ================================================== -->
-
-                    <a
-                        href="small-business/index.html"
-                        class="note-card"
-                    >
-
-                        <div class="note-card-category">
-                            Business
-                        </div>
-
-                        <h2>
-                            What I Learned From Building a Small Business
-                        </h2>
-
-                        <p>
-                            Some lessons I’ve learned from turning an
-                            idea into a real business, dealing with
-                            everyday challenges, and discovering that
-                            building a business is also a process of
-                            continuous learning.
-                        </p>
-
-                        <span class="note-read">
-                            Read Note →
-                        </span>
-
-                    </a>
-
-
-
-                    <!-- =================================================
-                         NOTE 03
-                    ================================================== -->
-
-                    <a
-                        href="computer-troubleshooting/index.html"
-                        class="note-card"
-                    >
-
-                        <div class="note-card-category">
-                            Technology
-                        </div>
-
-                        <h2>
-                            Things I’ve Learned About Troubleshooting Computers
-                        </h2>
-
-                        <p>
-                            Lessons and experiences I’ve picked up from
-                            diagnosing hardware and software problems,
-                            finding practical solutions, and understanding
-                            what is really going wrong.
-                        </p>
-
-                        <span class="note-read">
-                            Read Note →
-                        </span>
-
-                    </a>
-
-
-
-                    <!-- =================================================
-                         NOTE 04
-                    ================================================== -->
-
-                    <a
-                        href="personal-website/index.html"
-                        class="note-card"
-                    >
-
-                        <div class="note-card-category">
-                            Web Development
-                        </div>
-
-                        <h2>
-                            Why I Started Building My Personal Website
-                        </h2>
-
-                        <p>
-                            The story behind creating my own little space
-                            on the internet — a place to document what
-                            I’m building, what I’m learning, and the
-                            experiences I want to remember.
-                        </p>
-
-                        <span class="note-read">
-                            Read Note →
-                        </span>
-
-                    </a>
-
-
-
-                    <!-- =================================================
-                         NOTE 05
-                    ================================================== -->
-
-                    <a
-                        href="things-im-learning/index.html"
-                        class="note-card"
-                    >
-
-                        <div class="note-card-category">
-                            Learning
-                        </div>
-
-                        <h2>
-                            Things I’m Currently Learning
-                        </h2>
-
-                        <p>
-                            A collection of things I’m currently exploring,
-                            from technology and digital systems to business,
-                            new tools, and ideas that continue to spark
-                            my curiosity.
-                        </p>
-
-                        <span class="note-read">
-                            Read Note →
-                        </span>
-
-                    </a>
-
+                    <div class="notes-loading">
+                        Loading notes...
+                    </div>
 
                 </div>
 
@@ -622,7 +537,259 @@
 
 
     <!-- =====================================================
-         JAVASCRIPT
+         SUPABASE + NOTES SCRIPT
+    ====================================================== -->
+
+    <script>
+
+        /* =====================================================
+           SUPABASE CONFIG
+        ====================================================== */
+
+        const SUPABASE_URL =
+            "https://isqimtsaeuvceijapddj.supabase.co";
+
+
+        const SUPABASE_ANON_KEY =
+            "PASTE_YOUR_CURRENT_PUBLISHABLE_ANON_KEY_HERE";
+
+
+        const supabaseClient =
+            window.supabase.createClient(
+                SUPABASE_URL,
+                SUPABASE_ANON_KEY
+            );
+
+
+
+        /* =====================================================
+           DOM
+        ====================================================== */
+
+        const notesList =
+            document.getElementById("notesList");
+
+
+
+        /* =====================================================
+           ESCAPE HTML
+        ====================================================== */
+
+        function escapeHTML(value) {
+
+            if (value === null || value === undefined) {
+                return "";
+            }
+
+            return String(value)
+                .replace(/&/g, "&amp;")
+                .replace(/</g, "&lt;")
+                .replace(/>/g, "&gt;")
+                .replace(/"/g, "&quot;")
+                .replace(/'/g, "&#039;");
+        }
+
+
+
+        /* =====================================================
+           FORMAT DATE
+        ====================================================== */
+
+        function formatDate(dateValue) {
+
+            if (!dateValue) {
+                return "";
+            }
+
+            const date =
+                new Date(dateValue);
+
+            if (Number.isNaN(date.getTime())) {
+                return "";
+            }
+
+            return new Intl.DateTimeFormat(
+                "en-US",
+                {
+                    year: "numeric",
+                    month: "long",
+                    day: "numeric"
+                }
+            ).format(date);
+
+        }
+
+
+
+        /* =====================================================
+           LOAD PUBLISHED NOTES
+        ====================================================== */
+
+        async function loadNotes() {
+
+            notesList.innerHTML = `
+                <div class="notes-loading">
+                    Loading notes...
+                </div>
+            `;
+
+
+            const {
+                data,
+                error
+            } = await supabaseClient
+                .from("notes")
+                .select(`
+                    id,
+                    title,
+                    slug,
+                    excerpt,
+                    status,
+                    published_at,
+                    created_at
+                `)
+                .eq("status", "published")
+                .order(
+                    "published_at",
+                    {
+                        ascending: false
+                    }
+                );
+
+
+            /* =================================================
+               ERROR
+            ================================================== */
+
+            if (error) {
+
+                console.error(
+                    "Failed to load notes:",
+                    error
+                );
+
+                notesList.innerHTML = `
+                    <div class="notes-error">
+                        Unable to load notes right now.
+                        Please try again later.
+                    </div>
+                `;
+
+                return;
+            }
+
+
+
+            /* =================================================
+               EMPTY
+            ================================================== */
+
+            if (!data || data.length === 0) {
+
+                notesList.innerHTML = `
+                    <div class="notes-empty">
+                        No published notes yet.
+                    </div>
+                `;
+
+                return;
+            }
+
+
+
+            /* =================================================
+               RENDER
+            ================================================== */
+
+            notesList.innerHTML =
+                data.map(note => {
+
+                    const title =
+                        escapeHTML(
+                            note.title
+                        );
+
+
+                    const excerpt =
+                        escapeHTML(
+                            note.excerpt ||
+                            "A note by Ardanarx."
+                        );
+
+
+                    const slug =
+                        encodeURIComponent(
+                            note.slug || ""
+                        );
+
+
+                    const date =
+                        formatDate(
+                            note.published_at ||
+                            note.created_at
+                        );
+
+
+                    return `
+                        <a
+                            href="article.html?slug=${slug}"
+                            class="note-card"
+                        >
+
+                            <div class="note-card-category">
+                                Ardanarx Notes
+                            </div>
+
+                            <h2>
+                                ${title}
+                            </h2>
+
+                            <p>
+                                ${excerpt}
+                            </p>
+
+                            ${
+                                date
+                                    ? `
+                                        <span class="note-card-date">
+                                            ${date}
+                                        </span>
+                                      `
+                                    : ""
+                            }
+
+                            <span class="note-read">
+                                Read Note →
+                            </span>
+
+                        </a>
+                    `;
+
+                }).join("");
+
+        }
+
+
+
+        /* =====================================================
+           INITIALIZE
+        ====================================================== */
+
+        document.addEventListener(
+            "DOMContentLoaded",
+            () => {
+
+                loadNotes();
+
+            }
+        );
+
+    </script>
+
+
+
+    <!-- =====================================================
+         MAIN SITE SCRIPT
     ====================================================== -->
 
     <script src="../script.js"></script>
