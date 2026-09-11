@@ -1,1 +1,402 @@
+<!DOCTYPE html>
+<html lang="en">
 
+<head>
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <meta
+        name="description"
+        content="How I built my first digital attendance system — a story about building, troubleshooting, and learning from a real project."
+    >
+
+    <title>How I Built My First Digital Attendance System — Ardanarx</title>
+
+    <link
+        rel="icon"
+        type="image/png"
+        href="../../assets/favicon.png"
+    >
+
+    <link rel="stylesheet" href="../../style.css">
+
+    <style>
+        .note-detail {
+            padding: 150px 24px 100px;
+        }
+
+        .note-detail-inner {
+            max-width: 690px;
+            margin: 0 auto;
+        }
+
+        .note-back {
+            display: inline-block;
+            margin-bottom: 50px;
+            font-family: var(--sans);
+            font-size: 14px;
+            color: var(--text-soft);
+            text-decoration: none;
+            transition: var(--ease);
+        }
+
+        .note-back:hover {
+            color: var(--text);
+        }
+
+        .note-category {
+            margin-bottom: 18px;
+            font-family: var(--sans);
+            font-size: 13px;
+            font-weight: 600;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            color: var(--text-soft);
+        }
+
+        .note-detail h1 {
+            margin: 0 0 28px;
+            font-family: var(--serif);
+            font-size: clamp(42px, 7vw, 62px);
+            line-height: 1.05;
+            font-weight: 400;
+            color: var(--text);
+        }
+
+        .note-intro {
+            margin-bottom: 70px;
+            font-family: var(--sans);
+            font-size: 19px;
+            line-height: 1.8;
+            color: var(--text-soft);
+        }
+
+        .note-body {
+            font-family: var(--sans);
+            color: var(--text);
+        }
+
+        .note-body h2 {
+            margin: 60px 0 20px;
+            font-family: var(--serif);
+            font-size: 34px;
+            line-height: 1.2;
+            font-weight: 400;
+        }
+
+        .note-body p {
+            margin: 0 0 24px;
+            font-size: 16px;
+            line-height: 1.9;
+            color: var(--text-soft);
+        }
+
+        .note-body ul {
+            margin: 0 0 30px;
+            padding-left: 24px;
+        }
+
+        .note-body li {
+            margin-bottom: 12px;
+            font-size: 16px;
+            line-height: 1.8;
+            color: var(--text-soft);
+        }
+
+        .note-quote {
+            margin: 50px 0;
+            padding: 28px 0 28px 28px;
+            border-left: 2px solid var(--text);
+            font-family: var(--serif);
+            font-size: 28px;
+            line-height: 1.45;
+            color: var(--text);
+        }
+
+        .note-footer {
+            margin-top: 80px;
+            padding-top: 30px;
+            border-top: 1px solid var(--border);
+        }
+
+        .note-footer a {
+            font-family: var(--sans);
+            font-size: 14px;
+            font-weight: 600;
+            color: var(--text);
+            text-decoration: none;
+        }
+
+        .note-footer a:hover {
+            text-decoration: underline;
+        }
+
+        @media (max-width: 700px) {
+            .note-detail {
+                padding-top: 125px;
+            }
+
+            .note-detail h1 {
+                font-size: 44px;
+            }
+
+            .note-intro {
+                font-size: 17px;
+            }
+
+            .note-body h2 {
+                font-size: 30px;
+            }
+
+            .note-quote {
+                font-size: 24px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <header class="site-header">
+        <nav class="navbar">
+
+            <a
+                href="../../index.html"
+                class="brand"
+                aria-label="Ardanarx Home"
+            >
+                Ardanarx
+            </a>
+
+            <div class="nav-right">
+
+                <div class="nav-links">
+                    <a href="../../index.html#about">About</a>
+                    <a href="../../index.html#projects">Projects</a>
+                    <a href="../index.html">Notes</a>
+                    <a href="../../index.html#contact">Contact</a>
+                </div>
+
+                <button
+                    class="menu-toggle"
+                    type="button"
+                    aria-label="Open menu"
+                    aria-expanded="false"
+                    aria-controls="mobile-menu"
+                >
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+
+            </div>
+        </nav>
+
+        <div
+            class="mobile-menu"
+            id="mobile-menu"
+        >
+            <a href="../../index.html#about">About</a>
+            <a href="../../index.html#projects">Projects</a>
+            <a href="../index.html">Notes</a>
+            <a href="../../index.html#contact">Contact</a>
+        </div>
+    </header>
+
+
+    <main>
+
+        <article class="note-detail">
+
+            <div class="note-detail-inner">
+
+                <a
+                    href="../index.html"
+                    class="note-back"
+                >
+                    ← Back to Notes
+                </a>
+
+                <div class="note-category">
+                    Notes · Digital Systems
+                </div>
+
+                <h1>
+                    How I Built My First Digital Attendance System
+                </h1>
+
+                <p class="note-intro">
+                    A look at how I turned a simple idea into a working
+                    attendance system, the challenges I faced along the way,
+                    and what I learned from building it from scratch.
+                </p>
+
+
+                <div class="note-body">
+
+                    <p>
+                        One of the projects that taught me the most about
+                        digital systems started with a fairly simple problem:
+                        how to make attendance easier, more organized,
+                        and less dependent on manual recording.
+                    </p>
+
+                    <p>
+                        Instead of looking for a complicated solution from
+                        the beginning, I decided to build the system myself.
+                        The goal was not simply to create something that
+                        looked good, but something that could actually be
+                        used in everyday work.
+                    </p>
+
+
+                    <h2>
+                        Starting With a Simple Idea
+                    </h2>
+
+                    <p>
+                        The first version of the idea was straightforward.
+                        Someone should be able to identify themselves,
+                        record their arrival, and later record their departure.
+                    </p>
+
+                    <p>
+                        From there, the system needed to understand the
+                        difference between clock-in and clock-out, prevent
+                        incorrect attendance records, and keep everything
+                        organized for later review.
+                    </p>
+
+
+                    <h2>
+                        Building the System
+                    </h2>
+
+                    <p>
+                        I started by thinking about the information that
+                        actually needed to be stored. Rather than collecting
+                        unnecessary data, I focused on the basic attendance
+                        information required by the system.
+                    </p>
+
+                    <ul>
+                        <li>Date</li>
+                        <li>Employee ID</li>
+                        <li>Name</li>
+                        <li>Clock-in time</li>
+                        <li>Clock-out time</li>
+                        <li>Attendance status</li>
+                    </ul>
+
+                    <p>
+                        This simple structure became the foundation for
+                        processing attendance records and generating
+                        monthly summaries.
+                    </p>
+
+
+                    <h2>
+                        The Challenges
+                    </h2>
+
+                    <p>
+                        Building the system was not completely straightforward.
+                        There were several moments when something worked in
+                        one situation but failed in another.
+                    </p>
+
+                    <p>
+                        One of the biggest lessons came from debugging.
+                        Small differences in field names, data structures,
+                        triggers, or the way information was sent could cause
+                        the entire process to fail.
+                    </p>
+
+                    <div class="note-quote">
+                        Building something yourself teaches you much more
+                        when something goes wrong.
+                    </div>
+
+
+                    <h2>
+                        From Manual Records to a Digital System
+                    </h2>
+
+                    <p>
+                        As the project developed, the system became more than
+                        just a way to record attendance. It became a small
+                        digital workflow connecting user input, data processing,
+                        and reporting.
+                    </p>
+
+                    <p>
+                        This changed the way I looked at simple administrative
+                        processes. A task that seems repetitive can often be
+                        improved by breaking it down into smaller steps and
+                        connecting those steps together.
+                    </p>
+
+
+                    <h2>
+                        What I Learned
+                    </h2>
+
+                    <p>
+                        The biggest lesson was that building a system is not
+                        only about writing code. It is also about understanding
+                        the actual problem, designing a useful workflow,
+                        testing different situations, and being willing to
+                        troubleshoot when something does not work.
+                    </p>
+
+                    <p>
+                        I also learned that a simple system can become quite
+                        powerful when each part is designed to work together.
+                    </p>
+
+
+                    <h2>
+                        Looking Back
+                    </h2>
+
+                    <p>
+                        This project became one of the experiences that
+                        encouraged me to keep exploring digital systems.
+                        It showed me that I could start with a simple idea,
+                        experiment with different approaches, solve problems,
+                        and eventually turn the idea into something usable.
+                    </p>
+
+                    <p>
+                        It was not perfect, and it did not need to be.
+                        The important part was learning through the process
+                        and improving the system step by step.
+                    </p>
+
+
+                    <div class="note-footer">
+
+                        <a href="../index.html">
+                            ← Back to all Notes
+                        </a>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </article>
+
+    </main>
+
+
+    <script src="../../script.js"></script>
+
+</body>
+
+</html>
