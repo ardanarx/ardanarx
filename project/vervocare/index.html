@@ -1,0 +1,917 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <!-- =====================================================
+         BASIC
+    ====================================================== -->
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <meta
+        name="description"
+        content="Vervocare — A digital business and management system project by Ardanarx."
+    >
+
+    <title>Vervocare — Ardanarx</title>
+
+
+    <!-- =====================================================
+         FAVICON
+    ====================================================== -->
+
+    <link
+        rel="icon"
+        type="image/png"
+        href="../../assets/favicon.png"
+    >
+
+
+    <!-- =====================================================
+         FONTS
+    ====================================================== -->
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+
+    <link
+        rel="preconnect"
+        href="https://fonts.gstatic.com"
+        crossorigin
+    >
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Manrope:wght@400;500;600;700&display=swap"
+        rel="stylesheet"
+    >
+
+
+    <!-- =====================================================
+         MAIN CSS
+    ====================================================== -->
+
+    <link
+        rel="stylesheet"
+        href="../../style.css"
+    >
+
+
+    <!-- =====================================================
+         PAGE CSS
+    ====================================================== -->
+
+    <style>
+
+        /* =====================================================
+           VERV OCARE PAGE
+        ====================================================== */
+
+        .project-detail-hero {
+            padding: 150px 24px 95px;
+        }
+
+        .project-detail-inner {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .project-detail-label {
+            display: block;
+            margin-bottom: 22px;
+
+            color: var(--text-soft);
+
+            font-size: 13px;
+            font-weight: 700;
+
+            letter-spacing: 0.08em;
+        }
+
+        .project-detail-hero h1 {
+            max-width: 760px;
+
+            margin: 0 0 28px;
+
+            font-family: var(--serif);
+
+            font-size: clamp(58px, 8vw, 86px);
+
+            line-height: 0.98;
+
+            letter-spacing: -2.5px;
+
+            font-weight: 400;
+        }
+
+        .project-detail-intro {
+            max-width: 650px;
+
+            margin: 0;
+
+            color: var(--text-soft);
+
+            font-size: 18px;
+
+            line-height: 1.75;
+        }
+
+
+        /* =====================================================
+           PROJECT META
+        ====================================================== */
+
+        .project-meta {
+            display: grid;
+
+            grid-template-columns:
+                repeat(3, 1fr);
+
+            gap: 30px;
+
+            max-width: 900px;
+
+            margin: 0 auto;
+
+            padding: 35px 24px;
+
+            border-top: 1px solid var(--border);
+            border-bottom: 1px solid var(--border);
+        }
+
+        .meta-item span {
+            display: block;
+
+            margin-bottom: 8px;
+
+            color: var(--text-soft);
+
+            font-size: 12px;
+
+            font-weight: 700;
+
+            letter-spacing: 0.08em;
+
+            text-transform: uppercase;
+        }
+
+        .meta-item strong {
+            font-size: 14px;
+
+            font-weight: 600;
+        }
+
+
+        /* =====================================================
+           DETAIL SECTIONS
+        ====================================================== */
+
+        .detail-section {
+            padding: 90px 24px;
+        }
+
+        .detail-content {
+            max-width: var(--content-width);
+
+            margin: 0 auto;
+        }
+
+        .detail-content h2 {
+            margin: 0 0 25px;
+
+            font-family: var(--serif);
+
+            font-size: 42px;
+
+            line-height: 1.08;
+
+            letter-spacing: -1.1px;
+
+            font-weight: 400;
+        }
+
+        .detail-content p {
+            margin: 0 0 22px;
+
+            color: var(--text-soft);
+
+            font-size: 16px;
+
+            line-height: 1.78;
+        }
+
+        .detail-content p:last-child {
+            margin-bottom: 0;
+        }
+
+
+        /* =====================================================
+           FEATURE LIST
+        ====================================================== */
+
+        .feature-list {
+            margin: 35px 0 0;
+
+            padding: 0;
+
+            list-style: none;
+
+            border-top: 1px solid var(--border);
+        }
+
+        .feature-list li {
+            padding: 19px 0;
+
+            border-bottom: 1px solid var(--border);
+
+            font-size: 15px;
+
+            font-weight: 600;
+        }
+
+
+        /* =====================================================
+           TECHNOLOGY
+        ====================================================== */
+
+        .technology-list {
+            display: flex;
+
+            flex-wrap: wrap;
+
+            gap: 10px 22px;
+
+            margin-top: 30px;
+        }
+
+        .technology-list span {
+            color: var(--text-soft);
+
+            font-size: 14px;
+
+            font-weight: 600;
+        }
+
+
+        /* =====================================================
+           QUOTE
+        ====================================================== */
+
+        .project-quote {
+            padding: 100px 24px;
+
+            border-top: 1px solid var(--border);
+            border-bottom: 1px solid var(--border);
+        }
+
+        .project-quote-inner {
+            max-width: 760px;
+
+            margin: 0 auto;
+        }
+
+        .project-quote blockquote {
+            margin: 0;
+
+            font-family: var(--serif);
+
+            font-size: clamp(32px, 5vw, 48px);
+
+            line-height: 1.2;
+
+            letter-spacing: -1px;
+        }
+
+
+        /* =====================================================
+           LINKS
+        ====================================================== */
+
+        .project-links {
+            padding: 90px 24px 110px;
+        }
+
+        .project-links-inner {
+            max-width: var(--content-width);
+
+            margin: 0 auto;
+        }
+
+        .project-links h2 {
+            margin: 0 0 25px;
+
+            font-family: var(--serif);
+
+            font-size: 42px;
+
+            font-weight: 400;
+
+            letter-spacing: -1px;
+        }
+
+        .project-link-list {
+            display: flex;
+
+            flex-wrap: wrap;
+
+            gap: 18px 30px;
+        }
+
+        .project-link-list a {
+            color: var(--text);
+
+            text-decoration: none;
+
+            font-size: 14px;
+
+            font-weight: 700;
+
+            border-bottom: 1px solid currentColor;
+
+            padding-bottom: 3px;
+
+            transition: opacity 0.3s ease;
+        }
+
+        .project-link-list a:hover {
+            opacity: 0.55;
+        }
+
+
+        /* =====================================================
+           BACK
+        ====================================================== */
+
+        .back-projects {
+            padding: 0 24px 90px;
+        }
+
+        .back-projects a {
+            display: block;
+
+            max-width: var(--content-width);
+
+            margin: 0 auto;
+
+            color: var(--text-soft);
+
+            text-decoration: none;
+
+            font-size: 14px;
+
+            font-weight: 600;
+        }
+
+        .back-projects a:hover {
+            color: var(--text);
+        }
+
+
+        /* =====================================================
+           MOBILE
+        ====================================================== */
+
+        @media (max-width: 700px) {
+
+            .project-detail-hero {
+                padding: 125px 28px 70px;
+            }
+
+            .project-detail-hero h1 {
+                font-size: 54px;
+
+                letter-spacing: -1.8px;
+            }
+
+            .project-detail-intro {
+                font-size: 15px;
+            }
+
+
+            .project-meta {
+                grid-template-columns: 1fr;
+
+                gap: 22px;
+
+                padding: 30px 28px;
+            }
+
+
+            .detail-section {
+                padding: 65px 28px;
+            }
+
+            .detail-content h2 {
+                font-size: 38px;
+            }
+
+            .detail-content p {
+                font-size: 15px;
+            }
+
+
+            .project-quote {
+                padding: 75px 28px;
+            }
+
+            .project-quote blockquote {
+                font-size: 34px;
+            }
+
+
+            .project-links {
+                padding: 65px 28px 80px;
+            }
+
+            .project-links h2 {
+                font-size: 38px;
+            }
+
+
+            .back-projects {
+                padding: 0 28px 65px;
+            }
+
+        }
+
+
+        /* =====================================================
+           SMALL MOBILE
+        ====================================================== */
+
+        @media (max-width: 420px) {
+
+            .project-detail-hero h1 {
+                font-size: 48px;
+            }
+
+            .project-detail-intro {
+                font-size: 14.5px;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+    <!-- =====================================================
+         HEADER
+    ====================================================== -->
+
+    <header class="site-header">
+
+        <nav class="navbar">
+
+            <a
+                href="../../index.html"
+                class="brand"
+                aria-label="Ardanarx Home"
+            >
+                Ardanarx
+            </a>
+
+
+            <div class="nav-right">
+
+                <div class="nav-links">
+
+                    <a href="../../index.html#about">
+                        About
+                    </a>
+
+                    <a href="../index.html">
+                        Projects
+                    </a>
+
+                    <a href="../../index.html#notes">
+                        Notes
+                    </a>
+
+                    <a href="../../index.html#contact">
+                        Contact
+                    </a>
+
+                </div>
+
+
+                <button
+                    class="menu-toggle"
+                    type="button"
+                    aria-label="Open menu"
+                    aria-expanded="false"
+                    aria-controls="mobile-menu"
+                >
+
+                    <span></span>
+                    <span></span>
+                    <span></span>
+
+                </button>
+
+            </div>
+
+        </nav>
+
+
+        <div
+            class="mobile-menu"
+            id="mobile-menu"
+        >
+
+            <a href="../../index.html#about">
+                About
+            </a>
+
+            <a href="../index.html">
+                Projects
+            </a>
+
+            <a href="../../index.html#notes">
+                Notes
+            </a>
+
+            <a href="../../index.html#contact">
+                Contact
+            </a>
+
+        </div>
+
+    </header>
+
+
+
+    <!-- =====================================================
+         MAIN
+    ====================================================== -->
+
+    <main>
+
+
+        <!-- =================================================
+             HERO
+        ================================================== -->
+
+        <section class="project-detail-hero section-light">
+
+            <div class="project-detail-inner">
+
+                <span class="project-detail-label">
+                    PROJECT 01 — BUSINESS & DIGITAL SYSTEM
+                </span>
+
+
+                <h1>
+                    Vervocare
+                </h1>
+
+
+                <p class="project-detail-intro">
+                    A laundry business project where I explored
+                    how technology and digital systems could be
+                    used to simplify everyday operations and
+                    create a more organized way of working.
+                </p>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =================================================
+             META
+        ================================================== -->
+
+        <section class="section-white">
+
+            <div class="project-meta">
+
+                <div class="meta-item">
+
+                    <span>
+                        Type
+                    </span>
+
+                    <strong>
+                        Business Project
+                    </strong>
+
+                </div>
+
+
+                <div class="meta-item">
+
+                    <span>
+                        Focus
+                    </span>
+
+                    <strong>
+                        Digital Systems
+                    </strong>
+
+                </div>
+
+
+                <div class="meta-item">
+
+                    <span>
+                        Status
+                    </span>
+
+                    <strong>
+                        Active / Developing
+                    </strong>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =================================================
+             OVERVIEW
+        ================================================== -->
+
+        <section class="detail-section section-white">
+
+            <div class="detail-content">
+
+                <h2>
+                    The Idea
+                </h2>
+
+
+                <p>
+                    Vervocare started as a business idea around
+                    laundry services. As the project developed,
+                    I became interested not only in the business
+                    itself, but also in how technology could help
+                    manage the everyday work behind it.
+                </p>
+
+
+                <p>
+                    Instead of relying entirely on manual processes,
+                    I explored ways to build simple digital systems
+                    that could make information easier to record,
+                    organize, and access.
+                </p>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =================================================
+             WHAT I BUILT
+        ================================================== -->
+
+        <section class="detail-section section-light">
+
+            <div class="detail-content">
+
+                <h2>
+                    What I Built
+                </h2>
+
+
+                <p>
+                    One of the main parts of the project was
+                    creating a digital attendance system for
+                    managing staff attendance.
+                </p>
+
+
+                <ul class="feature-list">
+
+                    <li>
+                        Digital attendance system
+                    </li>
+
+                    <li>
+                        Clock-in and clock-out workflow
+                    </li>
+
+                    <li>
+                        Attendance records
+                    </li>
+
+                    <li>
+                        Monthly attendance recap
+                    </li>
+
+                    <li>
+                        Progressive Web App interface
+                    </li>
+
+                    <li>
+                        Digital business management experiments
+                    </li>
+
+                </ul>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =================================================
+             TECHNOLOGY
+        ================================================== -->
+
+        <section class="detail-section section-white">
+
+            <div class="detail-content">
+
+                <h2>
+                    Technology
+                </h2>
+
+
+                <p>
+                    The project became an opportunity to experiment
+                    with several technologies and understand how
+                    different services could work together as one
+                    system.
+                </p>
+
+
+                <div class="technology-list">
+
+                    <span>
+                        HTML
+                    </span>
+
+                    <span>
+                        CSS
+                    </span>
+
+                    <span>
+                        JavaScript
+                    </span>
+
+                    <span>
+                        Google Apps Script
+                    </span>
+
+                    <span>
+                        Google Sheets
+                    </span>
+
+                    <span>
+                        Notion API
+                    </span>
+
+                    <span>
+                        PWA
+                    </span>
+
+                    <span>
+                        QR Code
+                    </span>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =================================================
+             CHALLENGE
+        ================================================== -->
+
+        <section class="detail-section section-light">
+
+            <div class="detail-content">
+
+                <h2>
+                    What I Learned
+                </h2>
+
+
+                <p>
+                    Building Vervocare taught me that creating
+                    a digital system is not only about writing
+                    code. The system has to match the way people
+                    actually work.
+                </p>
+
+
+                <p>
+                    I learned about connecting different services,
+                    handling data, designing simple workflows,
+                    troubleshooting unexpected problems, and
+                    gradually improving a system as new requirements
+                    appear.
+                </p>
+
+
+                <p>
+                    It also showed me that even a relatively small
+                    business can benefit from thoughtful digital
+                    systems when they are designed around real
+                    everyday needs.
+                </p>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =================================================
+             QUOTE
+        ================================================== -->
+
+        <section class="project-quote section-white">
+
+            <div class="project-quote-inner">
+
+                <blockquote>
+                    “The goal was never to build something
+                    complicated. It was to build something
+                    useful.”
+                </blockquote>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =================================================
+             LINKS
+        ================================================== -->
+
+        <section class="project-links section-light">
+
+            <div class="project-links-inner">
+
+                <h2>
+                    Explore
+                </h2>
+
+
+                <div class="project-link-list">
+
+                    <a
+                        href="https://vervocare.pages.dev/"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                    >
+                        Vervocare Website ↗
+                    </a>
+
+
+                    <a href="../index.html">
+                        More Projects →
+                    </a>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =================================================
+             BACK
+        ================================================== -->
+
+        <div class="back-projects section-white">
+
+            <a href="../index.html">
+                ← Back to Projects
+            </a>
+
+        </div>
+
+    </main>
+
+
+
+    <!-- =====================================================
+         SCRIPT
+    ====================================================== -->
+
+    <script src="../../script.js"></script>
+
+</body>
+
+</html>
