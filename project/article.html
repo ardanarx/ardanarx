@@ -11,17 +11,16 @@
     >
 
     <meta
-        id="pageDescription"
         name="description"
-        content="Project by Ardanarx."
+        content="Ardanarx — Project details."
     >
 
-    <title id="pageTitle">Project — Ardanarx</title>
+    <title>Project — Ardanarx</title>
 
     <link
         rel="icon"
         type="image/png"
-        href="../../assets/favicon.png"
+        href="../assets/favicon.png"
     >
 
     <link
@@ -42,7 +41,7 @@
 
     <link
         rel="stylesheet"
-        href="../../style.css"
+        href="../style.css"
     >
 
     <style>
@@ -60,30 +59,45 @@
             margin: 0 auto;
         }
 
+
+        /* =====================================================
+           LABEL
+        ====================================================== */
+
         .project-detail-label {
             display: block;
-            margin-bottom: 22px;
+            margin-bottom: 24px;
             color: var(--text-soft);
             font-size: 13px;
             font-weight: 700;
             letter-spacing: 0.08em;
         }
 
-        .project-detail-hero h1 {
-            max-width: 760px;
-            margin: 0 0 28px;
-            font-family: var(--serif);
+
+        /* =====================================================
+           TITLE
+        ====================================================== */
+
+        .project-detail-title {
+            max-width: 850px;
+            margin: 0 0 25px;
+            font-family: "DM Serif Display", Georgia, serif;
             font-size: clamp(58px, 8vw, 86px);
             line-height: 0.98;
-            letter-spacing: -2.5px;
+            letter-spacing: -3px;
             font-weight: 400;
         }
+
+
+        /* =====================================================
+           INTRO
+        ====================================================== */
 
         .project-detail-intro {
             max-width: 650px;
             margin: 0;
             color: var(--text-soft);
-            font-size: 18px;
+            font-size: 17px;
             line-height: 1.75;
         }
 
@@ -96,15 +110,17 @@
             display: grid;
             grid-template-columns: repeat(3, 1fr);
             gap: 30px;
-            max-width: 900px;
-            margin: 0 auto;
-            padding: 35px 24px;
+            max-width: 750px;
+            margin-top: 60px;
+            padding-top: 28px;
             border-top: 1px solid var(--border);
-            border-bottom: 1px solid var(--border);
         }
 
-        .meta-item span {
+        .project-meta-item span {
             display: block;
+        }
+
+        .project-meta-label {
             margin-bottom: 8px;
             color: var(--text-soft);
             font-size: 12px;
@@ -113,9 +129,11 @@
             text-transform: uppercase;
         }
 
-        .meta-item strong {
+        .project-meta-value {
+            color: var(--text);
             font-size: 14px;
             font-weight: 600;
+            line-height: 1.5;
         }
 
 
@@ -123,77 +141,69 @@
            CONTENT
         ====================================================== */
 
-        .detail-section {
-            padding: 90px 24px;
-        }
-
-        .detail-content {
-            max-width: var(--content-width);
+        .project-detail-content {
+            max-width: 690px;
             margin: 0 auto;
+            padding: 0 24px 100px;
         }
 
-        .detail-content h2 {
-            margin: 0 0 25px;
-            font-family: var(--serif);
-            font-size: 42px;
-            line-height: 1.08;
-            letter-spacing: -1.1px;
+        .project-detail-content section {
+            margin-bottom: 65px;
+        }
+
+        .project-detail-content h2 {
+            margin: 0 0 20px;
+            font-family: "DM Serif Display", Georgia, serif;
+            font-size: 38px;
+            line-height: 1.15;
+            letter-spacing: -1px;
             font-weight: 400;
         }
 
-        .detail-content p {
-            margin: 0 0 22px;
+        .project-detail-content h3 {
+            margin: 35px 0 14px;
+            font-family: "DM Serif Display", Georgia, serif;
+            font-size: 28px;
+            line-height: 1.2;
+            font-weight: 400;
+        }
+
+        .project-detail-content p {
+            margin: 0 0 20px;
             color: var(--text-soft);
-            font-size: 16px;
-            line-height: 1.78;
+            font-size: 15.5px;
+            line-height: 1.85;
         }
 
-        .detail-content a {
-            color: var(--text);
-            text-decoration: underline;
-            text-underline-offset: 3px;
+        .project-detail-content ul,
+        .project-detail-content ol {
+            margin: 0 0 25px;
+            padding-left: 22px;
+            color: var(--text-soft);
         }
 
-        .detail-content strong {
+        .project-detail-content li {
+            margin-bottom: 10px;
+            font-size: 15.5px;
+            line-height: 1.75;
+        }
+
+        .project-detail-content strong,
+        .project-detail-content b {
             color: var(--text);
             font-weight: 700;
         }
 
-        .detail-content ul,
-        .detail-content ol {
-            margin: 25px 0;
-            padding-left: 22px;
+        .project-detail-content em,
+        .project-detail-content i {
+            font-style: italic;
         }
 
-        .detail-content li {
-            margin-bottom: 10px;
-            color: var(--text-soft);
-            font-size: 16px;
-            line-height: 1.7;
-        }
-
-        .detail-content blockquote {
-            margin: 35px 0;
-            padding-left: 22px;
-            border-left: 2px solid var(--border);
-            color: var(--text-soft);
-            font-family: var(--serif);
-            font-size: 25px;
-            line-height: 1.45;
-        }
-
-        .detail-content img {
-            display: block;
-            width: 100%;
-            height: auto;
-            margin: 35px 0;
-            border-radius: 2px;
-        }
-
-        .detail-content hr {
-            margin: 50px 0;
-            border: 0;
-            border-top: 1px solid var(--border);
+        .project-detail-content a {
+            color: var(--text);
+            font-weight: 600;
+            text-decoration: underline;
+            text-underline-offset: 3px;
         }
 
 
@@ -202,17 +212,29 @@
         ====================================================== */
 
         .feature-list {
-            margin: 35px 0 0;
-            padding: 0;
-            list-style: none;
+            display: grid;
+            gap: 0;
+            margin-top: 25px;
             border-top: 1px solid var(--border);
         }
 
-        .feature-list li {
-            padding: 19px 0;
+        .feature-item {
+            padding: 20px 0;
             border-bottom: 1px solid var(--border);
+        }
+
+        .feature-item strong {
+            display: block;
+            margin-bottom: 7px;
+            color: var(--text);
             font-size: 15px;
-            font-weight: 600;
+        }
+
+        .feature-item span {
+            display: block;
+            color: var(--text-soft);
+            font-size: 14px;
+            line-height: 1.7;
         }
 
 
@@ -223,11 +245,11 @@
         .technology-list {
             display: flex;
             flex-wrap: wrap;
-            gap: 10px 22px;
-            margin-top: 30px;
+            gap: 10px 20px;
+            margin-top: 25px;
         }
 
-        .technology-list span {
+        .technology-item {
             color: var(--text-soft);
             font-size: 14px;
             font-weight: 600;
@@ -235,13 +257,121 @@
 
 
         /* =====================================================
-           PROJECT THUMBNAIL
+           QUOTE
+        ====================================================== */
+
+        .project-quote {
+            margin: 75px 0;
+            padding: 35px 0;
+            border-top: 1px solid var(--border);
+            border-bottom: 1px solid var(--border);
+        }
+
+        .project-quote p {
+            margin: 0;
+            font-family: "DM Serif Display", Georgia, serif;
+            color: var(--text);
+            font-size: 28px;
+            line-height: 1.35;
+            letter-spacing: -0.5px;
+        }
+
+
+        /* =====================================================
+           PROJECT LINKS
+        ====================================================== */
+
+        .project-explore {
+            margin-top: 75px;
+            padding-top: 30px;
+            border-top: 1px solid var(--border);
+        }
+
+        .project-explore-title {
+            margin-bottom: 20px;
+            color: var(--text-soft);
+            font-size: 12px;
+            font-weight: 700;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+        }
+
+        .project-explore-links {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px 25px;
+        }
+
+        .project-explore-links a {
+            color: var(--text);
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 700;
+            border-bottom: 1px solid currentColor;
+            padding-bottom: 3px;
+        }
+
+        .project-explore-links a:hover {
+            opacity: 0.55;
+        }
+
+
+        /* =====================================================
+           BACK
+        ====================================================== */
+
+        .project-back {
+            max-width: 690px;
+            margin: 0 auto;
+            padding: 0 24px 80px;
+        }
+
+        .project-back a {
+            color: var(--text-soft);
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 600;
+        }
+
+        .project-back a:hover {
+            color: var(--text);
+        }
+
+
+        /* =====================================================
+           LOADING / ERROR
+        ====================================================== */
+
+        .project-state {
+            max-width: 690px;
+            margin: 0 auto;
+            padding: 120px 24px;
+        }
+
+        .project-state h1 {
+            margin: 0 0 15px;
+            font-family: "DM Serif Display", Georgia, serif;
+            font-size: 48px;
+            line-height: 1.1;
+            font-weight: 400;
+        }
+
+        .project-state p {
+            margin: 0;
+            color: var(--text-soft);
+            font-size: 15px;
+            line-height: 1.75;
+        }
+
+
+        /* =====================================================
+           THUMBNAIL
         ====================================================== */
 
         .project-thumbnail {
-            max-width: 900px;
-            margin: 0 auto 70px;
-            padding: 0 24px;
+            width: 100%;
+            margin-top: 60px;
+            overflow: hidden;
         }
 
         .project-thumbnail img {
@@ -253,139 +383,18 @@
 
 
         /* =====================================================
-           QUOTE
-        ====================================================== */
-
-        .project-quote {
-            padding: 100px 24px;
-            border-top: 1px solid var(--border);
-            border-bottom: 1px solid var(--border);
-        }
-
-        .project-quote-inner {
-            max-width: 760px;
-            margin: 0 auto;
-        }
-
-        .project-quote blockquote {
-            margin: 0;
-            font-family: var(--serif);
-            font-size: clamp(32px, 5vw, 48px);
-            line-height: 1.2;
-            letter-spacing: -1px;
-        }
-
-
-        /* =====================================================
-           LINKS
-        ====================================================== */
-
-        .project-links {
-            padding: 90px 24px 110px;
-        }
-
-        .project-links-inner {
-            max-width: var(--content-width);
-            margin: 0 auto;
-        }
-
-        .project-links h2 {
-            margin: 0 0 25px;
-            font-family: var(--serif);
-            font-size: 42px;
-            font-weight: 400;
-            letter-spacing: -1px;
-        }
-
-        .project-link-list {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 18px 30px;
-        }
-
-        .project-link-list a {
-            color: var(--text);
-            text-decoration: none;
-            font-size: 14px;
-            font-weight: 700;
-            border-bottom: 1px solid currentColor;
-            padding-bottom: 3px;
-            transition: opacity 0.3s ease;
-        }
-
-        .project-link-list a:hover {
-            opacity: 0.55;
-        }
-
-
-        /* =====================================================
-           BACK
-        ====================================================== */
-
-        .back-projects {
-            padding: 0 24px 90px;
-        }
-
-        .back-projects a {
-            display: block;
-            max-width: var(--content-width);
-            margin: 0 auto;
-            color: var(--text-soft);
-            text-decoration: none;
-            font-size: 14px;
-            font-weight: 600;
-        }
-
-        .back-projects a:hover {
-            color: var(--text);
-        }
-
-
-        /* =====================================================
-           LOADING / ERROR
-        ====================================================== */
-
-        .project-state {
-            min-height: 55vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: 120px 24px;
-            text-align: center;
-        }
-
-        .project-state-inner {
-            max-width: 560px;
-        }
-
-        .project-state h1 {
-            margin: 0 0 18px;
-            font-family: var(--serif);
-            font-size: 48px;
-            font-weight: 400;
-        }
-
-        .project-state p {
-            margin: 0;
-            color: var(--text-soft);
-            font-size: 15px;
-            line-height: 1.7;
-        }
-
-
-        /* =====================================================
            MOBILE
         ====================================================== */
 
         @media (max-width: 700px) {
 
             .project-detail-hero {
-                padding: 125px 28px 70px;
+                padding: 125px 28px 75px;
             }
 
-            .project-detail-hero h1 {
-                font-size: 54px;
-                letter-spacing: -1.8px;
+            .project-detail-title {
+                font-size: 50px;
+                letter-spacing: -2px;
             }
 
             .project-detail-intro {
@@ -395,53 +404,44 @@
             .project-meta {
                 grid-template-columns: 1fr;
                 gap: 22px;
-                padding: 30px 28px;
+                margin-top: 45px;
             }
 
-            .detail-section {
-                padding: 65px 28px;
+            .project-detail-content {
+                padding: 0 28px 75px;
             }
 
-            .detail-content h2 {
-                font-size: 38px;
-            }
-
-            .detail-content p,
-            .detail-content li {
-                font-size: 15px;
-            }
-
-            .project-thumbnail {
-                margin-bottom: 50px;
-                padding: 0 28px;
-            }
-
-            .project-quote {
-                padding: 75px 28px;
-            }
-
-            .project-quote blockquote {
+            .project-detail-content h2 {
                 font-size: 34px;
             }
 
-            .project-links {
-                padding: 65px 28px 80px;
+            .project-detail-content h3 {
+                font-size: 27px;
             }
 
-            .project-links h2 {
-                font-size: 38px;
+            .project-detail-content p,
+            .project-detail-content li {
+                font-size: 15px;
             }
 
-            .back-projects {
+            .project-quote {
+                margin: 55px 0;
+            }
+
+            .project-quote p {
+                font-size: 24px;
+            }
+
+            .project-thumbnail {
+                margin-top: 45px;
+            }
+
+            .project-back {
                 padding: 0 28px 65px;
             }
 
             .project-state {
-                padding: 100px 28px;
-            }
-
-            .project-state h1 {
-                font-size: 40px;
+                padding: 110px 28px;
             }
 
         }
@@ -454,582 +454,519 @@
 <body>
 
 
-<header class="site-header">
+    <!-- =====================================================
+         HEADER
+    ====================================================== -->
 
-    <nav class="navbar">
+    <header class="site-header">
 
-        <a
-            href="../../index.html"
-            class="brand"
-            aria-label="Ardanarx Home"
-        >
-            Ardanarx
-        </a>
+        <nav class="navbar">
 
-        <div class="nav-right">
+            <a
+                href="../index.html"
+                class="brand"
+                aria-label="Ardanarx Home"
+            >
+                Ardanarx
+            </a>
 
-            <div class="nav-links">
 
-                <a href="../../index.html#about">
-                    About
-                </a>
+            <div class="nav-right">
 
-                <a href="../index.html">
-                    Projects
-                </a>
+                <div class="nav-links">
 
-                <a href="../../index.html#notes">
-                    Notes
-                </a>
+                    <a href="../index.html#about">
+                        About
+                    </a>
 
-                <a href="../../index.html#contact">
-                    Contact
-                </a>
+                    <a href="index.html">
+                        Projects
+                    </a>
+
+                    <a href="../index.html#notes">
+                        Notes
+                    </a>
+
+                    <a href="../index.html#contact">
+                        Contact
+                    </a>
+
+                </div>
+
+
+                <button
+                    class="menu-toggle"
+                    type="button"
+                    aria-label="Open menu"
+                    aria-expanded="false"
+                    aria-controls="mobile-menu"
+                >
+
+                    <span></span>
+                    <span></span>
+                    <span></span>
+
+                </button>
 
             </div>
 
-            <button
-                class="menu-toggle"
-                type="button"
-                aria-label="Open menu"
-                aria-expanded="false"
-                aria-controls="mobile-menu"
-            >
+        </nav>
 
-                <span></span>
-                <span></span>
-                <span></span>
 
-            </button>
+        <div
+            class="mobile-menu"
+            id="mobile-menu"
+        >
+
+            <a href="../index.html#about">
+                About
+            </a>
+
+            <a href="index.html">
+                Projects
+            </a>
+
+            <a href="../index.html#notes">
+                Notes
+            </a>
+
+            <a href="../index.html#contact">
+                Contact
+            </a>
 
         </div>
 
-    </nav>
+    </header>
 
 
-    <div
-        class="mobile-menu"
-        id="mobile-menu"
-    >
+    <!-- =====================================================
+         MAIN
+    ====================================================== -->
 
-        <a href="../../index.html#about">
-            About
-        </a>
+    <main>
 
-        <a href="../index.html">
-            Projects
-        </a>
+        <!-- =================================================
+             LOADING
+        ================================================== -->
 
-        <a href="../../index.html#notes">
-            Notes
-        </a>
-
-        <a href="../../index.html#contact">
-            Contact
-        </a>
-
-    </div>
-
-</header>
-
-
-<main id="projectApp">
-
-    <!-- Loading state -->
-    <section
-        class="project-state section-light"
-        id="loadingState"
-    >
-
-        <div class="project-state-inner">
-
-            <h1>
-                Loading project...
-            </h1>
+        <section
+            class="project-state"
+            id="projectLoading"
+        >
 
             <p>
-                Please wait.
+                Loading project...
             </p>
 
-        </div>
-
-    </section>
+        </section>
 
 
-    <!-- Error state -->
-    <section
-        class="project-state section-light"
-        id="errorState"
-        hidden
-    >
+        <!-- =================================================
+             ERROR
+        ================================================== -->
 
-        <div class="project-state-inner">
+        <section
+            class="project-state"
+            id="projectError"
+            hidden
+        >
 
             <h1>
-                Project not found
+                Project Not Found
             </h1>
 
-            <p id="errorMessage">
-                The project you are looking for could not be found.
+            <p id="projectErrorText">
+                The project you're looking for could not be found.
             </p>
 
-        </div>
-
-    </section>
-
-
-    <!-- Project content -->
-    <div id="projectContent" hidden>
-
-
-        <!-- =================================================
-             HERO
-        ================================================== -->
-
-        <section class="project-detail-hero section-light">
-
-            <div class="project-detail-inner">
-
-                <span
-                    class="project-detail-label"
-                    id="projectLabel"
-                >
-                    PROJECT
-                </span>
-
-                <h1 id="projectTitle">
-                    Project
-                </h1>
-
-                <p
-                    class="project-detail-intro"
-                    id="projectDescription"
-                ></p>
-
-            </div>
-
         </section>
 
 
         <!-- =================================================
-             THUMBNAIL
+             PROJECT
         ================================================== -->
 
-        <section
-            class="project-thumbnail section-white"
-            id="thumbnailSection"
-            hidden
-        >
-
-            <img
-                id="projectThumbnail"
-                src=""
-                alt=""
-            >
-
-        </section>
+        <div id="projectContent" hidden>
 
 
-        <!-- =================================================
-             META
-        ================================================== -->
+            <!-- =================================================
+                 HERO
+            ================================================== -->
 
-        <section class="section-white">
+            <section class="project-detail-hero section-light">
 
-            <div class="project-meta">
+                <div class="project-detail-inner">
 
-                <div class="meta-item">
-
-                    <span>
-                        Type
+                    <span
+                        class="project-detail-label"
+                        id="projectLabel"
+                    >
+                        PROJECT
                     </span>
 
-                    <strong id="projectType">
+
+                    <h1
+                        class="project-detail-title"
+                        id="projectTitle"
+                    >
                         Project
-                    </strong>
+                    </h1>
+
+
+                    <p
+                        class="project-detail-intro"
+                        id="projectDescription"
+                    >
+                    </p>
+
+
+                    <div
+                        class="project-meta"
+                        id="projectMeta"
+                    >
+
+                        <div class="project-meta-item">
+
+                            <span class="project-meta-label">
+                                Type
+                            </span>
+
+                            <span
+                                class="project-meta-value"
+                                id="projectType"
+                            >
+                                Digital Project
+                            </span>
+
+                        </div>
+
+
+                        <div class="project-meta-item">
+
+                            <span class="project-meta-label">
+                                Focus
+                            </span>
+
+                            <span
+                                class="project-meta-value"
+                                id="projectFocus"
+                            >
+                                Digital System
+                            </span>
+
+                        </div>
+
+
+                        <div class="project-meta-item">
+
+                            <span class="project-meta-label">
+                                Status
+                            </span>
+
+                            <span
+                                class="project-meta-value"
+                                id="projectStatus"
+                            >
+                                Published
+                            </span>
+
+                        </div>
+
+                    </div>
+
+
+                    <div
+                        class="project-thumbnail"
+                        id="projectThumbnail"
+                        hidden
+                    >
+                    </div>
 
                 </div>
 
-
-                <div class="meta-item">
-
-                    <span>
-                        Focus
-                    </span>
-
-                    <strong id="projectFocus">
-                        Digital System
-                    </strong>
-
-                </div>
+            </section>
 
 
-                <div class="meta-item">
+            <!-- =================================================
+                 CONTENT
+            ================================================== -->
 
-                    <span>
-                        Status
-                    </span>
-
-                    <strong id="projectStatus">
-                        Published
-                    </strong>
-
-                </div>
-
-            </div>
-
-        </section>
+            <article
+                class="project-detail-content"
+                id="projectBody"
+            >
+            </article>
 
 
-        <!-- =================================================
-             CONTENT
-        ================================================== -->
-
-        <section
-            class="detail-section section-white"
-            id="contentSection"
-        >
+            <!-- =================================================
+                 EXPLORE
+            ================================================== -->
 
             <div
-                class="detail-content"
-                id="projectContentBody"
-            ></div>
+                class="project-explore"
+                id="projectExplore"
+                hidden
+            >
 
-        </section>
+                <div class="project-detail-content">
 
+                    <div class="project-explore-title">
+                        Explore
+                    </div>
 
-        <!-- =================================================
-             TECHNOLOGY
-        ================================================== -->
-
-        <section
-            class="detail-section section-white"
-            id="technologySection"
-            hidden
-        >
-
-            <div class="detail-content">
-
-                <h2>
-                    Technology
-                </h2>
-
-                <div
-                    class="technology-list"
-                    id="technologyList"
-                ></div>
-
-            </div>
-
-        </section>
-
-
-        <!-- =================================================
-             QUOTE
-        ================================================== -->
-
-        <section
-            class="project-quote section-white"
-            id="quoteSection"
-            hidden
-        >
-
-            <div class="project-quote-inner">
-
-                <blockquote id="projectQuote"></blockquote>
-
-            </div>
-
-        </section>
-
-
-        <!-- =================================================
-             LINKS
-        ================================================== -->
-
-        <section class="project-links section-light">
-
-            <div class="project-links-inner">
-
-                <h2>
-                    Explore
-                </h2>
-
-                <div class="project-link-list">
-
-                    <a
-                        id="websiteLink"
-                        href="#"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        hidden
+                    <div
+                        class="project-explore-links"
+                        id="projectExploreLinks"
                     >
-                        Website ↗
-                    </a>
-
-                    <a
-                        id="githubLink"
-                        href="#"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        hidden
-                    >
-                        GitHub ↗
-                    </a>
-
-                    <a href="../index.html">
-                        More Projects →
-                    </a>
+                    </div>
 
                 </div>
 
             </div>
 
-        </section>
+
+        </div>
 
 
         <!-- =================================================
              BACK
         ================================================== -->
 
-        <div class="back-projects section-white">
+        <div class="project-back">
 
-            <a href="../index.html">
+            <a href="index.html">
                 ← Back to Projects
             </a>
 
         </div>
 
-
-    </div>
-
-</main>
+    </main>
 
 
-<script
-    src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"
-></script>
+    <!-- =====================================================
+         SUPABASE
+    ====================================================== -->
+
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
 
-<script>
+    <script>
 
-    /* =====================================================
-       SUPABASE
-    ====================================================== */
+        /* =====================================================
+           SUPABASE CONFIG
+        ====================================================== */
 
-    const SUPABASE_URL =
-        "https://isqimtsaeuvceijapddj.supabase.co";
+        const SUPABASE_URL =
+            "https://isqimtsaeuvceijapddj.supabase.co";
 
-    const SUPABASE_ANON_KEY =
-        "sb_publishable_SrJsbjs-_hunnBhCTlKyYwA_JxtScx3t";
-
-    const supabaseClient =
-        window.supabase.createClient(
-            SUPABASE_URL,
-            SUPABASE_ANON_KEY
-        );
+        const SUPABASE_ANON_KEY =
+            "sb_publishable_SrJsbjs-_hunnBhCTlKyYwA_JxtScx3t";
 
 
-    /* =====================================================
-       ELEMENTS
-    ====================================================== */
-
-    const loadingState =
-        document.getElementById("loadingState");
-
-    const errorState =
-        document.getElementById("errorState");
-
-    const errorMessage =
-        document.getElementById("errorMessage");
-
-    const projectContent =
-        document.getElementById("projectContent");
-
-    const pageTitle =
-        document.getElementById("pageTitle");
-
-    const pageDescription =
-        document.getElementById("pageDescription");
-
-    const projectLabel =
-        document.getElementById("projectLabel");
-
-    const projectTitle =
-        document.getElementById("projectTitle");
-
-    const projectDescription =
-        document.getElementById("projectDescription");
-
-    const projectType =
-        document.getElementById("projectType");
-
-    const projectFocus =
-        document.getElementById("projectFocus");
-
-    const projectStatus =
-        document.getElementById("projectStatus");
-
-    const projectContentBody =
-        document.getElementById("projectContentBody");
-
-    const technologySection =
-        document.getElementById("technologySection");
-
-    const technologyList =
-        document.getElementById("technologyList");
-
-    const thumbnailSection =
-        document.getElementById("thumbnailSection");
-
-    const projectThumbnail =
-        document.getElementById("projectThumbnail");
-
-    const websiteLink =
-        document.getElementById("websiteLink");
-
-    const githubLink =
-        document.getElementById("githubLink");
-
-
-    /* =====================================================
-       HELPERS
-    ====================================================== */
-
-    function escapeHTML(value) {
-
-        return String(value ?? "")
-            .replace(/&/g, "&amp;")
-            .replace(/</g, "&lt;")
-            .replace(/>/g, "&gt;")
-            .replace(/"/g, "&quot;")
-            .replace(/'/g, "&#039;");
-
-    }
-
-
-    function sanitizeURL(value) {
-
-        if (!value) {
-            return "";
-        }
-
-        try {
-
-            const url =
-                new URL(
-                    String(value).trim(),
-                    window.location.origin
-                );
-
-            if (
-                url.protocol === "http:" ||
-                url.protocol === "https:"
-            ) {
-                return url.href;
-            }
-
-        } catch (error) {
-            return "";
-        }
-
-        return "";
-
-    }
-
-
-    function sanitizeHTML(html) {
-
-        const template =
-            document.createElement("template");
-
-        template.innerHTML =
-            String(html || "");
-
-
-        const allowedTags = new Set([
-            "P",
-            "BR",
-            "H2",
-            "H3",
-            "H4",
-            "STRONG",
-            "B",
-            "EM",
-            "I",
-            "UL",
-            "OL",
-            "LI",
-            "BLOCKQUOTE",
-            "A",
-            "CODE",
-            "PRE",
-            "IMG",
-            "HR"
-        ]);
-
-
-        const walker =
-            document.createTreeWalker(
-                template.content,
-                NodeFilter.SHOW_ELEMENT
+        const supabaseClient =
+            window.supabase.createClient(
+                SUPABASE_URL,
+                SUPABASE_ANON_KEY
             );
 
 
-        const elements = [];
+        /* =====================================================
+           ELEMENTS
+        ====================================================== */
 
-        let current;
+        const projectLoading =
+            document.getElementById(
+                "projectLoading"
+            );
 
-        while (
-            current = walker.nextNode()
-        ) {
-            elements.push(current);
+        const projectError =
+            document.getElementById(
+                "projectError"
+            );
+
+        const projectErrorText =
+            document.getElementById(
+                "projectErrorText"
+            );
+
+        const projectContent =
+            document.getElementById(
+                "projectContent"
+            );
+
+        const projectLabel =
+            document.getElementById(
+                "projectLabel"
+            );
+
+        const projectTitle =
+            document.getElementById(
+                "projectTitle"
+            );
+
+        const projectDescription =
+            document.getElementById(
+                "projectDescription"
+            );
+
+        const projectType =
+            document.getElementById(
+                "projectType"
+            );
+
+        const projectFocus =
+            document.getElementById(
+                "projectFocus"
+            );
+
+        const projectStatus =
+            document.getElementById(
+                "projectStatus"
+            );
+
+        const projectThumbnail =
+            document.getElementById(
+                "projectThumbnail"
+            );
+
+        const projectBody =
+            document.getElementById(
+                "projectBody"
+            );
+
+        const projectExplore =
+            document.getElementById(
+                "projectExplore"
+            );
+
+        const projectExploreLinks =
+            document.getElementById(
+                "projectExploreLinks"
+            );
+
+
+        /* =====================================================
+           URL
+        ====================================================== */
+
+        function getSlug() {
+
+            const params =
+                new URLSearchParams(
+                    window.location.search
+                );
+
+            return String(
+                params.get("slug") || ""
+            ).trim();
+
         }
 
 
-        elements.forEach(element => {
+        /* =====================================================
+           HTML SANITIZER
+        ====================================================== */
 
-            if (!allowedTags.has(element.tagName)) {
+        function sanitizeHTML(html) {
 
-                element.replaceWith(
-                    document.createTextNode(
-                        element.textContent || ""
-                    )
+            const template =
+                document.createElement("template");
+
+            template.innerHTML =
+                String(html || "");
+
+
+            const allowedTags = new Set([
+                "P",
+                "BR",
+                "H2",
+                "H3",
+                "H4",
+                "STRONG",
+                "B",
+                "EM",
+                "I",
+                "UL",
+                "OL",
+                "LI",
+                "BLOCKQUOTE",
+                "A",
+                "CODE",
+                "PRE",
+                "IMG",
+                "HR"
+            ]);
+
+
+            const allowedAttributes = {
+                A: new Set([
+                    "href",
+                    "target",
+                    "rel"
+                ]),
+                IMG: new Set([
+                    "src",
+                    "alt",
+                    "title"
+                ])
+            };
+
+
+            const walker =
+                document.createTreeWalker(
+                    template.content,
+                    NodeFilter.SHOW_ELEMENT
                 );
 
-                return;
+
+            const elements = [];
+
+
+            while (walker.nextNode()) {
+
+                elements.push(
+                    walker.currentNode
+                );
+
             }
 
 
-            [...element.attributes].forEach(attribute => {
+            elements.forEach(element => {
 
-                const name =
-                    attribute.name.toLowerCase();
-
-                const value =
-                    attribute.value;
+                const tag =
+                    element.tagName;
 
 
                 if (
-                    name.startsWith("on") ||
-                    name === "style" ||
-                    name === "srcdoc"
+                    !allowedTags.has(tag)
                 ) {
 
-                    element.removeAttribute(
-                        attribute.name
+                    element.replaceWith(
+                        ...Array.from(
+                            element.childNodes
+                        )
                     );
 
                     return;
+
                 }
 
 
-                if (element.tagName === "A") {
+                Array.from(
+                    element.attributes
+                ).forEach(attribute => {
+
+                    const name =
+                        attribute.name.toLowerCase();
+
+
+                    const allowed =
+                        allowedAttributes[tag];
+
 
                     if (
-                        name !== "href" &&
-                        name !== "target" &&
-                        name !== "rel"
+                        !allowed ||
+                        !allowed.has(name)
                     ) {
 
                         element.removeAttribute(
@@ -1038,31 +975,62 @@
 
                     }
 
-                } else if (element.tagName === "IMG") {
+                });
+
+
+                if (tag === "A") {
+
+                    const href =
+                        element.getAttribute(
+                            "href"
+                        );
+
 
                     if (
-                        name !== "src" &&
-                        name !== "alt" &&
-                        name !== "title"
+                        !href ||
+                        !/^(https?:|mailto:|tel:)/i.test(
+                            href
+                        )
                     ) {
 
                         element.removeAttribute(
-                            attribute.name
+                            "href"
+                        );
+
+                    } else {
+
+                        element.setAttribute(
+                            "target",
+                            "_blank"
+                        );
+
+                        element.setAttribute(
+                            "rel",
+                            "noopener noreferrer"
                         );
 
                     }
 
-                } else {
+                }
+
+
+                if (tag === "IMG") {
+
+                    const src =
+                        element.getAttribute(
+                            "src"
+                        );
+
 
                     if (
-                        ![
-                            "alt",
-                            "title"
-                        ].includes(name)
+                        !src ||
+                        !/^(https?:|data:image\/)/i.test(
+                            src
+                        )
                     ) {
 
                         element.removeAttribute(
-                            attribute.name
+                            "src"
                         );
 
                     }
@@ -1072,551 +1040,604 @@
             });
 
 
-            if (element.tagName === "A") {
+            return template.innerHTML;
 
-                const href =
-                    sanitizeURL(
-                        element.getAttribute("href")
-                    );
+        }
 
-                if (!href) {
 
-                    element.replaceWith(
-                        document.createTextNode(
-                            element.textContent || ""
-                        )
-                    );
+        /* =====================================================
+           CONTENT FORMAT
+        ====================================================== */
 
-                    return;
+        function formatContent(content) {
 
-                }
+            if (!content) {
+                return "";
+            }
 
-                element.setAttribute(
-                    "href",
-                    href
-                );
 
-                element.setAttribute(
-                    "target",
-                    "_blank"
-                );
+            const value =
+                String(content).trim();
 
-                element.setAttribute(
-                    "rel",
-                    "noopener noreferrer"
+
+            if (!value) {
+                return "";
+            }
+
+
+            const looksLikeHTML =
+                /<\s*(p|h2|h3|h4|ul|ol|li|blockquote|strong|em|a|img|hr|pre|code)\b/i
+                    .test(value);
+
+
+            if (looksLikeHTML) {
+
+                return sanitizeHTML(
+                    value
                 );
 
             }
 
 
-            if (element.tagName === "IMG") {
+            return escapeHTML(value)
+                .replace(/\n{2,}/g, "</p><p>")
+                .replace(/\n/g, "<br>");
 
-                const src =
-                    sanitizeURL(
-                        element.getAttribute("src")
-                    );
-
-                if (!src) {
-
-                    element.remove();
-
-                    return;
-
-                }
-
-                element.setAttribute(
-                    "src",
-                    src
-                );
-
-                element.setAttribute(
-                    "loading",
-                    "lazy"
-                );
-
-                element.setAttribute(
-                    "referrerpolicy",
-                    "no-referrer"
-                );
-
-            }
-
-        });
-
-
-        return template.innerHTML;
-
-    }
-
-
-    function formatContent(value) {
-
-        if (!value) {
-            return "";
-        }
-
-
-        const text =
-            String(value).trim();
-
-
-        const looksLikeHTML =
-            /<\/?[a-z][\s\S]*>/i.test(text);
-
-
-        if (looksLikeHTML) {
-
-            return sanitizeHTML(text);
 
         }
 
 
-        return text
-            .split(/\n\s*\n/)
-            .map(paragraph => {
+        /* =====================================================
+           ESCAPE HTML
+        ====================================================== */
 
-                return `<p>${escapeHTML(
-                    paragraph
-                ).replace(/\n/g, "<br>")}</p>`;
+        function escapeHTML(value) {
 
-            })
-            .join("");
+            return String(
+                value ?? ""
+            )
+                .replace(/&/g, "&amp;")
+                .replace(/</g, "&lt;")
+                .replace(/>/g, "&gt;")
+                .replace(/"/g, "&quot;")
+                .replace(/'/g, "&#039;");
 
-    }
-
-
-    function getSlug() {
-
-        const params =
-            new URLSearchParams(
-                window.location.search
-            );
-
-        return (
-            params.get("slug") || ""
-        ).trim();
-
-    }
+        }
 
 
-    function getProjectType(project) {
+        /* =====================================================
+           CATEGORY
+        ====================================================== */
 
-        if (
-            Array.isArray(project.tech_stack) &&
-            project.tech_stack.length
+        function getCategory(
+            project
         ) {
+
+            const title =
+                String(
+                    project.title || ""
+                ).toLowerCase();
+
+
+            if (
+                title.includes("vervocare")
+            ) {
+
+                return "BUSINESS & DIGITAL SYSTEM";
+
+            }
+
+
+            if (
+                title.includes("kostiqo")
+            ) {
+
+                return "PROPERTY & DIGITAL SYSTEM";
+
+            }
+
+
+            if (
+                title.includes("nerforit")
+            ) {
+
+                return "TECHNOLOGY & E-COMMERCE";
+
+            }
+
+
+            return "DIGITAL PROJECT";
+
+        }
+
+
+        /* =====================================================
+           PROJECT TYPE
+        ====================================================== */
+
+        function getProjectType(
+            project
+        ) {
+
+            const category =
+                getCategory(
+                    project
+                );
+
+
+            if (
+                category.includes(
+                    "BUSINESS"
+                )
+            ) {
+
+                return "Business Project";
+
+            }
+
+
+            if (
+                category.includes(
+                    "PROPERTY"
+                )
+            ) {
+
+                return "Property Project";
+
+            }
+
+
+            if (
+                category.includes(
+                    "TECHNOLOGY"
+                )
+            ) {
+
+                return "Technology Project";
+
+            }
+
 
             return "Digital Project";
 
         }
 
-        return "Project";
 
-    }
+        /* =====================================================
+           PROJECT FOCUS
+        ====================================================== */
 
-
-    function getProjectFocus(project) {
-
-        const title =
-            String(
-                project.title || ""
-            ).toLowerCase();
-
-        const description =
-            String(
-                project.description || ""
-            ).toLowerCase();
-
-
-        const combined =
-            `${title} ${description}`;
-
-
-        if (
-            combined.includes("property") ||
-            combined.includes("kost")
+        function getProjectFocus(
+            project
         ) {
 
-            return "Property & Digital";
+            if (
+                Array.isArray(
+                    project.tech_stack
+                ) &&
+                project.tech_stack.length
+            ) {
+
+                return project.tech_stack
+                    .slice(0, 3)
+                    .join(" · ");
 
-        }
-
-
-        if (
-            combined.includes("commerce") ||
-            combined.includes("store") ||
-            combined.includes("shop")
-        ) {
-
-            return "E-commerce";
-
-        }
-
-
-        if (
-            combined.includes("laundry")
-        ) {
-
-            return "Business & Digital";
-
-        }
-
-
-        return "Digital System";
-
-    }
-
-
-    function formatStatus(status) {
-
-        if (!status) {
-            return "Published";
-        }
-
-        return (
-            String(status)
-                .charAt(0)
-                .toUpperCase() +
-            String(status)
-                .slice(1)
-        );
-
-    }
-
-
-    /* =====================================================
-       RENDER PROJECT
-    ====================================================== */
-
-    function renderProject(project) {
-
-        const title =
-            project.title ||
-            "Project";
-
-
-        const description =
-            project.description ||
-            "";
-
-
-        pageTitle.textContent =
-            `${title} — Ardanarx`;
-
-
-        pageDescription.setAttribute(
-            "content",
-            description ||
-            `A project by Ardanarx.`
-        );
-
-
-        projectTitle.textContent =
-            title;
-
-
-        projectDescription.textContent =
-            description;
-
-
-        projectType.textContent =
-            getProjectType(project);
-
-
-        projectFocus.textContent =
-            getProjectFocus(project);
-
-
-        projectStatus.textContent =
-            formatStatus(project.status);
-
-
-        /* -------------------------------------------------
-           PROJECT NUMBER / LABEL
-        -------------------------------------------------- */
-
-        const number =
-            project.sort_order
-                ? String(project.sort_order)
-                    .padStart(2, "0")
-                : "01";
-
-
-        projectLabel.textContent =
-            `PROJECT ${number}`;
-
-
-        /* -------------------------------------------------
-           MAIN CONTENT
-        -------------------------------------------------- */
-
-        const content =
-            project.content ||
-            project.description ||
-            "";
-
-
-        projectContentBody.innerHTML =
-            formatContent(content);
-
-
-        /* -------------------------------------------------
-           TECHNOLOGY
-        -------------------------------------------------- */
-
-        technologyList.innerHTML = "";
-
-
-        if (
-            Array.isArray(project.tech_stack) &&
-            project.tech_stack.length
-        ) {
-
-            project.tech_stack
-                .filter(item => String(item).trim())
-                .forEach(item => {
-
-                    const span =
-                        document.createElement("span");
-
-                    span.textContent =
-                        String(item).trim();
-
-                    technologyList.appendChild(span);
-
-                });
-
-
-            technologySection.hidden = false;
-
-        } else {
-
-            technologySection.hidden = true;
-
-        }
-
-
-        /* -------------------------------------------------
-           THUMBNAIL
-        -------------------------------------------------- */
-
-        const thumbnail =
-            sanitizeURL(
-                project.thumbnail
-            );
-
-
-        if (thumbnail) {
-
-            projectThumbnail.src =
-                thumbnail;
-
-            projectThumbnail.alt =
-                title;
-
-            thumbnailSection.hidden =
-                false;
-
-        } else {
-
-            projectThumbnail.removeAttribute(
-                "src"
-            );
-
-            thumbnailSection.hidden =
-                true;
-
-        }
-
-
-        /* -------------------------------------------------
-           WEBSITE
-        -------------------------------------------------- */
-
-        const website =
-            sanitizeURL(
-                project.project_url
-            );
-
-
-        if (website) {
-
-            websiteLink.href =
-                website;
-
-            websiteLink.hidden =
-                false;
-
-        } else {
-
-            websiteLink.hidden =
-                true;
-
-        }
-
-
-        /* -------------------------------------------------
-           GITHUB
-        -------------------------------------------------- */
-
-        const github =
-            sanitizeURL(
-                project.github_url
-            );
-
-
-        if (github) {
-
-            githubLink.href =
-                github;
-
-            githubLink.hidden =
-                false;
-
-        } else {
-
-            githubLink.hidden =
-                true;
-
-        }
-
-
-        /* -------------------------------------------------
-           SHOW
-        -------------------------------------------------- */
-
-        loadingState.hidden =
-            true;
-
-        errorState.hidden =
-            true;
-
-        projectContent.hidden =
-            false;
-
-    }
-
-
-    /* =====================================================
-       LOAD PROJECT
-    ====================================================== */
-
-    async function loadProject() {
-
-        const slug =
-            getSlug();
-
-
-        if (!slug) {
-
-            loadingState.hidden =
-                true;
-
-            errorState.hidden =
-                false;
-
-            errorMessage.textContent =
-                "No project slug was provided.";
-
-            return;
-
-        }
-
-
-        try {
-
-            const {
-                data,
-                error
-            } = await supabaseClient
-
-                .from("projects")
-
-                .select(`
-                    id,
-                    title,
-                    slug,
-                    description,
-                    content,
-                    thumbnail,
-                    tech_stack,
-                    project_url,
-                    github_url,
-                    status,
-                    featured,
-                    sort_order,
-                    published_at,
-                    created_at
-                `)
-
-                .eq(
-                    "slug",
-                    slug
-                )
-
-                .eq(
-                    "status",
-                    "published"
-                )
-
-                .maybeSingle();
-
-
-            if (error) {
-                throw error;
             }
 
 
-            if (!data) {
+            return "Digital System";
 
-                loadingState.hidden =
-                    true;
+        }
 
-                errorState.hidden =
-                    false;
 
-                errorMessage.textContent =
-                    "The project does not exist or has not been published.";
+        /* =====================================================
+           THUMBNAIL
+        ====================================================== */
+
+        function renderThumbnail(
+            project
+        ) {
+
+            if (
+                !project.thumbnail
+            ) {
 
                 return;
 
             }
 
 
-            renderProject(data);
+            const image =
+                document.createElement("img");
 
-        } catch (error) {
 
-            console.error(
-                "Project loading error:",
-                error
+            image.src =
+                String(
+                    project.thumbnail
+                ).trim();
+
+
+            image.alt =
+                String(
+                    project.title ||
+                    "Project"
+                );
+
+
+            image.loading =
+                "lazy";
+
+
+            image.referrerPolicy =
+                "no-referrer";
+
+
+            image.onerror =
+                () => {
+
+                    projectThumbnail.hidden =
+                        true;
+
+                    projectThumbnail.innerHTML =
+                        "";
+
+                };
+
+
+            projectThumbnail.appendChild(
+                image
             );
 
 
-            loadingState.hidden =
-                true;
-
-            errorState.hidden =
+            projectThumbnail.hidden =
                 false;
-
-            errorMessage.textContent =
-                "Something went wrong while loading this project.";
 
         }
 
-    }
+
+        /* =====================================================
+           EXPLORE LINKS
+        ====================================================== */
+
+        function renderExploreLinks(
+            project
+        ) {
+
+            projectExploreLinks.innerHTML =
+                "";
+
+            let hasLink =
+                false;
 
 
-    /* =====================================================
-       START
-    ====================================================== */
+            if (
+                project.project_url
+            ) {
 
-    loadProject();
+                const website =
+                    createSafeLink(
+                        project.project_url,
+                        "Visit Website"
+                    );
 
-</script>
+
+                if (website) {
+
+                    projectExploreLinks.appendChild(
+                        website
+                    );
+
+                    hasLink = true;
+
+                }
+
+            }
 
 
-<script src="../../script.js"></script>
+            if (
+                project.github_url
+            ) {
+
+                const github =
+                    createSafeLink(
+                        project.github_url,
+                        "View on GitHub"
+                    );
+
+
+                if (github) {
+
+                    projectExploreLinks.appendChild(
+                        github
+                    );
+
+                    hasLink = true;
+
+                }
+
+            }
+
+
+            if (hasLink) {
+
+                projectExplore.hidden =
+                    false;
+
+            } else {
+
+                projectExplore.hidden =
+                    true;
+
+            }
+
+        }
+
+
+        /* =====================================================
+           SAFE LINK
+        ====================================================== */
+
+        function createSafeLink(
+            url,
+            text
+        ) {
+
+            const value =
+                String(
+                    url || ""
+                ).trim();
+
+
+            if (
+                !/^https?:\/\//i.test(
+                    value
+                )
+            ) {
+
+                return null;
+
+            }
+
+
+            const link =
+                document.createElement("a");
+
+
+            link.href =
+                value;
+
+
+            link.textContent =
+                text;
+
+
+            link.target =
+                "_blank";
+
+
+            link.rel =
+                "noopener noreferrer";
+
+
+            return link;
+
+        }
+
+
+        /* =====================================================
+           RENDER PROJECT
+        ====================================================== */
+
+        function renderProject(
+            project
+        ) {
+
+            const category =
+                getCategory(
+                    project
+                );
+
+
+            projectLabel.textContent =
+                `PROJECT — ${category}`;
+
+
+            projectTitle.textContent =
+                project.title ||
+                "Untitled Project";
+
+
+            projectDescription.textContent =
+                project.description ||
+                "";
+
+
+            projectType.textContent =
+                getProjectType(
+                    project
+                );
+
+
+            projectFocus.textContent =
+                getProjectFocus(
+                    project
+                );
+
+
+            projectStatus.textContent =
+                project.status === "published"
+                    ? "Published"
+                    : "Draft";
+
+
+            projectThumbnail.innerHTML =
+                "";
+
+            projectThumbnail.hidden =
+                true;
+
+
+            renderThumbnail(
+                project
+            );
+
+
+            projectBody.innerHTML =
+                formatContent(
+                    project.content
+                );
+
+
+            renderExploreLinks(
+                project
+            );
+
+
+            projectLoading.hidden =
+                true;
+
+            projectError.hidden =
+                true;
+
+            projectContent.hidden =
+                false;
+
+
+            document.title =
+                `${project.title || "Project"} — Ardanarx`;
+
+        }
+
+
+        /* =====================================================
+           LOAD PROJECT
+        ====================================================== */
+
+        async function loadProject() {
+
+            const slug =
+                getSlug();
+
+
+            if (!slug) {
+
+                projectLoading.hidden =
+                    true;
+
+                projectError.hidden =
+                    false;
+
+                projectErrorText.textContent =
+                    "No project slug was provided.";
+
+                return;
+
+            }
+
+
+            try {
+
+                const {
+                    data,
+                    error
+                } = await supabaseClient
+
+                    .from("projects")
+
+                    .select(`
+                        id,
+                        title,
+                        slug,
+                        description,
+                        content,
+                        thumbnail,
+                        tech_stack,
+                        project_url,
+                        github_url,
+                        status,
+                        featured,
+                        sort_order,
+                        published_at,
+                        created_at
+                    `)
+
+                    .eq(
+                        "slug",
+                        slug
+                    )
+
+                    .eq(
+                        "status",
+                        "published"
+                    )
+
+                    .maybeSingle();
+
+
+                if (error) {
+
+                    throw error;
+
+                }
+
+
+                if (!data) {
+
+                    projectLoading.hidden =
+                        true;
+
+                    projectError.hidden =
+                        false;
+
+                    projectErrorText.textContent =
+                        "The project does not exist or has not been published yet.";
+
+                    return;
+
+                }
+
+
+                renderProject(
+                    data
+                );
+
+
+            } catch (error) {
+
+                console.error(
+                    "Project loading error:",
+                    error
+                );
+
+
+                projectLoading.hidden =
+                    true;
+
+                projectError.hidden =
+                    false;
+
+                projectErrorText.textContent =
+                    "Something went wrong while loading this project. Please try again later.";
+
+            }
+
+        }
+
+
+        /* =====================================================
+           START
+        ====================================================== */
+
+        loadProject();
+
+    </script>
+
+
+    <!-- =====================================================
+         MAIN SITE SCRIPT
+    ====================================================== -->
+
+    <script src="../script.js"></script>
 
 
 </body>
