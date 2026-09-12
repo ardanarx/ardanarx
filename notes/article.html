@@ -1,0 +1,1503 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <!-- =====================================================
+         BASIC
+    ====================================================== -->
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <meta
+        name="description"
+        content="Ardanarx Notes"
+    >
+
+    <meta
+        name="theme-color"
+        content="#ffffff"
+    >
+
+    <title>Article — Ardanarx</title>
+
+
+    <!-- =====================================================
+         FONTS
+    ====================================================== -->
+
+    <link
+        rel="preconnect"
+        href="https://fonts.googleapis.com"
+    >
+
+    <link
+        rel="preconnect"
+        href="https://fonts.gstatic.com"
+        crossorigin
+    >
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Manrope:wght@400;500;600;700&display=swap"
+        rel="stylesheet"
+    >
+
+
+    <!-- =====================================================
+         STYLES
+    ====================================================== -->
+
+    <style>
+
+        /* =====================================================
+           ROOT
+        ====================================================== */
+
+        :root {
+            --bg: #ffffff;
+            --bg-soft: #f7f7f5;
+
+            --text: #111111;
+            --text-soft: #666666;
+            --text-muted: #929292;
+
+            --border: #e7e7e7;
+
+            --serif: "DM Serif Display", Georgia, serif;
+            --sans: "Manrope", Arial, sans-serif;
+
+            --max-width: 960px;
+            --content-width: 690px;
+
+            --ease: 0.3s ease;
+        }
+
+
+        /* =====================================================
+           DARK MODE
+        ====================================================== */
+
+        @media (prefers-color-scheme: dark) {
+
+            :root {
+                --bg: #111111;
+                --bg-soft: #181818;
+
+                --text: #f5f5f5;
+                --text-soft: #aaaaaa;
+                --text-muted: #777777;
+
+                --border: #292929;
+            }
+
+        }
+
+
+        /* =====================================================
+           RESET
+        ====================================================== */
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+
+        body {
+            background: var(--bg);
+            color: var(--text);
+
+            font-family: var(--sans);
+
+            line-height: 1.7;
+
+            -webkit-font-smoothing: antialiased;
+            text-rendering: optimizeLegibility;
+        }
+
+
+        a {
+            color: inherit;
+        }
+
+
+        img {
+            max-width: 100%;
+            height: auto;
+        }
+
+
+        /* =====================================================
+           PAGE
+        ====================================================== */
+
+        .article-page {
+            min-height: 100vh;
+            padding: 120px 24px 80px;
+        }
+
+
+        .article-container {
+            width: 100%;
+            max-width: var(--content-width);
+            margin: 0 auto;
+        }
+
+
+        /* =====================================================
+           HEADER
+        ====================================================== */
+
+        .article-header {
+            margin-bottom: 56px;
+        }
+
+
+        .article-meta {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+
+            margin-bottom: 18px;
+
+            color: var(--text-muted);
+
+            font-size: 13px;
+            font-weight: 600;
+
+            letter-spacing: 0.02em;
+        }
+
+
+        .article-meta-dot {
+            width: 4px;
+            height: 4px;
+
+            border-radius: 50%;
+
+            background: var(--text-muted);
+        }
+
+
+        .article-title {
+            font-family: var(--serif);
+
+            font-size: clamp(42px, 7vw, 68px);
+
+            line-height: 1.05;
+
+            letter-spacing: -0.025em;
+
+            font-weight: 400;
+        }
+
+
+        .article-excerpt {
+            margin-top: 24px;
+
+            color: var(--text-soft);
+
+            font-size: 18px;
+
+            line-height: 1.7;
+        }
+
+
+        /* =====================================================
+           CONTENT
+        ====================================================== */
+
+        .article-content {
+            font-size: 17px;
+
+            line-height: 1.85;
+
+            color: var(--text);
+        }
+
+
+        .article-content > *:first-child {
+            margin-top: 0;
+        }
+
+
+        .article-content p {
+            margin: 0 0 26px;
+        }
+
+
+        .article-content h2 {
+            margin: 52px 0 20px;
+
+            font-family: var(--serif);
+
+            font-size: 34px;
+
+            line-height: 1.2;
+
+            font-weight: 400;
+
+            letter-spacing: -0.015em;
+        }
+
+
+        .article-content h3 {
+            margin: 40px 0 16px;
+
+            font-family: var(--serif);
+
+            font-size: 27px;
+
+            line-height: 1.25;
+
+            font-weight: 400;
+        }
+
+
+        .article-content strong,
+        .article-content b {
+            font-weight: 700;
+        }
+
+
+        .article-content em,
+        .article-content i {
+            font-style: italic;
+        }
+
+
+        /* =====================================================
+           LISTS
+        ====================================================== */
+
+        .article-content ul,
+        .article-content ol {
+            margin: 0 0 28px;
+
+            padding-left: 28px;
+        }
+
+
+        .article-content li {
+            margin-bottom: 8px;
+        }
+
+
+        /* =====================================================
+           BLOCKQUOTE
+        ====================================================== */
+
+        .article-content blockquote {
+            margin: 36px 0;
+
+            padding: 4px 0 4px 24px;
+
+            border-left: 3px solid var(--text);
+
+            color: var(--text-soft);
+
+            font-family: var(--serif);
+
+            font-size: 22px;
+
+            line-height: 1.5;
+        }
+
+
+        /* =====================================================
+           LINKS
+        ====================================================== */
+
+        .article-content a {
+            color: var(--text);
+
+            text-decoration: underline;
+            text-decoration-thickness: 1px;
+            text-underline-offset: 3px;
+
+            transition:
+                opacity var(--ease);
+        }
+
+
+        .article-content a:hover {
+            opacity: 0.6;
+        }
+
+
+        /* =====================================================
+           CODE
+        ====================================================== */
+
+        .article-content code {
+            padding: 3px 7px;
+
+            border-radius: 5px;
+
+            background: var(--bg-soft);
+
+            font-family:
+                SFMono-Regular,
+                Consolas,
+                "Liberation Mono",
+                monospace;
+
+            font-size: 0.9em;
+        }
+
+
+        .article-content pre {
+            overflow-x: auto;
+
+            margin: 32px 0;
+
+            padding: 20px;
+
+            border: 1px solid var(--border);
+
+            border-radius: 10px;
+
+            background: var(--bg-soft);
+
+            font-family:
+                SFMono-Regular,
+                Consolas,
+                "Liberation Mono",
+                monospace;
+
+            font-size: 14px;
+
+            line-height: 1.7;
+        }
+
+
+        .article-content pre code {
+            padding: 0;
+
+            background: transparent;
+        }
+
+
+        /* =====================================================
+           IMAGE
+        ====================================================== */
+
+        .article-content img {
+            display: block;
+
+            width: 100%;
+
+            margin: 36px 0;
+
+            border-radius: 10px;
+        }
+
+
+        /* =====================================================
+           HORIZONTAL RULE
+        ====================================================== */
+
+        .article-content hr {
+            margin: 48px 0;
+
+            border: 0;
+
+            border-top: 1px solid var(--border);
+        }
+
+
+        /* =====================================================
+           LOADING
+        ====================================================== */
+
+        .article-loading {
+            color: var(--text-muted);
+
+            font-size: 15px;
+        }
+
+
+        /* =====================================================
+           ERROR
+        ====================================================== */
+
+        .article-error {
+            padding: 24px 0;
+
+            color: var(--text-soft);
+
+            font-size: 16px;
+        }
+
+
+        /* =====================================================
+           BACK TO NOTES
+        ====================================================== */
+
+        .article-back {
+            display: inline-flex;
+            align-items: center;
+
+            margin-top: 64px;
+
+            padding-top: 24px;
+
+            border-top: 1px solid var(--border);
+
+            color: var(--text-soft);
+
+            font-size: 14px;
+            font-weight: 600;
+
+            text-decoration: none;
+
+            transition:
+                color var(--ease),
+                opacity var(--ease);
+        }
+
+
+        .article-back:hover {
+            color: var(--text);
+
+            opacity: 0.7;
+        }
+
+
+        /* =====================================================
+           MOBILE
+        ====================================================== */
+
+        @media (max-width: 700px) {
+
+            .article-page {
+                padding: 90px 20px 60px;
+            }
+
+
+            .article-header {
+                margin-bottom: 42px;
+            }
+
+
+            .article-title {
+                font-size: clamp(40px, 12vw, 54px);
+            }
+
+
+            .article-excerpt {
+                font-size: 16px;
+            }
+
+
+            .article-content {
+                font-size: 16px;
+
+                line-height: 1.8;
+            }
+
+
+            .article-content h2 {
+                margin-top: 42px;
+
+                font-size: 30px;
+            }
+
+
+            .article-content h3 {
+                margin-top: 34px;
+
+                font-size: 25px;
+            }
+
+
+            .article-content blockquote {
+                font-size: 20px;
+
+                padding-left: 18px;
+            }
+
+        }
+
+
+        /* =====================================================
+           REDUCED MOTION
+        ====================================================== */
+
+        @media (prefers-reduced-motion: reduce) {
+
+            html {
+                scroll-behavior: auto;
+            }
+
+            * {
+                transition: none !important;
+            }
+
+        }
+
+    </style>
+
+<link rel="icon" href="../assets/favicon.png" type="image/png">
+<link rel="stylesheet" href="../style.css">
+    <script src="../config.js"></script>
+
+</head>
+
+
+<body>
+
+
+    <!-- =====================================================
+         SITE HEADER
+    ====================================================== -->
+
+    <header class="site-header">
+
+        <nav class="navbar">
+
+            <a
+                href="../index.html"
+                class="brand"
+                aria-label="Ardanarx Home"
+            >
+                Ardanarx
+            </a>
+
+            <div class="nav-right">
+
+                <div class="nav-links">
+
+                    <a href="../about/index.html">About</a>
+
+                    <a href="../project/index.html">Projects</a>
+
+                    <a href="index.html">Notes</a>
+
+                    <a href="../contact/index.html">Contact</a>
+
+                </div>
+
+                <button
+                    class="menu-toggle"
+                    type="button"
+                    aria-label="Open menu"
+                    aria-expanded="false"
+                    aria-controls="mobile-menu"
+                >
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+
+            </div>
+
+        </nav>
+
+        <div class="mobile-menu" id="mobile-menu">
+
+            <a href="../about/index.html">About</a>
+
+            <a href="../project/index.html">Projects</a>
+
+            <a href="index.html">Notes</a>
+
+            <a href="../contact/index.html">Contact</a>
+
+        </div>
+
+    </header>
+
+
+
+    <!-- =====================================================
+         ARTICLE
+    ====================================================== -->
+
+    <main class="article-page">
+
+        <article class="article-container">
+
+
+            <!-- =================================================
+                 ARTICLE HEADER
+            ================================================== -->
+
+            <header class="article-header">
+
+                <div class="article-meta">
+
+                    <span id="articleDate">
+                        Loading...
+                    </span>
+
+                    <span
+                        class="article-meta-dot"
+                        aria-hidden="true"
+                    ></span>
+
+                    <span>
+                        Ardanarx
+                    </span>
+
+                </div>
+
+
+                <h1
+                    class="article-title"
+                    id="articleTitle"
+                >
+                    Loading article...
+                </h1>
+
+
+                <p
+                    class="article-excerpt"
+                    id="articleExcerpt"
+                ></p>
+
+            </header>
+
+
+            <!-- =================================================
+                 ARTICLE CONTENT
+            ================================================== -->
+
+            <div
+                class="article-content"
+                id="articleContent"
+            >
+
+                <div class="article-loading">
+                    Loading article...
+                </div>
+
+            </div>
+
+
+            <!-- =================================================
+                 BACK
+            ================================================== -->
+
+            <a
+                href="index.html"
+                class="article-back"
+            >
+                ← Back to Notes
+            </a>
+
+        </article>
+
+    </main>
+
+
+    <!-- =====================================================
+         SUPABASE
+    ====================================================== -->
+
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+
+    <!-- =====================================================
+         SCRIPT
+    ====================================================== -->
+
+    <script>
+
+        /* =====================================================
+           SUPABASE CONFIG
+        ====================================================== */
+
+        const {
+            supabaseUrl: SUPABASE_URL,
+            supabasePublishableKey: SUPABASE_ANON_KEY
+        } = window.ARDANARX_CONFIG || {};
+
+
+        const supabaseClient =
+            window.supabase.createClient(
+                SUPABASE_URL,
+                SUPABASE_ANON_KEY
+            );
+
+
+        /* =====================================================
+           DOM
+        ====================================================== */
+
+        const articleTitle =
+            document.getElementById("articleTitle");
+
+        const articleDate =
+            document.getElementById("articleDate");
+
+        const articleExcerpt =
+            document.getElementById("articleExcerpt");
+
+        const articleContent =
+            document.getElementById("articleContent");
+
+
+        /* =====================================================
+           GET SLUG
+        ====================================================== */
+
+        function getSlug() {
+
+            const params =
+                new URLSearchParams(
+                    window.location.search
+                );
+
+            return params.get("slug");
+
+        }
+
+
+        /* =====================================================
+           ESCAPE HTML
+           Used only for plain-text content
+        ====================================================== */
+
+        function escapeHTML(value) {
+
+            return String(value)
+                .replace(/&/g, "&amp;")
+                .replace(/</g, "&lt;")
+                .replace(/>/g, "&gt;")
+                .replace(/"/g, "&quot;")
+                .replace(/'/g, "&#039;");
+
+        }
+
+
+        /* =====================================================
+           SANITIZE ARTICLE HTML
+        ====================================================== */
+
+        function sanitizeHTML(html) {
+
+            const parser =
+                new DOMParser();
+
+            const documentObject =
+                parser.parseFromString(
+                    `<div>${html}</div>`,
+                    "text/html"
+                );
+
+            const wrapper =
+                documentObject.body.firstElementChild;
+
+
+            /*
+             * Tags that are allowed inside
+             * article content.
+             */
+
+            const allowedTags = new Set([
+                "P",
+                "BR",
+                "H2",
+                "H3",
+                "STRONG",
+                "B",
+                "EM",
+                "I",
+                "UL",
+                "OL",
+                "LI",
+                "BLOCKQUOTE",
+                "A",
+                "CODE",
+                "PRE",
+                "IMG",
+                "HR"
+            ]);
+
+
+            /*
+             * Attributes that are allowed.
+             */
+
+            const allowedAttributes = {
+                A: ["href", "target", "rel"],
+                IMG: ["src", "alt"]
+            };
+
+
+            /*
+             * Safe URL schemes.
+             */
+
+            function isSafeURL(value) {
+
+                if (!value) {
+                    return false;
+                }
+
+                const trimmed =
+                    value.trim();
+
+                const lower =
+                    trimmed.toLowerCase();
+
+                return (
+                    lower.startsWith("https://") ||
+                    lower.startsWith("http://") ||
+                    lower.startsWith("mailto:")
+                );
+
+            }
+
+
+            /*
+             * Recursively clean nodes.
+             */
+
+            function cleanNode(node) {
+
+                const children =
+                    Array.from(node.childNodes);
+
+
+                children.forEach(child => {
+
+                    /*
+                     * Remove comments.
+                     */
+
+                    if (
+                        child.nodeType ===
+                        Node.COMMENT_NODE
+                    ) {
+
+                        child.remove();
+
+                        return;
+
+                    }
+
+
+                    /*
+                     * Text node:
+                     * nothing to clean.
+                     */
+
+                    if (
+                        child.nodeType ===
+                        Node.TEXT_NODE
+                    ) {
+
+                        return;
+
+                    }
+
+
+                    /*
+                     * Only process elements.
+                     */
+
+                    if (
+                        child.nodeType !==
+                        Node.ELEMENT_NODE
+                    ) {
+
+                        child.remove();
+
+                        return;
+
+                    }
+
+
+                    const tag =
+                        child.tagName;
+
+
+                    /*
+                     * Remove dangerous elements
+                     * completely.
+                     */
+
+                    if (
+                        tag === "SCRIPT" ||
+                        tag === "STYLE" ||
+                        tag === "IFRAME" ||
+                        tag === "OBJECT" ||
+                        tag === "EMBED" ||
+                        tag === "FORM" ||
+                        tag === "INPUT" ||
+                        tag === "BUTTON" ||
+                        tag === "SVG"
+                    ) {
+
+                        child.remove();
+
+                        return;
+
+                    }
+
+
+                    /*
+                     * FONT is specifically removed.
+                     *
+                     * Example:
+                     *
+                     * <font dir="auto"
+                     *       style="vertical-align: inherit;">
+                     *      Gamd
+                     * </font>
+                     *
+                     * becomes:
+                     *
+                     * Gamd
+                     */
+
+                    if (tag === "FONT") {
+
+                        cleanNode(child);
+
+                        while (
+                            child.firstChild
+                        ) {
+
+                            child.parentNode.insertBefore(
+                                child.firstChild,
+                                child
+                            );
+
+                        }
+
+                        child.remove();
+
+                        return;
+
+                    }
+
+
+                    /*
+                     * If the tag is not allowed,
+                     * unwrap it instead of deleting
+                     * its text/content.
+                     */
+
+                    if (
+                        !allowedTags.has(tag)
+                    ) {
+
+                        cleanNode(child);
+
+                        while (
+                            child.firstChild
+                        ) {
+
+                            child.parentNode.insertBefore(
+                                child.firstChild,
+                                child
+                            );
+
+                        }
+
+                        child.remove();
+
+                        return;
+
+                    }
+
+
+                    /*
+                     * Remove every attribute that
+                     * isn't explicitly allowed.
+                     */
+
+                    const allowed =
+                        allowedAttributes[tag] || [];
+
+
+                    Array.from(
+                        child.attributes
+                    ).forEach(attribute => {
+
+                        const name =
+                            attribute.name.toLowerCase();
+
+
+                        /*
+                         * Never allow event handlers:
+                         *
+                         * onclick
+                         * onload
+                         * onerror
+                         * etc.
+                         */
+
+                        if (
+                            name.startsWith("on")
+                        ) {
+
+                            child.removeAttribute(
+                                attribute.name
+                            );
+
+                            return;
+
+                        }
+
+
+                        if (
+                            !allowed.includes(name)
+                        ) {
+
+                            child.removeAttribute(
+                                attribute.name
+                            );
+
+                        }
+
+                    });
+
+
+                    /*
+                     * Sanitize links.
+                     */
+
+                    if (tag === "A") {
+
+                        const href =
+                            child.getAttribute(
+                                "href"
+                            );
+
+
+                        if (
+                            !isSafeURL(href)
+                        ) {
+
+                            /*
+                             * Unsafe link:
+                             * keep the text but remove
+                             * the link itself.
+                             */
+
+                            const text =
+                                child.textContent;
+
+                            const textNode =
+                                documentObject.createTextNode(
+                                    text
+                                );
+
+                            child.replaceWith(
+                                textNode
+                            );
+
+                            return;
+
+                        }
+
+
+                        child.setAttribute(
+                            "target",
+                            "_blank"
+                        );
+
+                        child.setAttribute(
+                            "rel",
+                            "noopener noreferrer"
+                        );
+
+                    }
+
+
+                    /*
+                     * Sanitize images.
+                     */
+
+                    if (tag === "IMG") {
+
+                        const src =
+                            child.getAttribute(
+                                "src"
+                            );
+
+
+                        if (
+                            !src ||
+                            !(
+                                src.startsWith(
+                                    "https://"
+                                ) ||
+                                src.startsWith(
+                                    "http://"
+                                )
+                            )
+                        ) {
+
+                            child.remove();
+
+                            return;
+
+                        }
+
+                    }
+
+
+                    /*
+                     * Continue cleaning children.
+                     */
+
+                    cleanNode(child);
+
+                });
+
+            }
+
+
+            cleanNode(wrapper);
+
+
+            return wrapper.innerHTML;
+
+        }
+
+
+        /* =====================================================
+           FORMAT ARTICLE CONTENT
+        ====================================================== */
+
+        function formatContent(content) {
+
+            if (
+                content === null ||
+                content === undefined
+            ) {
+
+                return "";
+
+            }
+
+
+            const value =
+                String(content).trim();
+
+
+            if (!value) {
+                return "";
+            }
+
+
+            /*
+             * Detect whether the content contains
+             * HTML generated by the editor.
+             *
+             * Examples:
+             *
+             * <p>Hello</p>
+             * <h2>Title</h2>
+             * <font>Gamd</font>
+             */
+
+            const looksLikeHTML =
+                /<\/?[a-z][\s\S]*>/i.test(value);
+
+
+            /*
+             * If HTML is detected:
+             *
+             * 1. Parse it.
+             * 2. Remove unwanted formatting.
+             * 3. Keep useful article tags.
+             */
+
+            if (looksLikeHTML) {
+
+                return sanitizeHTML(value);
+
+            }
+
+
+            /*
+             * Otherwise treat it as normal
+             * plain text.
+             */
+
+            return value
+                .split(/\n\s*\n/)
+                .map(paragraph => {
+
+                    const cleaned =
+                        paragraph
+                            .trim()
+                            .replace(/\n/g, "<br>");
+
+                    if (!cleaned) {
+                        return "";
+                    }
+
+                    return `<p>${escapeHTML(cleaned)}</p>`;
+
+                })
+                .join("");
+
+        }
+
+
+        /* =====================================================
+           FORMAT DATE
+        ====================================================== */
+
+        function formatDate(dateValue) {
+
+            if (!dateValue) {
+                return "";
+            }
+
+
+            const date =
+                new Date(dateValue);
+
+
+            if (
+                Number.isNaN(
+                    date.getTime()
+                )
+            ) {
+
+                return "";
+
+            }
+
+
+            return new Intl.DateTimeFormat(
+                "en-US",
+                {
+                    year: "numeric",
+                    month: "long",
+                    day: "numeric"
+                }
+            ).format(date);
+
+        }
+
+
+        /* =====================================================
+           RENDER ARTICLE
+        ====================================================== */
+
+        function renderArticle(note) {
+
+            document.title =
+                `${note.title} — Ardanarx`;
+
+
+            articleTitle.textContent =
+                note.title || "Untitled";
+
+
+            articleDate.textContent =
+                formatDate(
+                    note.published_at ||
+                    note.created_at
+                );
+
+
+            if (note.excerpt) {
+
+                articleExcerpt.textContent =
+                    note.excerpt;
+
+                articleExcerpt.style.display =
+                    "block";
+
+            } else {
+
+                articleExcerpt.textContent =
+                    "";
+
+                articleExcerpt.style.display =
+                    "none";
+
+            }
+
+
+            /*
+             * IMPORTANT:
+             *
+             * Do NOT use textContent here.
+             *
+             * Content may contain HTML
+             * from the Studio editor.
+             */
+
+            articleContent.innerHTML =
+                formatContent(
+                    note.content ||
+                    note.excerpt ||
+                    ""
+                );
+
+        }
+
+
+        /* =====================================================
+           LOAD ARTICLE
+        ====================================================== */
+
+        async function loadArticle() {
+
+            const slug =
+                getSlug();
+
+
+            if (!slug) {
+
+                articleTitle.textContent =
+                    "Article not found";
+
+                articleDate.textContent =
+                    "";
+
+                articleExcerpt.textContent =
+                    "";
+
+                articleContent.innerHTML = `
+                    <div class="article-error">
+                        The requested article could not be found.
+                    </div>
+                `;
+
+                return;
+
+            }
+
+
+            articleContent.innerHTML = `
+                <div class="article-loading">
+                    Loading article...
+                </div>
+            `;
+
+
+            try {
+
+                const {
+                    data,
+                    error
+                } = await supabaseClient
+                    .from("notes")
+                    .select(`
+                        id,
+                        title,
+                        slug,
+                        excerpt,
+                        content,
+                        status,
+                        published_at,
+                        created_at
+                    `)
+                    .eq(
+                        "slug",
+                        slug
+                    )
+                    .eq(
+                        "status",
+                        "published"
+                    )
+                    .maybeSingle();
+
+
+                if (error) {
+
+                    console.error(
+                        "Supabase error:",
+                        error
+                    );
+
+                    throw error;
+
+                }
+
+
+                if (!data) {
+
+                    articleTitle.textContent =
+                        "Article not found";
+
+                    articleDate.textContent =
+                        "";
+
+                    articleExcerpt.textContent =
+                        "";
+
+                    articleContent.innerHTML = `
+                        <div class="article-error">
+                            Sorry, this article does not exist
+                            or is not published.
+                        </div>
+                    `;
+
+                    return;
+
+                }
+
+
+                renderArticle(data);
+
+            } catch (error) {
+
+                console.error(
+                    "Failed to load article:",
+                    error
+                );
+
+
+                articleTitle.textContent =
+                    "Something went wrong";
+
+
+                articleDate.textContent =
+                    "";
+
+
+                articleExcerpt.textContent =
+                    "";
+
+
+                articleContent.innerHTML = `
+                    <div class="article-error">
+                        We couldn't load this article.
+                        Please try again later.
+                    </div>
+                `;
+
+            }
+
+        }
+
+
+        /* =====================================================
+           INITIALIZE
+        ====================================================== */
+
+        document.addEventListener(
+            "DOMContentLoaded",
+            loadArticle
+        );
+
+    </script>
+
+<script src="../script.js"></script>
+</body>
+
+</html>
