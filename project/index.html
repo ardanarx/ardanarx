@@ -521,32 +521,10 @@
            HELPERS
         ====================================================== */
 
-        function escapeHTML(value) {
-
-            return String(value ?? "")
-                .replace(/&/g, "&amp;")
-                .replace(/</g, "&lt;")
-                .replace(/>/g, "&gt;")
-                .replace(/"/g, "&quot;")
-                .replace(/'/g, "&#039;");
-
-        }
-
-
-        function sanitizeSlug(value) {
-
-            return String(value ?? "")
-                .trim()
-                .replace(/[^a-zA-Z0-9-_]/g, "");
-
-        }
-
-
         function getProjectNumber(project, index) {
 
             const number =
                 Number(project.sort_order);
-
 
             if (
                 Number.isFinite(number) &&
@@ -558,7 +536,6 @@
 
             }
 
-
             return String(index + 1)
                 .padStart(2, "0");
 
@@ -566,20 +543,12 @@
 
 
         function getProjectCategory(
-            project,
-            index
+            project
         ) {
 
-            const number =
-                getProjectNumber(
-                    project,
-                    index
-                );
-
-
             /*
-             * The current Supabase table does not
-             * have a category column.
+             * The current Supabase projects table
+             * does not contain a category column.
              *
              * These fallbacks preserve the current
              * public project presentation.
@@ -623,6 +592,10 @@
         }
 
 
+        /* =====================================================
+           CREATE PROJECT ELEMENT
+        ====================================================== */
+
         function createProjectElement(
             project,
             index
@@ -645,8 +618,7 @@
 
             const category =
                 getProjectCategory(
-                    project,
-                    index
+                    project
                 );
 
 
@@ -664,10 +636,16 @@
                 );
 
 
+            /*
+             * Keep the original slug from Supabase.
+             * encodeURIComponent() is used only when
+             * creating the URL.
+             */
+
             const slug =
-                sanitizeSlug(
-                    project.slug
-                );
+                String(
+                    project.slug ?? ""
+                ).trim();
 
 
             /* -------------------------------------------------
@@ -797,9 +775,11 @@
                 numberElement
             );
 
+
             article.appendChild(
                 titleElement
             );
+
 
             article.appendChild(
                 descriptionElement
