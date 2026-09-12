@@ -1,7 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
+
     <meta charset="UTF-8">
+
     <meta
         name="viewport"
         content="width=device-width, initial-scale=1.0"
@@ -20,7 +23,11 @@
         href="../assets/favicon.png"
     >
 
-    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link
+        rel="preconnect"
+        href="https://fonts.googleapis.com"
+    >
+
     <link
         rel="preconnect"
         href="https://fonts.gstatic.com"
@@ -32,7 +39,10 @@
         rel="stylesheet"
     >
 
-    <link rel="stylesheet" href="../style.css">
+    <link
+        rel="stylesheet"
+        href="../style.css"
+    >
 
     <style>
 
@@ -64,6 +74,11 @@
             font-size: 17px;
             line-height: 1.75;
         }
+
+
+        /* =====================================================
+           PROJECT LIST
+        ====================================================== */
 
         .projects-list {
             padding: 0 24px 100px;
@@ -106,6 +121,11 @@
             line-height: 1.75;
         }
 
+
+        /* =====================================================
+           TAGS
+        ====================================================== */
+
         .project-tags {
             display: flex;
             flex-wrap: wrap;
@@ -118,6 +138,11 @@
             font-size: 13px;
             font-weight: 600;
         }
+
+
+        /* =====================================================
+           PROJECT LINK
+        ====================================================== */
 
         .project-link {
             display: inline-block;
@@ -133,6 +158,52 @@
         .project-link:hover {
             opacity: 0.55;
         }
+
+
+        /* =====================================================
+           LOADING
+        ====================================================== */
+
+        .projects-loading {
+            max-width: 690px;
+            margin: 0 auto;
+            padding: 42px 0;
+            color: var(--text-soft);
+            font-size: 14px;
+            line-height: 1.7;
+        }
+
+
+        /* =====================================================
+           EMPTY / ERROR
+        ====================================================== */
+
+        .projects-message {
+            max-width: 690px;
+            margin: 0 auto;
+            padding: 42px 0;
+            border-top: 1px solid var(--border);
+        }
+
+        .projects-message h2 {
+            margin: 0 0 12px;
+            font-family: "DM Serif Display", Georgia, serif;
+            font-size: 34px;
+            line-height: 1.1;
+            font-weight: 400;
+        }
+
+        .projects-message p {
+            margin: 0;
+            color: var(--text-soft);
+            font-size: 15px;
+            line-height: 1.75;
+        }
+
+
+        /* =====================================================
+           BACK HOME
+        ====================================================== */
 
         .back-home {
             max-width: 690px;
@@ -150,6 +221,11 @@
         .back-home a:hover {
             color: var(--text);
         }
+
+
+        /* =====================================================
+           MOBILE
+        ====================================================== */
 
         @media (max-width: 700px) {
 
@@ -182,15 +258,31 @@
                 font-size: 15px;
             }
 
+            .projects-loading {
+                padding: 34px 0;
+            }
+
+            .projects-message {
+                padding: 34px 0;
+            }
+
+            .projects-message h2 {
+                font-size: 31px;
+            }
+
             .back-home {
                 padding: 0 28px 65px;
             }
+
         }
 
     </style>
+
 </head>
 
+
 <body>
+
 
     <!-- =====================================================
          HEADER
@@ -207,6 +299,7 @@
             >
                 Ardanarx
             </a>
+
 
             <div class="nav-right">
 
@@ -230,6 +323,7 @@
 
                 </div>
 
+
                 <button
                     class="menu-toggle"
                     type="button"
@@ -237,14 +331,17 @@
                     aria-expanded="false"
                     aria-controls="mobile-menu"
                 >
+
                     <span></span>
                     <span></span>
                     <span></span>
+
                 </button>
 
             </div>
 
         </nav>
+
 
         <div
             class="mobile-menu"
@@ -278,6 +375,11 @@
 
     <main>
 
+
+        <!-- =================================================
+             HERO
+        ================================================== -->
+
         <section class="projects-hero section-light">
 
             <div class="content">
@@ -304,143 +406,51 @@
              PROJECT LIST
         ================================================== -->
 
-        <section class="projects-list section-white">
+        <section
+            class="projects-list section-white"
+            id="projectsList"
+        >
+
+            <div
+                class="projects-loading"
+                id="projectsLoading"
+            >
+                Loading projects...
+            </div>
 
 
-            <!-- VERVOCARE -->
-
-            <article class="project-item">
-
-                <span class="project-number">
-                    01 — BUSINESS & DIGITAL SYSTEM
-                </span>
+            <div
+                class="projects-message"
+                id="projectsEmpty"
+                hidden
+            >
 
                 <h2>
-                    Vervocare
+                    No Projects Yet
                 </h2>
 
                 <p>
-                    A laundry business project where I explored
-                    how a small business could use digital systems
-                    to manage attendance, operations, and everyday
-                    activities more efficiently.
+                    Published projects will appear here.
                 </p>
 
-                <div class="project-tags">
-
-                    <span>
-                        Web Development
-                    </span>
-
-                    <span>
-                        Digital System
-                    </span>
-
-                    <span>
-                        Business
-                    </span>
-
-                </div>
-
-                <a
-                    href="vervocare/index.html"
-                    class="project-link"
-                >
-                    View Project
-                </a>
-
-            </article>
+            </div>
 
 
-            <!-- KOSTIQO -->
-
-            <article class="project-item">
-
-                <span class="project-number">
-                    02 — PROPERTY & DIGITAL SYSTEM
-                </span>
+            <div
+                class="projects-message"
+                id="projectsError"
+                hidden
+            >
 
                 <h2>
-                    Kostiqo
+                    Unable to Load Projects
                 </h2>
 
-                <p>
-                    A boarding house business concept focused on
-                    creating a simple digital presence, presenting
-                    the property clearly, and exploring how technology
-                    can support everyday management.
+                <p id="projectsErrorText">
+                    Something went wrong while loading the projects.
                 </p>
 
-                <div class="project-tags">
-
-                    <span>
-                        Web Development
-                    </span>
-
-                    <span>
-                        Property
-                    </span>
-
-                    <span>
-                        Digital Management
-                    </span>
-
-                </div>
-
-                <a
-                    href="kostiqo/index.html"
-                    class="project-link"
-                >
-                    View Project
-                </a>
-
-            </article>
-
-
-            <!-- NERFORIT -->
-
-            <article class="project-item">
-
-                <span class="project-number">
-                    03 — TECHNOLOGY & E-COMMERCE
-                </span>
-
-                <h2>
-                    Nerforit
-                </h2>
-
-                <p>
-                    A technology and computer store project built
-                    around products, inventory, online presentation,
-                    and the foundations of a simple digital commerce
-                    experience.
-                </p>
-
-                <div class="project-tags">
-
-                    <span>
-                        E-commerce
-                    </span>
-
-                    <span>
-                        Inventory
-                    </span>
-
-                    <span>
-                        Technology
-                    </span>
-
-                </div>
-
-                <a
-                    href="nerforit/index.html"
-                    class="project-link"
-                >
-                    View Project
-                </a>
-
-            </article>
-
+            </div>
 
         </section>
 
@@ -461,10 +471,503 @@
 
 
     <!-- =====================================================
-         SCRIPT
+         SUPABASE
+    ====================================================== -->
+
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+
+    <script>
+
+        /* =====================================================
+           SUPABASE CONFIG
+        ====================================================== */
+
+        const SUPABASE_URL =
+            "https://isqimtsaeuvceijapddj.supabase.co";
+
+        const SUPABASE_ANON_KEY =
+            "sb_publishable_SrJsbjs-_hunnBhCTlKyYwA_JxtScx3t";
+
+
+        const supabaseClient =
+            window.supabase.createClient(
+                SUPABASE_URL,
+                SUPABASE_ANON_KEY
+            );
+
+
+        /* =====================================================
+           ELEMENTS
+        ====================================================== */
+
+        const projectsList =
+            document.getElementById("projectsList");
+
+        const projectsLoading =
+            document.getElementById("projectsLoading");
+
+        const projectsEmpty =
+            document.getElementById("projectsEmpty");
+
+        const projectsError =
+            document.getElementById("projectsError");
+
+        const projectsErrorText =
+            document.getElementById("projectsErrorText");
+
+
+        /* =====================================================
+           HELPERS
+        ====================================================== */
+
+        function escapeHTML(value) {
+
+            return String(value ?? "")
+                .replace(/&/g, "&amp;")
+                .replace(/</g, "&lt;")
+                .replace(/>/g, "&gt;")
+                .replace(/"/g, "&quot;")
+                .replace(/'/g, "&#039;");
+
+        }
+
+
+        function sanitizeSlug(value) {
+
+            return String(value ?? "")
+                .trim()
+                .replace(/[^a-zA-Z0-9-_]/g, "");
+
+        }
+
+
+        function getProjectNumber(project, index) {
+
+            const number =
+                Number(project.sort_order);
+
+
+            if (
+                Number.isFinite(number) &&
+                number > 0
+            ) {
+
+                return String(number)
+                    .padStart(2, "0");
+
+            }
+
+
+            return String(index + 1)
+                .padStart(2, "0");
+
+        }
+
+
+        function getProjectCategory(
+            project,
+            index
+        ) {
+
+            const number =
+                getProjectNumber(
+                    project,
+                    index
+                );
+
+
+            /*
+             * The current Supabase table does not
+             * have a category column.
+             *
+             * These fallbacks preserve the current
+             * public project presentation.
+             */
+
+            const title =
+                String(
+                    project.title || ""
+                ).toLowerCase();
+
+
+            if (
+                title.includes("vervocare")
+            ) {
+
+                return "BUSINESS & DIGITAL SYSTEM";
+
+            }
+
+
+            if (
+                title.includes("kostiqo")
+            ) {
+
+                return "PROPERTY & DIGITAL SYSTEM";
+
+            }
+
+
+            if (
+                title.includes("nerforit")
+            ) {
+
+                return "TECHNOLOGY & E-COMMERCE";
+
+            }
+
+
+            return "DIGITAL PROJECT";
+
+        }
+
+
+        function createProjectElement(
+            project,
+            index
+        ) {
+
+            const article =
+                document.createElement("article");
+
+
+            article.className =
+                "project-item";
+
+
+            const number =
+                getProjectNumber(
+                    project,
+                    index
+                );
+
+
+            const category =
+                getProjectCategory(
+                    project,
+                    index
+                );
+
+
+            const title =
+                String(
+                    project.title ||
+                    "Untitled Project"
+                );
+
+
+            const description =
+                String(
+                    project.description ||
+                    ""
+                );
+
+
+            const slug =
+                sanitizeSlug(
+                    project.slug
+                );
+
+
+            /* -------------------------------------------------
+               NUMBER
+            -------------------------------------------------- */
+
+            const numberElement =
+                document.createElement("span");
+
+
+            numberElement.className =
+                "project-number";
+
+
+            numberElement.textContent =
+                `${number} — ${category}`;
+
+
+            /* -------------------------------------------------
+               TITLE
+            -------------------------------------------------- */
+
+            const titleElement =
+                document.createElement("h2");
+
+
+            titleElement.textContent =
+                title;
+
+
+            /* -------------------------------------------------
+               DESCRIPTION
+            -------------------------------------------------- */
+
+            const descriptionElement =
+                document.createElement("p");
+
+
+            descriptionElement.textContent =
+                description;
+
+
+            /* -------------------------------------------------
+               TAGS
+            -------------------------------------------------- */
+
+            const tagsElement =
+                document.createElement("div");
+
+
+            tagsElement.className =
+                "project-tags";
+
+
+            if (
+                Array.isArray(project.tech_stack) &&
+                project.tech_stack.length
+            ) {
+
+                project.tech_stack
+                    .filter(
+                        item =>
+                            String(item).trim()
+                    )
+                    .forEach(item => {
+
+                        const tag =
+                            document.createElement("span");
+
+
+                        tag.textContent =
+                            String(item).trim();
+
+
+                        tagsElement.appendChild(
+                            tag
+                        );
+
+                    });
+
+            }
+
+
+            /* -------------------------------------------------
+               VIEW PROJECT
+            -------------------------------------------------- */
+
+            const link =
+                document.createElement("a");
+
+
+            link.className =
+                "project-link";
+
+
+            link.textContent =
+                "View Project";
+
+
+            if (slug) {
+
+                link.href =
+                    `article.html?slug=${encodeURIComponent(
+                        slug
+                    )}`;
+
+            } else {
+
+                link.href =
+                    "#";
+
+                link.addEventListener(
+                    "click",
+                    event => {
+                        event.preventDefault();
+                    }
+                );
+
+            }
+
+
+            /* -------------------------------------------------
+               APPEND
+            -------------------------------------------------- */
+
+            article.appendChild(
+                numberElement
+            );
+
+            article.appendChild(
+                titleElement
+            );
+
+            article.appendChild(
+                descriptionElement
+            );
+
+
+            if (
+                tagsElement.children.length
+            ) {
+
+                article.appendChild(
+                    tagsElement
+                );
+
+            }
+
+
+            article.appendChild(
+                link
+            );
+
+
+            return article;
+
+        }
+
+
+        /* =====================================================
+           LOAD PROJECTS
+        ====================================================== */
+
+        async function loadProjects() {
+
+            projectsLoading.hidden =
+                false;
+
+            projectsEmpty.hidden =
+                true;
+
+            projectsError.hidden =
+                true;
+
+
+            try {
+
+                const {
+                    data,
+                    error
+                } = await supabaseClient
+
+                    .from("projects")
+
+                    .select(`
+                        id,
+                        title,
+                        slug,
+                        description,
+                        tech_stack,
+                        status,
+                        featured,
+                        sort_order,
+                        published_at,
+                        created_at
+                    `)
+
+                    .eq(
+                        "status",
+                        "published"
+                    )
+
+                    .order(
+                        "sort_order",
+                        {
+                            ascending: true,
+                            nullsFirst: false
+                        }
+                    )
+
+                    .order(
+                        "published_at",
+                        {
+                            ascending: false
+                        }
+                    );
+
+
+                if (error) {
+
+                    throw error;
+
+                }
+
+
+                projectsLoading.hidden =
+                    true;
+
+
+                if (
+                    !data ||
+                    data.length === 0
+                ) {
+
+                    projectsEmpty.hidden =
+                        false;
+
+                    return;
+
+                }
+
+
+                data.forEach(
+                    (project, index) => {
+
+                        const element =
+                            createProjectElement(
+                                project,
+                                index
+                            );
+
+
+                        projectsList.appendChild(
+                            element
+                        );
+
+                    }
+                );
+
+
+            } catch (error) {
+
+                console.error(
+                    "Projects loading error:",
+                    error
+                );
+
+
+                projectsLoading.hidden =
+                    true;
+
+
+                projectsError.hidden =
+                    false;
+
+
+                projectsErrorText.textContent =
+                    "Something went wrong while loading the projects. Please try again later.";
+
+            }
+
+        }
+
+
+        /* =====================================================
+           START
+        ====================================================== */
+
+        loadProjects();
+
+    </script>
+
+
+    <!-- =====================================================
+         MAIN SITE SCRIPT
     ====================================================== -->
 
     <script src="../script.js"></script>
 
+
 </body>
+
 </html>
