@@ -1,7 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+
     <meta charset="UTF-8">
+
     <meta
         name="viewport"
         content="width=device-width, initial-scale=1.0"
@@ -21,6 +23,7 @@
     >
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
+
     <link
         rel="preconnect"
         href="https://fonts.gstatic.com"
@@ -33,6 +36,7 @@
     >
 
     <link rel="stylesheet" href="../style.css">
+
 
     <style>
 
@@ -151,6 +155,22 @@
             color: var(--text);
         }
 
+
+        /* =====================================================
+           PROJECT LOADING / EMPTY STATE
+        ====================================================== */
+
+        .projects-loading,
+        .projects-empty {
+            max-width: 690px;
+            margin: 0 auto;
+            padding: 42px 0;
+            color: var(--text-soft);
+            font-size: 15px;
+            line-height: 1.75;
+        }
+
+
         @media (max-width: 700px) {
 
             .projects-hero {
@@ -185,12 +205,16 @@
             .back-home {
                 padding: 0 28px 65px;
             }
+
         }
 
     </style>
+
 </head>
 
+
 <body>
+
 
     <!-- =====================================================
          HEADER
@@ -207,6 +231,7 @@
             >
                 Ardanarx
             </a>
+
 
             <div class="nav-right">
 
@@ -230,6 +255,7 @@
 
                 </div>
 
+
                 <button
                     class="menu-toggle"
                     type="button"
@@ -237,14 +263,17 @@
                     aria-expanded="false"
                     aria-controls="mobile-menu"
                 >
+
                     <span></span>
                     <span></span>
                     <span></span>
+
                 </button>
 
             </div>
 
         </nav>
+
 
         <div
             class="mobile-menu"
@@ -272,11 +301,13 @@
     </header>
 
 
+
     <!-- =====================================================
          MAIN
     ====================================================== -->
 
     <main>
+
 
         <section class="projects-hero section-light">
 
@@ -300,149 +331,25 @@
         </section>
 
 
+
         <!-- =================================================
              PROJECT LIST
         ================================================== -->
 
-        <section class="projects-list section-white">
+        <section
+            class="projects-list section-white"
+            id="projectsList"
+        >
 
-
-            <!-- VERVOCARE -->
-
-            <article class="project-item">
-
-                <span class="project-number">
-                    01 — BUSINESS & DIGITAL SYSTEM
-                </span>
-
-                <h2>
-                    Vervocare
-                </h2>
-
-                <p>
-                    A laundry business project where I explored
-                    how a small business could use digital systems
-                    to manage attendance, operations, and everyday
-                    activities more efficiently.
-                </p>
-
-                <div class="project-tags">
-
-                    <span>
-                        Web Development
-                    </span>
-
-                    <span>
-                        Digital System
-                    </span>
-
-                    <span>
-                        Business
-                    </span>
-
-                </div>
-
-                <a
-                    href="vervocare/index.html"
-                    class="project-link"
-                >
-                    View Project
-                </a>
-
-            </article>
-
-
-            <!-- KOSTIQO -->
-
-            <article class="project-item">
-
-                <span class="project-number">
-                    02 — PROPERTY & DIGITAL SYSTEM
-                </span>
-
-                <h2>
-                    Kostiqo
-                </h2>
-
-                <p>
-                    A boarding house business concept focused on
-                    creating a simple digital presence, presenting
-                    the property clearly, and exploring how technology
-                    can support everyday management.
-                </p>
-
-                <div class="project-tags">
-
-                    <span>
-                        Web Development
-                    </span>
-
-                    <span>
-                        Property
-                    </span>
-
-                    <span>
-                        Digital Management
-                    </span>
-
-                </div>
-
-                <a
-                    href="kostiqo/index.html"
-                    class="project-link"
-                >
-                    View Project
-                </a>
-
-            </article>
-
-
-            <!-- NERFORIT -->
-
-            <article class="project-item">
-
-                <span class="project-number">
-                    03 — TECHNOLOGY & E-COMMERCE
-                </span>
-
-                <h2>
-                    Nerforit
-                </h2>
-
-                <p>
-                    A technology and computer store project built
-                    around products, inventory, online presentation,
-                    and the foundations of a simple digital commerce
-                    experience.
-                </p>
-
-                <div class="project-tags">
-
-                    <span>
-                        E-commerce
-                    </span>
-
-                    <span>
-                        Inventory
-                    </span>
-
-                    <span>
-                        Technology
-                    </span>
-
-                </div>
-
-                <a
-                    href="nerforit/index.html"
-                    class="project-link"
-                >
-                    View Project
-                </a>
-
-            </article>
-
+            <div
+                class="projects-loading"
+                id="projectsLoading"
+            >
+                Loading projects...
+            </div>
 
         </section>
+
 
 
         <!-- =================================================
@@ -460,8 +367,429 @@
     </main>
 
 
+
     <!-- =====================================================
-         SCRIPT
+         SUPABASE
+    ====================================================== -->
+
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+
+    <script>
+
+        /* =====================================================
+           SUPABASE CONFIG
+        ====================================================== */
+
+        const SUPABASE_URL =
+            "https://isqimtsaeuvceijapddj.supabase.co";
+
+        const SUPABASE_ANON_KEY =
+            "sb_publishable_SrJsbjs-_hunnBhCTlKyYwA_JxtScx3t";
+
+
+        const supabaseClient =
+            window.supabase.createClient(
+                SUPABASE_URL,
+                SUPABASE_ANON_KEY
+            );
+
+
+
+        /* =====================================================
+           FALLBACK DATA
+           Keeps the current website content available if
+           Supabase has no published projects yet.
+        ====================================================== */
+
+        const fallbackProjects = [
+
+            {
+                title: "Vervocare",
+
+                category:
+                    "01 — BUSINESS & DIGITAL SYSTEM",
+
+                description:
+                    "A laundry business project where I explored how a small business could use digital systems to manage attendance, operations, and everyday activities more efficiently.",
+
+                tech_stack: [
+                    "Web Development",
+                    "Digital System",
+                    "Business"
+                ],
+
+                link:
+                    "vervocare/index.html"
+            },
+
+
+            {
+                title: "Kostiqo",
+
+                category:
+                    "02 — PROPERTY & DIGITAL SYSTEM",
+
+                description:
+                    "A boarding house business concept focused on creating a simple digital presence, presenting the property clearly, and exploring how technology can support everyday management.",
+
+                tech_stack: [
+                    "Web Development",
+                    "Property",
+                    "Digital Management"
+                ],
+
+                link:
+                    "kostiqo/index.html"
+            },
+
+
+            {
+                title: "Nerforit",
+
+                category:
+                    "03 — TECHNOLOGY & E-COMMERCE",
+
+                description:
+                    "A technology and computer store project built around products, inventory, online presentation, and the foundations of a simple digital commerce experience.",
+
+                tech_stack: [
+                    "E-commerce",
+                    "Inventory",
+                    "Technology"
+                ],
+
+                link:
+                    "nerforit/index.html"
+            }
+
+        ];
+
+
+
+        /* =====================================================
+           PROJECT NUMBER FORMAT
+        ====================================================== */
+
+        function formatProjectNumber(number) {
+
+            return String(number).padStart(2, "0");
+
+        }
+
+
+
+        /* =====================================================
+           ESCAPE HTML
+        ====================================================== */
+
+        function escapeHTML(value) {
+
+            if (value === null || value === undefined) {
+                return "";
+            }
+
+            return String(value)
+                .replace(/&/g, "&amp;")
+                .replace(/</g, "&lt;")
+                .replace(/>/g, "&gt;")
+                .replace(/"/g, "&quot;")
+                .replace(/'/g, "&#039;");
+
+        }
+
+
+
+        /* =====================================================
+           NORMALIZE URL
+        ====================================================== */
+
+        function normalizeProjectUrl(url, slug) {
+
+            if (url && String(url).trim()) {
+
+                return String(url).trim();
+
+            }
+
+
+            const localProjects = {
+
+                vervocare:
+                    "vervocare/index.html",
+
+                kostiqo:
+                    "kostiqo/index.html",
+
+                nerforit:
+                    "nerforit/index.html"
+
+            };
+
+
+            if (
+                slug &&
+                localProjects[String(slug).toLowerCase()]
+            ) {
+
+                return localProjects[
+                    String(slug).toLowerCase()
+                ];
+
+            }
+
+
+            return "#";
+
+        }
+
+
+
+        /* =====================================================
+           NORMALIZE PROJECT DATA
+        ====================================================== */
+
+        function normalizeProject(project, index) {
+
+            const tags =
+                Array.isArray(project.tech_stack)
+                    ? project.tech_stack
+                    : [];
+
+
+            return {
+
+                title:
+                    project.title || "Untitled Project",
+
+                description:
+                    project.description || "",
+
+                category:
+                    project.category ||
+                    `${formatProjectNumber(index + 1)} — PROJECT`,
+
+                tech_stack:
+                    tags,
+
+                link:
+                    normalizeProjectUrl(
+                        project.project_url,
+                        project.slug
+                    )
+
+            };
+
+        }
+
+
+
+        /* =====================================================
+           RENDER PROJECTS
+        ====================================================== */
+
+        function renderProjects(projects) {
+
+            const container =
+                document.getElementById("projectsList");
+
+            if (!container) {
+                return;
+            }
+
+
+            if (!projects.length) {
+
+                container.innerHTML = `
+                    <div class="projects-empty">
+                        No published projects yet.
+                    </div>
+                `;
+
+                return;
+
+            }
+
+
+            container.innerHTML =
+                projects.map((project, index) => {
+
+                    const item =
+                        normalizeProject(project, index);
+
+
+                    const tags =
+                        item.tech_stack
+                            .filter(Boolean)
+                            .map(tag => `
+                                <span>
+                                    ${escapeHTML(tag)}
+                                </span>
+                            `)
+                            .join("");
+
+
+                    return `
+
+                        <article class="project-item">
+
+                            <span class="project-number">
+                                ${escapeHTML(item.category)}
+                            </span>
+
+                            <h2>
+                                ${escapeHTML(item.title)}
+                            </h2>
+
+                            <p>
+                                ${escapeHTML(item.description)}
+                            </p>
+
+                            <div class="project-tags">
+                                ${tags}
+                            </div>
+
+                            ${
+                                item.link !== "#"
+                                    ? `
+                                        <a
+                                            href="${escapeHTML(item.link)}"
+                                            class="project-link"
+                                        >
+                                            View Project
+                                        </a>
+                                    `
+                                    : ""
+                            }
+
+                        </article>
+
+                    `;
+
+                }).join("");
+
+        }
+
+
+
+        /* =====================================================
+           LOAD PROJECTS
+        ====================================================== */
+
+        async function loadProjects() {
+
+            try {
+
+                const {
+                    data,
+                    error
+                } = await supabaseClient
+
+                    .from("projects")
+
+                    .select(`
+                        id,
+                        title,
+                        slug,
+                        description,
+                        content,
+                        thumbnail,
+                        tech_stack,
+                        project_url,
+                        github_url,
+                        status,
+                        featured,
+                        sort_order,
+                        published_at,
+                        created_at
+                    `)
+
+                    .eq(
+                        "status",
+                        "published"
+                    )
+
+                    .order(
+                        "sort_order",
+                        {
+                            ascending: true
+                        }
+                    )
+
+                    .order(
+                        "published_at",
+                        {
+                            ascending: false
+                        });
+
+
+                if (error) {
+
+                    console.error(
+                        "Supabase projects error:",
+                        error
+                    );
+
+                    renderProjects(
+                        fallbackProjects
+                    );
+
+                    return;
+
+                }
+
+
+                if (!data || !data.length) {
+
+                    renderProjects(
+                        fallbackProjects
+                    );
+
+                    return;
+
+                }
+
+
+                renderProjects(data);
+
+            }
+
+            catch (error) {
+
+                console.error(
+                    "Failed to load projects:",
+                    error
+                );
+
+
+                renderProjects(
+                    fallbackProjects
+                );
+
+            }
+
+        }
+
+
+
+        /* =====================================================
+           INITIALIZE
+        ====================================================== */
+
+        document.addEventListener(
+            "DOMContentLoaded",
+            () => {
+
+                loadProjects();
+
+            }
+        );
+
+    </script>
+
+
+    <!-- =====================================================
+         MAIN WEBSITE SCRIPT
     ====================================================== -->
 
     <script src="../script.js"></script>
