@@ -44,6 +44,7 @@
         href="../style.css"
     >
 
+
     <style>
 
         /* =====================================================
@@ -471,11 +472,15 @@
 
 
     <!-- =====================================================
-         SUPABASE
+         SUPABASE LIBRARY
     ====================================================== -->
 
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
+
+    <!-- =====================================================
+         SUPABASE PROJECTS
+    ====================================================== -->
 
     <script>
 
@@ -518,13 +523,17 @@
 
 
         /* =====================================================
-           HELPERS
+           PROJECT NUMBER
         ====================================================== */
 
-        function getProjectNumber(project, index) {
+        function getProjectNumber(
+            project,
+            index
+        ) {
 
             const number =
                 Number(project.sort_order);
+
 
             if (
                 Number.isFinite(number) &&
@@ -536,28 +545,34 @@
 
             }
 
+
             return String(index + 1)
                 .padStart(2, "0");
 
         }
 
 
+        /* =====================================================
+           PROJECT CATEGORY
+        ====================================================== */
+
         function getProjectCategory(
             project
         ) {
-
-            /*
-             * The current Supabase projects table
-             * does not contain a category column.
-             *
-             * These fallbacks preserve the current
-             * public project presentation.
-             */
 
             const title =
                 String(
                     project.title || ""
                 ).toLowerCase();
+
+
+            /*
+             * Supabase projects table saat ini
+             * belum memiliki kolom category.
+             *
+             * Fallback ini mempertahankan
+             * kategori dari website sebelumnya.
+             */
 
 
             if (
@@ -593,7 +608,7 @@
 
 
         /* =====================================================
-           CREATE PROJECT ELEMENT
+           CREATE PROJECT
         ====================================================== */
 
         function createProjectElement(
@@ -608,6 +623,10 @@
             article.className =
                 "project-item";
 
+
+            /* -------------------------------------------------
+               DATA
+            -------------------------------------------------- */
 
             const number =
                 getProjectNumber(
@@ -636,15 +655,10 @@
                 );
 
 
-            /*
-             * Keep the original slug from Supabase.
-             * encodeURIComponent() is used only when
-             * creating the URL.
-             */
-
             const slug =
                 String(
-                    project.slug ?? ""
+                    project.slug ||
+                    ""
                 ).trim();
 
 
@@ -701,8 +715,9 @@
 
 
             if (
-                Array.isArray(project.tech_stack) &&
-                project.tech_stack.length
+                Array.isArray(
+                    project.tech_stack
+                )
             ) {
 
                 project.tech_stack
@@ -710,21 +725,25 @@
                         item =>
                             String(item).trim()
                     )
-                    .forEach(item => {
+                    .forEach(
+                        item => {
 
-                        const tag =
-                            document.createElement("span");
+                            const tag =
+                                document.createElement(
+                                    "span"
+                                );
 
 
-                        tag.textContent =
-                            String(item).trim();
+                            tag.textContent =
+                                String(item).trim();
 
 
-                        tagsElement.appendChild(
-                            tag
-                        );
+                            tagsElement.appendChild(
+                                tag
+                            );
 
-                    });
+                        }
+                    );
 
             }
 
@@ -757,10 +776,13 @@
                 link.href =
                     "#";
 
+
                 link.addEventListener(
                     "click",
-                    event => {
+                    function(event) {
+
                         event.preventDefault();
+
                     }
                 );
 
@@ -787,7 +809,7 @@
 
 
             if (
-                tagsElement.children.length
+                tagsElement.children.length > 0
             ) {
 
                 article.appendChild(
@@ -813,6 +835,10 @@
 
         async function loadProjects() {
 
+            /*
+             * Initial state
+             */
+
             projectsLoading.hidden =
                 false;
 
@@ -823,7 +849,32 @@
                 true;
 
 
+            /*
+             * Remove old project elements
+             * if the function is called again.
+             */
+
+            projectsList
+                .querySelectorAll(
+                    ".project-item"
+                )
+                .forEach(
+                    element => {
+                        element.remove();
+                    }
+                );
+
+
             try {
+
+                console.log(
+                    "[Ardanarx] Loading projects..."
+                );
+
+
+                /* ---------------------------------------------
+                   SUPABASE QUERY
+                ---------------------------------------------- */
 
                 const {
                     data,
@@ -832,18 +883,20 @@
 
                     .from("projects")
 
-                    .select(`
-                        id,
-                        title,
-                        slug,
-                        description,
-                        tech_stack,
-                        status,
-                        featured,
-                        sort_order,
-                        published_at,
-                        created_at
-                    `)
+                    .select(
+                        [
+                            "id",
+                            "title",
+                            "slug",
+                            "description",
+                            "tech_stack",
+                            "status",
+                            "featured",
+                            "sort_order",
+                            "published_at",
+                            "created_at"
+                        ].join(",")
+                    )
 
                     .eq(
                         "status",
@@ -853,29 +906,44 @@
                     .order(
                         "sort_order",
                         {
-                            ascending: true,
-                            nullsFirst: false
-                        }
-                    )
-
-                    .order(
-                        "published_at",
-                        {
-                            ascending: false
+                            ascending: true
                         }
                     );
 
 
+                /* ---------------------------------------------
+                   ERROR CHECK
+                ---------------------------------------------- */
+
                 if (error) {
+
+                    console.error(
+                        "[Ardanarx] Supabase error:",
+                        error
+                    );
 
                     throw error;
 
                 }
 
 
+                /* ---------------------------------------------
+                   SUCCESS
+                ---------------------------------------------- */
+
+                console.log(
+                    "[Ardanarx] Projects loaded:",
+                    data
+                );
+
+
                 projectsLoading.hidden =
                     true;
 
+
+                /* ---------------------------------------------
+                   EMPTY
+                ---------------------------------------------- */
 
                 if (
                     !data ||
@@ -890,8 +958,15 @@
                 }
 
 
+                /* ---------------------------------------------
+                   RENDER PROJECTS
+                ---------------------------------------------- */
+
                 data.forEach(
-                    (project, index) => {
+                    function(
+                        project,
+                        index
+                    ) {
 
                         const element =
                             createProjectElement(
@@ -911,7 +986,7 @@
             } catch (error) {
 
                 console.error(
-                    "Projects loading error:",
+                    "[Ardanarx] Projects loading failed:",
                     error
                 );
 
@@ -924,8 +999,45 @@
                     false;
 
 
+                /*
+                 * Untuk sementara kita tampilkan
+                 * error sebenarnya supaya mudah
+                 * mengetahui sumber masalah.
+                 */
+
+                let message =
+                    "Unable to connect to the Projects database.";
+
+
+                if (
+                    error &&
+                    error.message
+                ) {
+
+                    message =
+                        error.message;
+
+                } else if (
+                    error &&
+                    error.details
+                ) {
+
+                    message =
+                        error.details;
+
+                } else if (
+                    error &&
+                    error.hint
+                ) {
+
+                    message =
+                        error.hint;
+
+                }
+
+
                 projectsErrorText.textContent =
-                    "Something went wrong while loading the projects. Please try again later.";
+                    message;
 
             }
 
