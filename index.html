@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <!-- =====================================================
+         SYSTEM THEME
+         Automatically follows device settings
+         Prevents theme flash before page loads
+    ====================================================== -->
+
+    <script>
+        (function () {
+
+            const systemTheme =
+                window.matchMedia(
+                    "(prefers-color-scheme: dark)"
+                );
+
+            document.documentElement.classList.toggle(
+                "dark-mode",
+                systemTheme.matches
+            );
+
+        })();
+    </script>
+
+
+    <meta charset="UTF-8">
+
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+
+    <meta
+        name="description"
+        content="Ardanarx — a personal space to share what I build, what I learn, and the experiences that shape my life."
+    >
+
+
+    <title>Ardanarx</title>
+
+
+    <!-- =====================================================
+         FAVICON
+    ====================================================== -->
+
+    <link
+        rel="icon"
+        type="image/png"
+        sizes="32x32"
+        href="assets/favicon.png"
+    >
+
+    <link
+        rel="icon"
+        type="image/png"
+        sizes="16x16"
+        href="assets/favicon.png"
+    >
+
+    <link
+        rel="apple-touch-icon"
+        sizes="180x180"
+        href="assets/favicon.png"
+    >
+
+
+    <!-- =====================================================
+         GOOGLE FONTS
+    ====================================================== -->
+
+    <link
+        rel="preconnect"
+        href="https://fonts.googleapis.com"
+    >
+
+    <link
+        rel="preconnect"
+        href="https://fonts.gstatic.com"
+        crossorigin
+    >
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Manrope:wght@400;500;600;700&display=swap"
+        rel="stylesheet"
+    >
+
+
+    <!-- =====================================================
+         MAIN CSS
+    ====================================================== -->
+
+    <link
+        rel="stylesheet"
+        href="style.css"
+    >
+
+    <script src="config.js"></script>
+
+</head>
+
+
+<body>
+
+
+    <!-- =====================================================
+         HEADER / NAVBAR
+    ====================================================== -->
+
+    <header class="site-header">
+
+        <nav class="navbar">
+
+
+            <!-- BRAND -->
+
+            <a
+                href="#home"
+                class="brand"
+                aria-label="Ardanarx Home"
+            >
+                Ardanarx
+            </a>
+
+
+            <div class="nav-right">
+
+
+                <!-- DESKTOP NAVIGATION -->
+
+                <div class="nav-links">
+
+                    <a href="about/index.html">
+                        About
+                    </a>
+
+                    <a href="project/index.html">
+                        Projects
+                    </a>
+
+                    <a href="notes/index.html">
+                        Notes
+                    </a>
+
+                    <a href="contact/index.html">
+                        Contact
+                    </a>
+
+                </div>
+
+
+                <!-- MOBILE MENU BUTTON -->
+
+                <button
+                    class="menu-toggle"
+                    type="button"
+                    aria-label="Open menu"
+                    aria-expanded="false"
+                    aria-controls="mobile-menu"
+                >
+
+                    <span></span>
+                    <span></span>
+                    <span></span>
+
+                </button>
+
+
+            </div>
+
+        </nav>
+
+
+        <!-- =================================================
+             MOBILE MENU
+        ================================================== -->
+
+        <div
+            class="mobile-menu"
+            id="mobile-menu"
+        >
+
+            <a href="about/index.html">
+                About
+            </a>
+
+            <a href="project/index.html">
+                Projects
+            </a>
+
+            <a href="notes/index.html">
+                Notes
+            </a>
+
+            <a href="contact/index.html">
+                Contact
+            </a>
+
+        </div>
+
+    </header>
+
+
+
+    <!-- =====================================================
+         MAIN CONTENT
+    ====================================================== -->
+
+    <main>
+
+
+        <!-- =================================================
+             HERO
+        ================================================== -->
+
+        <section
+            class="hero"
+            id="home"
+        >
+
+            <div class="hero-inner">
+
+
+                <!-- PROFILE PHOTO -->
+
+                <div class="hero-image">
+
+                    <img
+                        src="assets/foto-ardanarx.png"
+                        alt="Ardana"
+                    >
+
+                </div>
+
+
+                <!-- HERO TEXT -->
+
+                <div class="hero-content">
+
+                    <h1>
+                        My Own<br>
+                        Personal Space<br>
+                        to Be Myself
+                    </h1>
+
+                    <p>
+                        Where I share what I build, what I learn,
+                        the experiences I collect, the ideas I explore,
+                        and the moments that shape the person I’m becoming.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =================================================
+             NOW
+        ================================================== -->
+
+        <section class="section section-white">
+
+            <div class="content">
+
+                <h2>
+                    Where I Am Now
+                </h2>
+
+                <p>
+                    I’m currently building a few projects, exploring new ideas,
+                    learning new things, and enjoying the process one step at a time.
+                    Some projects are still taking shape, while others are already
+                    becoming part of my everyday work. Along the way, I’m constantly
+                    experimenting, solving problems, discovering new tools, and
+                    learning from what works—and what doesn’t.
+                </p>
+
+                <p>
+                    This page is a place to see what I’m currently working on,
+                    exploring, learning, and focusing on. It’s a snapshot of where
+                    I am right now, and it will continue to change as new ideas
+                    come along and different projects take shape.
+                </p>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =================================================
+             WHY THIS WEBSITE EXISTS
+        ================================================== -->
+
+        <section class="section section-light">
+
+            <div class="content">
+
+                <h2>
+                    Why This Website Exists
+                </h2>
+
+                <p>
+                    This website is my personal space on the internet.
+                    A place to document my journey, share what I’ve learned,
+                    introduce the projects I’m building, and keep track of
+                    the things I find interesting.
+                </p>
+
+                <p>
+                    I’m not trying to make it perfect. I simply want it
+                    to feel like me. And if you happen to find something
+                    useful, interesting, or inspiring here, then this website
+                    has done what it was meant to do.
+                </p>
+
+            </div>
+
+        </section>
+
+
+
+    </main>
+
+
+
+    <!-- =====================================================
+         JAVASCRIPT
+    ====================================================== -->
+
+    <script src="script.js"></script>
+
+</body>
+</html>
