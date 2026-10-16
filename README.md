@@ -18,6 +18,7 @@ A selection of products and experiments I'm building. Some projects are still in
 
 ### MOVIKO
 **Personal finance tracker**
+[🌐 Live Demo ↗](https://moviko.vercel.app)
 
 A web app for tracking income and expenses and making everyday money management easier.
 
