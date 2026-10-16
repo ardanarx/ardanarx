@@ -6,7 +6,7 @@
 
 I build digital products, useful web applications, and creative experiments — one step at a time.
 
-[Projects](#-featured-projects) · [Tech Stack](#-tech-stack) · [About Me](#-about-me)
+[Projects](#-featured-projects) · [Tech Stack](#-tech-stack) · [About Me](https://ardanarx.vercel.app/index.html)
 
 </div>
 
