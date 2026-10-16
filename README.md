@@ -16,7 +16,7 @@ I build digital products, useful web applications, and creative experiments — 
 
 A selection of products and experiments I'm building. Some projects are still in development.
 
-### MOVIKO
+### MOVIKO (https://moviko.vercel.app)
 **Personal finance tracker**
 [🌐 Live Demo ↗](https://moviko.vercel.app)
 
