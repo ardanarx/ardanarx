@@ -43,14 +43,14 @@ A practical collection of image tools, planned to include compression, resizing,
 - **Status:** In development
 - **Demo:** Add your public demo URL here, if available
 
-### Dovimo
-**2D & 3D home design**
+### Waskara
+**Digital Publishing**
 
-A home-design application concept for planning spaces in both 2D and 3D.
+A quiet space for words, ideas, and stories.
 
-- **Focus:** Creative tools and interactive design
+- **Focus:** Writing, Digital Publishing, and Minimalist User Experience
 - **Status:** In development
-- **Demo:** Add your public demo URL here, if available
+- **Demo:** https://waskara.vercel.app/
 
 ---
 
