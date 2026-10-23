@@ -1,0 +1,2728 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <!-- =====================================================
+         BASIC
+    ====================================================== -->
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <meta
+        name="description"
+        content="Ardanarx System — Personal Administration Workspace."
+    >
+
+    <meta
+        name="theme-color"
+        content="#ffffff"
+    >
+
+    <title>Ardanarx System</title>
+
+
+    <!-- =====================================================
+         FONTS
+    ====================================================== -->
+
+    <link
+        rel="preconnect"
+        href="https://fonts.googleapis.com"
+    >
+
+    <link
+        rel="preconnect"
+        href="https://fonts.gstatic.com"
+        crossorigin
+    >
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&amp;display=swap"
+        rel="stylesheet"
+    >
+
+
+    <!-- =====================================================
+         STYLESHEET
+    ====================================================== -->
+
+    <link
+        rel="stylesheet"
+        href="style.css"
+    >
+
+
+    <!-- =====================================================
+         RICH TEXT EDITOR STYLES
+    ====================================================== -->
+
+    <style>
+
+        /* =================================================
+           RICH EDITOR
+        ================================================== */
+
+        .rich-editor {
+            width: 100%;
+            overflow: hidden;
+
+            border: 1px solid var(--border, #e7e7e7);
+            border-radius: 10px;
+
+            background: var(--card, #ffffff);
+
+            transition:
+                border-color 0.25s ease,
+                box-shadow 0.25s ease;
+        }
+
+
+        .rich-editor:focus-within {
+            border-color: var(--text-soft, #666666);
+
+            box-shadow:
+                0 0 0 3px rgba(0, 0, 0, 0.04);
+        }
+
+
+        /* =================================================
+           TOOLBAR
+        ================================================== */
+
+        .editor-toolbar {
+            display: flex;
+            align-items: center;
+            flex-wrap: wrap;
+
+            gap: 4px;
+
+            padding: 8px;
+
+            border-bottom:
+                1px solid
+                var(--border, #e7e7e7);
+
+            background:
+                var(--bg-soft, #f7f7f5);
+        }
+
+
+        .editor-tool {
+            min-width: 34px;
+            height: 32px;
+
+            padding: 0 8px;
+
+            border: 0;
+            border-radius: 6px;
+
+            background: transparent;
+
+            color: var(--text, #111111);
+
+            font-family:
+                var(
+                    --sans,
+                    "Manrope",
+                    Arial,
+                    sans-serif
+                );
+
+            font-size: 12px;
+            font-weight: 600;
+
+            cursor: pointer;
+
+            transition:
+                background 0.2s ease,
+                opacity 0.2s ease;
+        }
+
+
+        .editor-tool:hover {
+            background:
+                var(--card, #ffffff);
+        }
+
+
+        .editor-tool:active {
+            opacity: 0.6;
+        }
+
+
+        .editor-tool.active {
+            background:
+                var(--text, #111111);
+
+            color:
+                var(--card, #ffffff);
+        }
+
+
+        .editor-divider {
+            width: 1px;
+            height: 20px;
+
+            margin: 0 4px;
+
+            background:
+                var(--border, #e7e7e7);
+        }
+
+
+        /* =================================================
+           EDITOR CONTENT
+        ================================================== */
+
+        .editor-content {
+            min-height: 320px;
+
+            padding: 20px;
+
+            outline: none;
+
+            color:
+                var(--text, #111111);
+
+            font-family:
+                var(
+                    --sans,
+                    "Manrope",
+                    Arial,
+                    sans-serif
+                );
+
+            font-size: 15px;
+            line-height: 1.8;
+
+            cursor: text;
+
+            overflow-wrap: break-word;
+        }
+
+
+        .editor-content:empty::before {
+            content: attr(data-placeholder);
+
+            color:
+                var(--text-soft, #666666);
+
+            opacity: 0.65;
+
+            pointer-events: none;
+        }
+
+
+        .editor-content p {
+            margin: 0 0 16px;
+        }
+
+
+        .editor-content h2 {
+            margin: 30px 0 14px;
+
+            color:
+                var(--text, #111111);
+
+            font-family:
+                var(
+                    --serif,
+                    "Manrope",
+                    Arial,
+                    sans-serif
+                );
+
+            font-size: 30px;
+            line-height: 1.25;
+            font-weight: 400;
+        }
+
+
+        .editor-content h3 {
+            margin: 24px 0 12px;
+
+            color:
+                var(--text, #111111);
+
+            font-family:
+                var(
+                    --serif,
+                    "Manrope",
+                    Arial,
+                    sans-serif
+                );
+
+            font-size: 24px;
+            line-height: 1.3;
+            font-weight: 400;
+        }
+
+
+        .editor-content ul,
+        .editor-content ol {
+            margin: 0 0 18px;
+
+            padding-left: 26px;
+        }
+
+
+        .editor-content li {
+            margin-bottom: 6px;
+        }
+
+
+        .editor-content blockquote {
+            margin: 24px 0;
+
+            padding: 12px 18px;
+
+            border-left:
+                2px solid
+                var(--border, #e7e7e7);
+
+            color:
+                var(--text-soft, #666666);
+
+            font-family:
+                var(
+                    --serif,
+                    "Manrope",
+                    Arial,
+                    sans-serif
+                );
+
+            font-size: 20px;
+            line-height: 1.5;
+        }
+
+
+        .editor-content pre {
+            overflow-x: auto;
+
+            margin: 24px 0;
+
+            padding: 16px;
+
+            border:
+                1px solid
+                var(--border, #e7e7e7);
+
+            border-radius: 8px;
+
+            background:
+                var(--bg-soft, #f7f7f5);
+
+            color:
+                var(--text, #111111);
+
+            font-family:
+                var(--sans, "Manrope", Arial, sans-serif);
+
+            font-size: 13px;
+            line-height: 1.7;
+        }
+
+
+        .editor-content a {
+            color:
+                var(--text, #111111);
+
+            text-decoration: underline;
+
+            text-decoration-thickness: 1px;
+
+            text-underline-offset: 3px;
+        }
+
+
+        .editor-content strong {
+            font-weight: 700;
+        }
+
+
+        .editor-content em {
+            font-style: italic;
+        }
+
+        .editor-content img {
+            display: block;
+            max-width: 100%;
+            height: auto;
+            margin: 20px 0;
+            border-radius: 8px;
+        }
+
+
+        /* =================================================
+           FORM HINT
+        ================================================== */
+
+        .rich-editor + .form-hint {
+            display: block;
+
+            margin-top: 8px;
+
+            color:
+                var(--text-soft, #666666);
+
+            font-size: 12px;
+        }
+
+
+        /* =================================================
+           MOBILE
+        ================================================== */
+
+        @media (max-width: 600px) {
+
+            .editor-toolbar {
+                gap: 2px;
+
+                padding: 6px;
+            }
+
+
+            .editor-tool {
+                min-width: 31px;
+
+                height: 30px;
+
+                padding: 0 6px;
+
+                font-size: 11px;
+            }
+
+
+            .editor-divider {
+                margin: 0 2px;
+            }
+
+
+            .editor-content {
+                min-height: 260px;
+
+                padding: 16px;
+
+                font-size: 15px;
+            }
+
+
+            .editor-content h2 {
+                font-size: 26px;
+            }
+
+
+            .editor-content h3 {
+                font-size: 22px;
+            }
+
+        }
+
+
+        /* =================================================
+           HIDDEN STORAGE
+        ================================================== */
+
+        .rich-content-storage {
+            display: none !important;
+        }
+
+
+        /* =================================================
+           DARK MODE
+        ================================================== */
+
+        @media (prefers-color-scheme: dark) {
+
+            .rich-editor:focus-within {
+                box-shadow:
+                    0 0 0 3px
+                    rgba(255, 255, 255, 0.05);
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+    <!-- =====================================================
+         LOGIN SCREEN
+    ====================================================== -->
+
+    <div
+        class="login-screen"
+        id="loginScreen"
+        hidden
+    >
+
+        <div class="login-container">
+
+            <div class="login-brand">
+
+                <span class="login-brand-main">
+                    Ardanarx
+                </span>
+
+                <span class="login-brand-sub">
+                    System
+                </span>
+
+            </div>
+
+
+            <div class="login-heading">
+
+                <p class="eyebrow">
+                    Private Workspace
+                </p>
+
+                <h1>
+                    Welcome back.
+                </h1>
+
+                <p>
+                    Sign in to access your personal workspace.
+                </p>
+
+            </div>
+
+
+            <form
+                class="login-form"
+                id="loginForm"
+            >
+
+                <div class="form-field">
+
+                    <label for="loginEmail">
+                        Email
+                    </label>
+
+                    <input
+                        type="email"
+                        id="loginEmail"
+                        name="email"
+                        placeholder="admin@example.com"
+                        autocomplete="email"
+                        required
+                    >
+
+                </div>
+
+
+                <div class="form-field">
+
+                    <label for="loginPassword">
+                        Password
+                    </label>
+
+                    <input
+                        type="password"
+                        id="loginPassword"
+                        name="password"
+                        placeholder="Enter your password"
+                        autocomplete="current-password"
+                        required
+                    >
+
+                </div>
+
+
+                <button
+                    type="submit"
+                    class="login-button"
+                    id="loginButton"
+                >
+                    Sign In
+                </button>
+
+
+                <p
+                    class="login-error"
+                    id="loginMessage"
+                    role="alert"
+                    hidden
+                ></p>
+
+            </form>
+
+
+            <p class="login-footer">
+                Ardanarx System · Private Administration
+            </p>
+
+        </div>
+
+    </div>
+
+
+
+    <!-- =====================================================
+         MOBILE SIDEBAR OVERLAY
+    ====================================================== -->
+
+    <div
+        class="sidebar-overlay"
+        id="sidebarOverlay"
+    ></div>
+
+
+
+    <!-- =====================================================
+         SIDEBAR
+    ====================================================== -->
+
+    <aside
+        class="sidebar"
+        id="sidebar"
+    >
+
+        <div class="sidebar-header">
+
+            <a
+                href="#"
+                class="sidebar-brand"
+            >
+
+                <span class="brand-main">
+                    Ardanarx
+                </span>
+
+                <span class="brand-sub">
+                    System
+                </span>
+
+            </a>
+
+
+            <button
+                type="button"
+                class="sidebar-close"
+                id="closeSidebar"
+                aria-label="Close menu"
+            >
+
+                <svg
+                    viewBox="0 0 24 24"
+                    width="20"
+                    height="20"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="1.8"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    aria-hidden="true"
+                >
+
+                    <path d="M18 6L6 18"></path>
+
+                    <path d="M6 6L18 18"></path>
+
+                </svg>
+
+            </button>
+
+        </div>
+
+
+
+        <!-- =================================================
+             WORKSPACE NAVIGATION
+        ================================================== -->
+
+        <div class="sidebar-section">
+
+            <p class="sidebar-label">
+                Workspace
+            </p>
+
+
+            <nav class="sidebar-nav">
+
+                <a
+                    href="#"
+                    class="sidebar-link active"
+                    data-page-link="overview"
+                >
+
+                    <span class="nav-icon">
+
+                        <svg
+                            viewBox="0 0 24 24"
+                            width="18"
+                            height="18"
+                            fill="none"
+                            stroke="currentColor"
+                            stroke-width="1.7"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                        >
+
+                            <rect
+                                x="3"
+                                y="3"
+                                width="7"
+                                height="7"
+                            ></rect>
+
+                            <rect
+                                x="14"
+                                y="3"
+                                width="7"
+                                height="7"
+                            ></rect>
+
+                            <rect
+                                x="3"
+                                y="14"
+                                width="7"
+                                height="7"
+                            ></rect>
+
+                            <rect
+                                x="14"
+                                y="14"
+                                width="7"
+                                height="7"
+                            ></rect>
+
+                        </svg>
+
+                    </span>
+
+                    <span>
+                        Overview
+                    </span>
+
+                </a>
+
+
+
+                <a
+                    href="#"
+                    class="sidebar-link"
+                    data-page-link="notes"
+                >
+
+                    <span class="nav-icon">
+
+                        <svg
+                            viewBox="0 0 24 24"
+                            width="18"
+                            height="18"
+                            fill="none"
+                            stroke="currentColor"
+                            stroke-width="1.7"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                        >
+
+                            <path d="M4 4h16v16H4z"></path>
+
+                            <path d="M8 8h8"></path>
+
+                            <path d="M8 12h8"></path>
+
+                            <path d="M8 16h5"></path>
+
+                        </svg>
+
+                    </span>
+
+                    <span>
+                        Notes
+                    </span>
+
+                </a>
+
+
+
+                <a
+                    href="#"
+                    class="sidebar-link"
+                    data-page-link="projects"
+                >
+
+                    <span class="nav-icon">
+
+                        <svg
+                            viewBox="0 0 24 24"
+                            width="18"
+                            height="18"
+                            fill="none"
+                            stroke="currentColor"
+                            stroke-width="1.7"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                        >
+
+                            <rect
+                                x="3"
+                                y="4"
+                                width="18"
+                                height="16"
+                                rx="2"
+                            ></rect>
+
+                            <path d="M3 9h18"></path>
+
+                            <path d="M8 4v5"></path>
+
+                        </svg>
+
+                    </span>
+
+                    <span>
+                        Projects
+                    </span>
+
+                </a>
+
+
+
+                <a
+                    href="#"
+                    class="sidebar-link"
+                    data-page-link="media"
+                >
+
+                    <span class="nav-icon">
+
+                        <svg
+                            viewBox="0 0 24 24"
+                            width="18"
+                            height="18"
+                            fill="none"
+                            stroke="currentColor"
+                            stroke-width="1.7"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                        >
+
+                            <rect
+                                x="3"
+                                y="3"
+                                width="18"
+                                height="18"
+                                rx="2"
+                            ></rect>
+
+                            <circle
+                                cx="8.5"
+                                cy="8.5"
+                                r="1.5"
+                            ></circle>
+
+                            <path d="M21 15l-5-5L5 21"></path>
+
+                        </svg>
+
+                    </span>
+
+                    <span>
+                        Media
+                    </span>
+
+                </a>
+
+            </nav>
+
+        </div>
+
+
+
+        <!-- =================================================
+             SYSTEM NAVIGATION
+        ================================================== -->
+
+        <div class="sidebar-section">
+
+            <p class="sidebar-label">
+                System
+            </p>
+
+
+            <nav class="sidebar-nav">
+
+                <a
+                    href="#"
+                    class="sidebar-link"
+                    data-page-link="messages"
+                >
+
+                    <span class="nav-icon">
+
+                        <svg
+                            viewBox="0 0 24 24"
+                            width="18"
+                            height="18"
+                            fill="none"
+                            stroke="currentColor"
+                            stroke-width="1.7"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                        >
+
+                            <rect
+                                x="3"
+                                y="4"
+                                width="18"
+                                height="16"
+                                rx="2"
+                            ></rect>
+
+                            <path d="M3 6l9 7 9-7"></path>
+
+                        </svg>
+
+                    </span>
+
+                    <span>
+                        Messages
+                    </span>
+
+                </a>
+
+
+
+                <a
+                    href="#"
+                    class="sidebar-link"
+                    data-page-link="settings"
+                >
+
+                    <span class="nav-icon">
+
+                        <svg
+                            viewBox="0 0 24 24"
+                            width="18"
+                            height="18"
+                            fill="none"
+                            stroke="currentColor"
+                            stroke-width="1.7"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                        >
+
+                            <circle
+                                cx="12"
+                                cy="12"
+                                r="3"
+                            ></circle>
+
+                            <path d="M19.4 15a1.7 1.7 0 0 0 .3 1.9l.1.1-1.7 1.7-.1-.1a1.7 1.7 0 0 0-1.9-.3 1.7 1.7 0 0 0-1 1.6v.2h-2.4v-.2a1.7 1.7 0 0 0-1-1.6 1.7 1.7 0 0 0-1.9.3l-.1.1-1.7-1.7.1-.1a1.7 1.7 0 0 0 .3-1.9 1.7 1.7 0 0 0-1.6-1H6.6v-2.4h.2a1.7 1.7 0 0 0 1.6-1 1.7 1.7 0 0 0-.3-1.9L8 7.4l1.7-1.7.1.1a1.7 1.7 0 0 0 1.9.3 1.7 1.7 0 0 0 1-1.6v-.2h2.4v.2a1.7 1.7 0 0 0 1 1.6 1.7 1.7 0 0 0 1.9-.3l.1-.1 1.7 1.7-.1.1a1.7 1.7 0 0 0-.3 1.9 1.7 1.7 0 0 0 .3 1.9 1.7 1.7 0 0 0 1.6 1z"></path>
+
+                        </svg>
+
+                    </span>
+
+                    <span>
+                        Settings
+                    </span>
+
+                </a>
+
+            </nav>
+
+        </div>
+
+
+
+        <!-- =================================================
+             SIDEBAR BOTTOM
+        ================================================== -->
+
+        <div class="sidebar-bottom">
+
+            <a
+                href="https://ardanarx.vercel.app/"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="website-link"
+            >
+
+                <span>
+                    View Website
+                </span>
+
+                <span>
+                    →
+                </span>
+
+            </a>
+
+
+            <div class="sidebar-profile">
+
+                <div class="profile-avatar">
+                    A
+                </div>
+
+                <div class="profile-info">
+
+                    <strong>
+                        Ardanarx
+                    </strong>
+
+                    <span>
+                        Administrator
+                    </span>
+
+                </div>
+
+
+                <button
+                    type="button"
+                    class="logout-button"
+                    id="logoutButton"
+                    aria-label="Log out"
+                    title="Log out"
+                >
+
+                    <svg
+                        viewBox="0 0 24 24"
+                        width="18"
+                        height="18"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="1.8"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        aria-hidden="true"
+                    >
+
+                        <path d="M10 17l5-5-5-5"></path>
+
+                        <path d="M15 12H3"></path>
+
+                        <path d="M21 19V5a2 2 0 0 0-2-2h-6"></path>
+
+                        <path d="M13 21h6a2 2 0 0 0 2-2"></path>
+
+                    </svg>
+
+                </button>
+
+            </div>
+
+        </div>
+
+    </aside>
+
+
+
+    <!-- =====================================================
+         MAIN
+    ====================================================== -->
+
+    <main class="main-content">
+
+
+        <!-- =================================================
+             TOPBAR
+        ================================================== -->
+
+        <header class="topbar">
+
+            <button
+                type="button"
+                class="mobile-menu-button"
+                id="mobileMenuButton"
+                aria-label="Open menu"
+            >
+
+                <svg
+                    viewBox="0 0 24 24"
+                    width="21"
+                    height="21"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="1.8"
+                    stroke-linecap="round"
+                >
+
+                    <path d="M4 7h16"></path>
+
+                    <path d="M4 12h16"></path>
+
+                    <path d="M4 17h16"></path>
+
+                </svg>
+
+            </button>
+
+
+            <div class="topbar-status">
+
+                <span class="status-dot"></span>
+
+                <span>
+                    Online
+                </span>
+
+            </div>
+
+        </header>
+
+
+
+        <!-- =================================================
+             CONTENT
+        ================================================== -->
+
+        <div class="content-container">
+
+
+            <!-- =================================================
+                 OVERVIEW
+            ================================================== -->
+
+            <div
+                class="overview-page"
+                id="overviewPage"
+            >
+
+                <section class="intro-section overview-section">
+
+                    <p class="eyebrow">
+                        Personal Workspace
+                    </p>
+
+                    <h1>
+                        Good afternoon.
+                    </h1>
+
+                    <p class="intro-description">
+                        Manage your notes, projects, media and
+                        personal website from one simple workspace.
+                    </p>
+
+                    <p
+                        class="current-date"
+                        id="currentDate"
+                    ></p>
+
+                </section>
+
+
+
+                <!-- STATS -->
+
+                <section class="stats-section overview-section">
+
+                    <div class="stat-item">
+
+                        <span
+                            class="stat-number"
+                            id="notesStat"
+                        >
+                            00
+                        </span>
+
+                        <span class="stat-label">
+                            Notes
+                        </span>
+
+                    </div>
+
+
+                    <div class="stat-item">
+
+                        <span
+                            class="stat-number"
+                            id="projectsStat"
+                        >
+                            00
+                        </span>
+
+                        <span class="stat-label">
+                            Projects
+                        </span>
+
+                    </div>
+
+
+                    <div class="stat-item">
+
+                        <span
+                            class="stat-number"
+                            id="publishedStat"
+                        >
+                            00
+                        </span>
+
+                        <span class="stat-label">
+                            Published
+                        </span>
+
+                    </div>
+
+
+                    <div class="stat-item">
+
+                        <span class="stat-number">
+                            00
+                        </span>
+
+                        <span class="stat-label">
+                            Messages
+                        </span>
+
+                    </div>
+
+                </section>
+
+
+
+                <!-- RECENT NOTES -->
+
+                <section class="workspace-section overview-section">
+
+                    <div class="section-heading">
+
+                        <div>
+
+                            <p class="eyebrow">
+                                Writing
+                            </p>
+
+                            <h2>
+                                Recent Notes
+                            </h2>
+
+                        </div>
+
+
+                        <a
+                            href="#"
+                            data-page-link="notes"
+                            class="section-link"
+                        >
+                            View all →
+                        </a>
+
+                    </div>
+
+
+                    <div
+                        class="notes-list"
+                        id="recentNotesList"
+                    >
+
+                        <div class="management-empty">
+
+                            <p class="eyebrow">
+                                Writing
+                            </p>
+
+                            <h3>
+                                Loading notes...
+                            </h3>
+
+                        </div>
+
+                    </div>
+
+                </section>
+
+
+
+                <!-- PROJECTS -->
+
+                <section class="workspace-section overview-section">
+
+                    <div class="section-heading">
+
+                        <div>
+
+                            <p class="eyebrow">
+                                Work
+                            </p>
+
+                            <h2>
+                                Projects
+                            </h2>
+
+                        </div>
+
+
+                        <a
+                            href="#"
+                            data-page-link="projects"
+                            class="section-link"
+                        >
+                            View all →
+                        </a>
+
+                    </div>
+
+
+                    <div
+                        class="projects-list"
+                        id="overviewProjectsList"
+                    >
+
+                        <a
+                            href="#"
+                            class="project-item"
+                            data-page-link="projects"
+                        >
+
+                            <div class="project-main">
+
+                                <h3>
+                                    Vervocare
+                                </h3>
+
+                                <p>
+                                    Digital Laundry Management System
+                                </p>
+
+                            </div>
+
+                            <div class="project-meta">
+
+                                <span class="project-type">
+                                    Business
+                                </span>
+
+                                <span class="project-status active">
+                                    Active
+                                </span>
+
+                            </div>
+
+                        </a>
+
+
+
+                        <a
+                            href="#"
+                            class="project-item"
+                            data-page-link="projects"
+                        >
+
+                            <div class="project-main">
+
+                                <h3>
+                                    Kostiqo
+                                </h3>
+
+                                <p>
+                                    Property & Kost Management
+                                </p>
+
+                            </div>
+
+                            <div class="project-meta">
+
+                                <span class="project-type">
+                                    Property
+                                </span>
+
+                                <span class="project-status">
+                                    Developing
+                                </span>
+
+                            </div>
+
+                        </a>
+
+
+
+                        <a
+                            href="#"
+                            class="project-item"
+                            data-page-link="projects"
+                        >
+
+                            <div class="project-main">
+
+                                <h3>
+                                    Nerforit
+                                </h3>
+
+                                <p>
+                                    Technology Business & E-Commerce
+                                </p>
+
+                            </div>
+
+                            <div class="project-meta">
+
+                                <span class="project-type">
+                                    Technology
+                                </span>
+
+                                <span class="project-status">
+                                    Developing
+                                </span>
+
+                            </div>
+
+                        </a>
+
+                    </div>
+
+                </section>
+
+
+
+                <!-- BOTTOM GRID -->
+
+                <section class="bottom-grid overview-section">
+
+                    <div class="info-block">
+
+                        <p class="eyebrow">
+                            Website
+                        </p>
+
+                        <h3>
+                            ardanarx.vercel.app
+                        </h3>
+
+                        <div class="online-indicator">
+
+                            <span class="status-dot"></span>
+
+                            <span>
+                                Website online
+                            </span>
+
+                        </div>
+
+                    </div>
+
+
+
+                    <div class="info-block">
+
+                        <p class="eyebrow">
+                            Quick Actions
+                        </p>
+
+                        <div class="quick-actions">
+
+                            <button
+                                type="button"
+                                class="quick-action"
+                                id="newNoteButton"
+                            >
+                                New Note
+                                <span>+</span>
+                            </button>
+
+                            <button
+                                type="button"
+                                class="quick-action"
+                                id="newProjectButton"
+                            >
+                                New Project
+                                <span>+</span>
+                            </button>
+
+                        </div>
+
+                    </div>
+
+                </section>
+
+            </div>
+
+
+
+            <!-- =================================================
+                 NOTES MANAGEMENT
+            ================================================== -->
+
+            <section
+                class="notes-management admin-placeholder"
+                id="notesManagement"
+                hidden
+            >
+
+                <div class="management-header admin-placeholder-header">
+
+                    <div>
+
+                        <p class="eyebrow">
+                            Writing
+                        </p>
+
+                        <h1>
+                            Notes
+                        </h1>
+
+                        <p class="management-description">
+                            Manage your articles, ideas and published notes.
+                        </p>
+
+                    </div>
+
+
+                    <button
+                        type="button"
+                        class="primary-button"
+                        id="managementNewNoteButton"
+                    >
+                        New Note
+                        <span>+</span>
+                    </button>
+
+                </div>
+
+
+
+                <!-- FILTER -->
+
+                <div class="notes-toolbar admin-toolbar">
+
+                    <div class="notes-filter">
+
+                        <button
+                            type="button"
+                            class="notes-filter-button active"
+                            data-note-filter="all"
+                        >
+                            All
+                        </button>
+
+                        <button
+                            type="button"
+                            class="notes-filter-button"
+                            data-note-filter="published"
+                        >
+                            Published
+                        </button>
+
+                        <button
+                            type="button"
+                            class="notes-filter-button"
+                            data-note-filter="draft"
+                        >
+                            Draft
+                        </button>
+
+                    </div>
+
+
+                    <span
+                        class="notes-count"
+                        id="notesManagementCount"
+                    >
+                        0 notes
+                    </span>
+
+                </div>
+
+
+
+                <!-- NOTES LIST -->
+
+                <div
+                    class="management-notes-list admin-panel"
+                    id="managementNotesList"
+                >
+
+                    <div class="management-empty">
+
+                        <p class="eyebrow">
+                            Notes
+                        </p>
+
+                        <h3>
+                            Loading notes...
+                        </h3>
+
+                        <p>
+                            Your notes will appear here.
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+
+            <!-- =================================================
+                 PROJECTS MANAGEMENT
+            ================================================== -->
+
+            <section
+                class="notes-management projects-management admin-placeholder"
+                id="projectsManagement"
+                hidden
+            >
+
+                <div class="management-header admin-placeholder-header">
+
+                    <div>
+
+                        <p class="eyebrow">
+                            Work
+                        </p>
+
+                        <h1>
+                            Projects
+                        </h1>
+
+                        <p class="management-description">
+                            Manage your portfolio, case studies and published work.
+                        </p>
+
+                    </div>
+
+
+                    <button
+                        type="button"
+                        class="primary-button"
+                        id="managementNewProjectButton"
+                    >
+                        New Project
+                        <span>+</span>
+                    </button>
+
+                </div>
+
+
+
+                <!-- FILTER -->
+
+                <div class="notes-toolbar admin-toolbar">
+
+                    <div class="notes-filter">
+
+                        <button
+                            type="button"
+                            class="notes-filter-button active"
+                            data-project-filter="all"
+                        >
+                            All
+                        </button>
+
+                        <button
+                            type="button"
+                            class="notes-filter-button"
+                            data-project-filter="published"
+                        >
+                            Published
+                        </button>
+
+                        <button
+                            type="button"
+                            class="notes-filter-button"
+                            data-project-filter="draft"
+                        >
+                            Draft
+                        </button>
+
+                    </div>
+
+
+                    <span
+                        class="notes-count"
+                        id="projectsManagementCount"
+                    >
+                        0 projects
+                    </span>
+
+                </div>
+
+
+
+                <!-- PROJECTS LIST -->
+
+                <div
+                    class="management-notes-list admin-panel"
+                    id="managementProjectsList"
+                >
+
+                    <div class="management-empty">
+
+                        <p class="eyebrow">
+                            Projects
+                        </p>
+
+                        <h3>
+                            Loading projects...
+                        </h3>
+
+                        <p>
+                            Your projects will appear here.
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+
+
+            <!-- =================================================
+                 MEDIA MANAGEMENT
+            ================================================== -->
+
+            <section
+                class="admin-placeholder"
+                id="mediaManagement"
+                hidden
+            >
+                <div class="admin-placeholder-header">
+                    <p class="eyebrow">Library</p>
+                    <h1>Media</h1>
+                    <p>Manage images and files used across your Ardanarx website.</p>
+                </div>
+
+                <div class="admin-toolbar">
+                    <input
+                        type="search"
+                        class="admin-search"
+                        id="mediaSearch"
+                        placeholder="Search media..."
+                        autocomplete="off"
+                    >
+
+                    <button type="button" class="primary-button" id="mediaUploadButton">
+                        Upload Media
+                        <span>+</span>
+                    </button>
+                </div>
+
+                <div class="admin-panel" id="mediaList">
+                    <div class="admin-empty">Loading media...</div>
+                </div>
+
+                <input
+                    type="file"
+                    id="mediaFileInput"
+                    accept="image/*"
+                    hidden
+                >
+            </section>
+
+
+            <!-- =================================================
+                 MESSAGES
+            ================================================== -->
+
+            <section
+                class="admin-placeholder"
+                id="messagesManagement"
+                hidden
+            >
+                <div class="admin-placeholder-header">
+                    <p class="eyebrow">Inbox</p>
+                    <h1>Messages</h1>
+                    <p>Messages received from your public website.</p>
+                </div>
+
+                <div class="admin-toolbar">
+                    <input
+                        type="search"
+                        class="admin-search"
+                        id="messageSearch"
+                        placeholder="Search messages..."
+                        autocomplete="off"
+                    >
+                </div>
+
+                <div class="admin-panel" id="messagesList">
+                    <div class="admin-empty">Loading messages...</div>
+                </div>
+            </section>
+
+
+            <!-- =================================================
+                 SETTINGS
+            ================================================== -->
+
+            <section
+                class="admin-placeholder"
+                id="settingsManagement"
+                hidden
+            >
+                <div class="admin-placeholder-header">
+                    <p class="eyebrow">Workspace</p>
+                    <h1>Settings</h1>
+                    <p>Manage your Ardanarx System workspace configuration.</p>
+                </div>
+
+                <form id="settingsForm" class="admin-panel">
+                    <div class="admin-panel-row">
+                        <div class="admin-panel-main">
+                            <div class="admin-panel-title">Profile</div>
+                            <div class="admin-panel-meta">The authenticated account currently managing this workspace.</div>
+                        </div>
+                        <div class="admin-panel-actions">
+                            <span class="admin-status" id="settingsAccountStatus">Connected</span>
+                        </div>
+                    </div>
+
+                    <div style="padding:20px;">
+                        <div class="admin-form-grid">
+                            <div class="form-field">
+                                <label for="settingsName">Display name</label>
+                                <input type="text" id="settingsName" placeholder="Ardanarx">
+                            </div>
+
+                            <div class="form-field">
+                                <label for="settingsEmail">Email</label>
+                                <input type="email" id="settingsEmail" readonly>
+                            </div>
+
+                            <div class="form-field admin-form-full">
+                                <label for="settingsSiteUrl">Website URL</label>
+                                <input type="url" id="settingsSiteUrl" value="https://ardanarx.vercel.app/">
+                            </div>
+
+                            <div class="admin-form-full admin-toggle">
+                                <input type="checkbox" id="settingsNotifications" checked>
+                                <label for="settingsNotifications">Show admin notifications</label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="admin-panel-row">
+                        <div class="admin-panel-main">
+                            <div class="admin-panel-title">Security</div>
+                            <div class="admin-panel-meta">Authentication is handled by Supabase Auth. Never place a service-role key in this project.</div>
+                        </div>
+                    </div>
+
+                    <div class="admin-panel-row">
+                        <div class="admin-panel-main">
+                            <div class="admin-panel-title">System</div>
+                            <div class="admin-panel-meta" id="settingsSystemInfo">Static HTML + JavaScript + Supabase</div>
+                        </div>
+                        <div class="admin-panel-actions">
+                            <button type="submit" class="primary-button">Save Settings</button>
+                        </div>
+                    </div>
+                </form>
+            </section>
+
+
+            <!-- =================================================
+                 FOOTER
+            ================================================== -->
+
+            <footer class="site-footer">
+
+                <span>
+                    © 2026 Ardanarx
+                </span>
+
+                <span>
+                    Personal Workspace
+                </span>
+
+            </footer>
+
+        </div>
+
+    </main>
+
+
+
+    <!-- =====================================================
+         NOTIFICATION
+    ====================================================== -->
+
+    <div
+        class="notification"
+        id="notification"
+        role="status"
+        aria-live="polite"
+    ></div>
+
+
+
+    <!-- =====================================================
+         NOTE EDITOR MODAL
+    ====================================================== -->
+
+    <div
+        class="note-modal"
+        id="noteModal"
+        hidden
+    >
+
+        <div
+            class="note-modal-backdrop"
+            id="noteModalBackdrop"
+        ></div>
+
+
+        <div class="note-editor">
+
+
+            <!-- EDITOR HEADER -->
+
+            <div class="note-editor-header">
+
+                <div>
+
+                    <p
+                        class="eyebrow"
+                        id="noteEditorEyebrow"
+                    >
+                        New Note
+                    </p>
+
+                    <h2 id="noteEditorTitle">
+                        Create a note
+                    </h2>
+
+                </div>
+
+
+                <button
+                    type="button"
+                    class="note-close-button"
+                    id="closeNoteModal"
+                    aria-label="Close"
+                >
+                    ×
+                </button>
+
+            </div>
+
+
+
+            <!-- NOTE FORM -->
+
+            <form
+                id="noteForm"
+                class="note-form"
+            >
+
+
+                <!-- TITLE -->
+
+                <div class="form-field">
+
+                    <label for="noteTitle">
+                        Title
+                    </label>
+
+                    <input
+                        type="text"
+                        id="noteTitle"
+                        name="title"
+                        placeholder="Enter note title"
+                        required
+                    >
+
+                </div>
+
+
+
+                <!-- SLUG -->
+
+                <div class="form-field">
+
+                    <label for="noteSlug">
+                        Slug
+                    </label>
+
+                    <input
+                        type="text"
+                        id="noteSlug"
+                        name="slug"
+                        placeholder="note-slug"
+                        required
+                    >
+
+                    <span class="form-hint">
+                        Used for the article URL.
+                    </span>
+
+                </div>
+
+
+
+                <!-- EXCERPT -->
+
+                <div class="form-field">
+
+                    <label for="noteExcerpt">
+                        Excerpt
+                    </label>
+
+                    <textarea
+                        id="noteExcerpt"
+                        name="excerpt"
+                        rows="3"
+                        placeholder="Short description of the note"
+                    ></textarea>
+
+                </div>
+
+
+
+                <!-- =================================================
+                     RICH TEXT EDITOR
+                ================================================== -->
+
+                <div class="form-field">
+
+                    <label for="noteContentEditor">
+                        Content
+                    </label>
+
+
+                    <div class="rich-editor">
+
+
+                        <!-- TOOLBAR -->
+
+                        <div
+                            class="editor-toolbar"
+                            role="toolbar"
+                            aria-label="Text formatting"
+                        >
+
+                            <button
+                                type="button"
+                                class="editor-tool"
+                                data-command="bold"
+                                title="Bold"
+                                aria-label="Bold"
+                            >
+                                <strong>B</strong>
+                            </button>
+
+
+                            <button
+                                type="button"
+                                class="editor-tool"
+                                data-command="italic"
+                                title="Italic"
+                                aria-label="Italic"
+                            >
+                                <em>I</em>
+                            </button>
+
+
+                            <span class="editor-divider"></span>
+
+
+                            <button
+                                type="button"
+                                class="editor-tool"
+                                data-command="formatBlock"
+                                data-value="h2"
+                                title="Heading 2"
+                                aria-label="Heading 2"
+                            >
+                                H2
+                            </button>
+
+
+                            <button
+                                type="button"
+                                class="editor-tool"
+                                data-command="formatBlock"
+                                data-value="h3"
+                                title="Heading 3"
+                                aria-label="Heading 3"
+                            >
+                                H3
+                            </button>
+
+
+                            <span class="editor-divider"></span>
+
+
+                            <button
+                                type="button"
+                                class="editor-tool"
+                                data-command="insertUnorderedList"
+                                title="Bullet list"
+                                aria-label="Bullet list"
+                            >
+                                • List
+                            </button>
+
+
+                            <button
+                                type="button"
+                                class="editor-tool"
+                                data-command="insertOrderedList"
+                                title="Numbered list"
+                                aria-label="Numbered list"
+                            >
+                                1. List
+                            </button>
+
+
+                            <span class="editor-divider"></span>
+
+
+                            <button
+                                type="button"
+                                class="editor-tool"
+                                data-command="formatBlock"
+                                data-value="blockquote"
+                                title="Quote"
+                                aria-label="Quote"
+                            >
+                                Quote
+                            </button>
+
+
+                            <button
+                                type="button"
+                                class="editor-tool"
+                                data-command="formatBlock"
+                                data-value="pre"
+                                title="Code block"
+                                aria-label="Code block"
+                            >
+                                Code
+                            </button>
+
+
+                            <button
+                                type="button"
+                                class="editor-tool"
+                                id="editorLinkButton"
+                                title="Insert link"
+                                aria-label="Insert link"
+                            >
+                                Link
+                            </button>
+
+                            <button type="button" class="editor-tool" id="editorImageButton" title="Upload and insert image" aria-label="Upload and insert image">Image</button>
+                            <input id="noteEditorImageInput" type="file" accept="image/png,image/jpeg,image/webp,image/gif,image/avif" hidden>
+
+                        </div>
+
+
+
+                        <!-- VISUAL EDITOR -->
+
+                        <div
+                            id="noteContentEditor"
+                            class="editor-content"
+                            contenteditable="true"
+                            role="textbox"
+                            aria-multiline="true"
+                            data-placeholder="Write your note here..."
+                            spellcheck="true"
+                        ></div>
+
+
+
+                        <!-- ORIGINAL STORAGE FIELD -->
+
+                        <textarea
+                            id="noteContent"
+                            name="content"
+                            class="rich-content-storage"
+                            tabindex="-1"
+                            aria-hidden="true"
+                        ></textarea>
+
+                    </div>
+
+
+                    <span class="form-hint">
+                        Use the toolbar to format your article. Image uploads are stored in Supabase Media and inserted into the content.
+                    </span>
+
+                </div>
+
+
+
+                <!-- STATUS -->
+
+                <div class="form-field">
+
+                    <label for="noteStatus">
+                        Status
+                    </label>
+
+                    <select
+                        id="noteStatus"
+                        name="status"
+                    >
+
+                        <option value="draft">
+                            Draft
+                        </option>
+
+                        <option value="published">
+                            Published
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+
+                <!-- ACTIONS -->
+
+                <div class="note-form-actions">
+
+                    <button
+                        type="button"
+                        class="secondary-button"
+                        id="cancelNote"
+                    >
+                        Cancel
+                    </button>
+
+
+                    <button
+                        type="submit"
+                        class="primary-button"
+                        id="saveNoteButton"
+                    >
+                        Save Note
+                    </button>
+
+                </div>
+
+            </form>
+
+        </div>
+
+    </div>
+
+
+
+    <!-- =====================================================
+         PROJECT EDITOR MODAL
+    ====================================================== -->
+
+    <div
+        class="note-modal project-modal"
+        id="projectModal"
+        hidden
+    >
+
+        <div
+            class="note-modal-backdrop"
+            id="projectModalBackdrop"
+        ></div>
+
+
+        <div class="note-editor">
+
+
+            <!-- EDITOR HEADER -->
+
+            <div class="note-editor-header">
+
+                <div>
+
+                    <p
+                        class="eyebrow"
+                        id="projectEditorEyebrow"
+                    >
+                        New Project
+                    </p>
+
+                    <h2 id="projectEditorTitle">
+                        Create a project
+                    </h2>
+
+                </div>
+
+
+                <button
+                    type="button"
+                    class="note-close-button"
+                    id="closeProjectModal"
+                    aria-label="Close"
+                >
+                    ×
+                </button>
+
+            </div>
+
+
+
+            <!-- PROJECT FORM -->
+
+            <form
+                id="projectForm"
+                class="note-form"
+            >
+
+
+                <!-- TITLE -->
+
+                <div class="form-field">
+
+                    <label for="projectTitle">
+                        Title
+                    </label>
+
+                    <input
+                        type="text"
+                        id="projectTitle"
+                        name="title"
+                        placeholder="Enter project title"
+                        required
+                    >
+
+                </div>
+
+
+
+                <!-- SLUG -->
+
+                <div class="form-field">
+
+                    <label for="projectSlug">
+                        Slug
+                    </label>
+
+                    <input
+                        type="text"
+                        id="projectSlug"
+                        name="slug"
+                        placeholder="project-slug"
+                        required
+                    >
+
+                    <span class="form-hint">
+                        Used for the project URL.
+                    </span>
+
+                </div>
+
+
+
+                <!-- DESCRIPTION -->
+
+                <div class="form-field">
+
+                    <label for="projectDescription">
+                        Description
+                    </label>
+
+                    <textarea
+                        id="projectDescription"
+                        name="description"
+                        rows="3"
+                        placeholder="Short description of the project"
+                    ></textarea>
+
+                </div>
+
+
+
+                <!-- CONTENT -->
+
+                <div class="form-field">
+
+                    <label for="projectContentEditor">
+                        Content
+                    </label>
+
+
+                    <div class="rich-editor">
+
+
+                        <!-- PROJECT TOOLBAR -->
+
+                        <div
+                            class="editor-toolbar"
+                            role="toolbar"
+                            aria-label="Project text formatting"
+                        >
+
+                            <button
+                                type="button"
+                                class="editor-tool"
+                                data-project-command="bold"
+                                title="Bold"
+                                aria-label="Bold"
+                            >
+                                <strong>B</strong>
+                            </button>
+
+
+                            <button
+                                type="button"
+                                class="editor-tool"
+                                data-project-command="italic"
+                                title="Italic"
+                                aria-label="Italic"
+                            >
+                                <em>I</em>
+                            </button>
+
+
+                            <span class="editor-divider"></span>
+
+
+                            <button
+                                type="button"
+                                class="editor-tool"
+                                data-project-command="formatBlock"
+                                data-project-value="h2"
+                                title="Heading 2"
+                                aria-label="Heading 2"
+                            >
+                                H2
+                            </button>
+
+
+                            <button
+                                type="button"
+                                class="editor-tool"
+                                data-project-command="formatBlock"
+                                data-project-value="h3"
+                                title="Heading 3"
+                                aria-label="Heading 3"
+                            >
+                                H3
+                            </button>
+
+
+                            <span class="editor-divider"></span>
+
+
+                            <button
+                                type="button"
+                                class="editor-tool"
+                                data-project-command="insertUnorderedList"
+                                title="Bullet list"
+                                aria-label="Bullet list"
+                            >
+                                • List
+                            </button>
+
+
+                            <button
+                                type="button"
+                                class="editor-tool"
+                                data-project-command="insertOrderedList"
+                                title="Numbered list"
+                                aria-label="Numbered list"
+                            >
+                                1. List
+                            </button>
+
+
+                            <span class="editor-divider"></span>
+
+
+                            <button
+                                type="button"
+                                class="editor-tool"
+                                data-project-command="formatBlock"
+                                data-project-value="blockquote"
+                                title="Quote"
+                                aria-label="Quote"
+                            >
+                                Quote
+                            </button>
+
+
+                            <button
+                                type="button"
+                                class="editor-tool"
+                                data-project-command="formatBlock"
+                                data-project-value="pre"
+                                title="Code block"
+                                aria-label="Code block"
+                            >
+                                Code
+                            </button>
+
+
+                            <button
+                                type="button"
+                                class="editor-tool"
+                                id="projectEditorLinkButton"
+                                title="Insert link"
+                                aria-label="Insert link"
+                            >
+                                Link
+                            </button>
+
+                            <button type="button" class="editor-tool" id="projectEditorImageButton" title="Upload and insert image" aria-label="Upload and insert image">Image</button>
+                            <input id="projectEditorImageInput" type="file" accept="image/png,image/jpeg,image/webp,image/gif,image/avif" hidden>
+
+                        </div>
+
+
+
+                        <!-- VISUAL EDITOR -->
+
+                        <div
+                            id="projectContentEditor"
+                            class="editor-content"
+                            contenteditable="true"
+                            role="textbox"
+                            aria-multiline="true"
+                            data-placeholder="Write your project content here..."
+                            spellcheck="true"
+                        ></div>
+
+
+
+                        <!-- STORAGE FIELD -->
+
+                        <textarea
+                            id="projectContent"
+                            name="content"
+                            class="rich-content-storage"
+                            tabindex="-1"
+                            aria-hidden="true"
+                        ></textarea>
+
+                    </div>
+
+
+                    <span class="form-hint">
+                        Use the toolbar to describe the project in detail. Image uploads are stored in Supabase Media and inserted into the content.
+                    </span>
+
+                </div>
+
+
+
+                <!-- THUMBNAIL -->
+
+                <div class="form-field">
+
+                    <label for="projectThumbnail">
+                        Thumbnail URL
+                    </label>
+
+                    <input
+                        type="url"
+                        id="projectThumbnail"
+                        name="thumbnail"
+                        placeholder="https://example.com/project-image.jpg"
+                    >
+
+                    <span class="form-hint">
+                        Optional image URL used for the project thumbnail.
+                    </span>
+
+                </div>
+
+
+
+                <!-- TECH STACK -->
+
+                <div class="form-field">
+
+                    <label for="projectTechStack">
+                        Tech Stack
+                    </label>
+
+                    <input
+                        type="text"
+                        id="projectTechStack"
+                        name="tech_stack"
+                        placeholder="HTML, CSS, JavaScript, Supabase"
+                    >
+
+                    <span class="form-hint">
+                        Separate technologies with commas.
+                    </span>
+
+                </div>
+
+
+
+                <!-- PROJECT URL -->
+
+                <div class="form-field">
+
+                    <label for="projectUrl">
+                        Project URL
+                    </label>
+
+                    <input
+                        type="url"
+                        id="projectUrl"
+                        name="project_url"
+                        placeholder="https://example.com"
+                    >
+
+                </div>
+
+
+
+                <!-- GITHUB URL -->
+
+                <div class="form-field">
+
+                    <label for="projectGithubUrl">
+                        GitHub URL
+                    </label>
+
+                    <input
+                        type="url"
+                        id="projectGithubUrl"
+                        name="github_url"
+                        placeholder="https://github.com/username/project"
+                    >
+
+                </div>
+
+
+
+                <!-- STATUS -->
+
+                <div class="form-field">
+
+                    <label for="projectStatus">
+                        Status
+                    </label>
+
+                    <select
+                        id="projectStatus"
+                        name="status"
+                    >
+
+                        <option value="draft">
+                            Draft
+                        </option>
+
+                        <option value="published">
+                            Published
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+
+                <!-- FEATURED -->
+
+                <div class="form-field">
+
+                    <label for="projectFeatured">
+                        Featured
+                    </label>
+
+                    <select
+                        id="projectFeatured"
+                        name="featured"
+                    >
+
+                        <option value="false">
+                            No
+                        </option>
+
+                        <option value="true">
+                            Yes
+                        </option>
+
+                    </select>
+
+                    <span class="form-hint">
+                        Featured projects can be highlighted on the website.
+                    </span>
+
+                </div>
+
+
+
+                <!-- SORT ORDER -->
+
+                <div class="form-field">
+
+                    <label for="projectSortOrder">
+                        Sort Order
+                    </label>
+
+                    <input
+                        type="number"
+                        id="projectSortOrder"
+                        name="sort_order"
+                        value="0"
+                        min="0"
+                        step="1"
+                    >
+
+                    <span class="form-hint">
+                        Lower numbers appear first.
+                    </span>
+
+                </div>
+
+
+
+                <!-- ACTIONS -->
+
+                <div class="note-form-actions">
+
+                    <button
+                        type="button"
+                        class="secondary-button"
+                        id="cancelProject"
+                    >
+                        Cancel
+                    </button>
+
+
+                    <button
+                        type="submit"
+                        class="primary-button"
+                        id="saveProjectButton"
+                    >
+                        Save Project
+                    </button>
+
+                </div>
+
+            </form>
+
+        </div>
+
+    </div>
+
+
+
+    <!-- =====================================================
+         SUPABASE
+    ====================================================== -->
+
+    <script
+        src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"
+    ></script>
+
+
+
+    <!-- =====================================================
+         APPLICATION SCRIPT
+    ====================================================== -->
+
+    <script
+        src="script.js"
+        defer
+    ></script>
+
+
+</body>
+
+</html>
